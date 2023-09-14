@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookstore</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script defer src="./script.js"></script>
 
+  </head>
   <body>
-    Hello world
-    <script src="script.js"></script>
+    <div class="container-fuild">
+      <div class="header">
+        <h1 class="branch-name">Book Store</h1>
+        <div class="avatar">
+          <img src="./assets//avatar.jpg" alt="image-avatar" />
+          <span>username</span>
+        </div>
+      </div>
+      <div class="container-main">
+        <div class="form-control-search">
+          <div class="form-control">
+            <input
+              type="text"
+              id="ipt-search"
+              value=""
+              aria-labelledby="label-fname"
+            />
+            <label class="label" for="fname" id="label-fname">
+              <div class="text">Tìm kiếm</div>
+            </label>
+          </div>
+          <button class="btn btn-submit" type="submit">Tìm kiếm</button>
+        </div>
+      </div>
+      <div class="footer"></div>
+    </div>
   </body>
+  <footer>
+
+  </footer>
 </html>
