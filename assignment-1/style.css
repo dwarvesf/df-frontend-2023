@@ -1,4 +1,133 @@
-html {
-  height: 100%;
-  width: 100%;
+/* container-fuild */
+body {
+  margin: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
+
+.container-fuild {
+  margin: 0px;
+}
+
+.container-main {
+  padding: 20px 50px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4D61AC;
+  padding: 10px 50px;
+  border-bottom: solid 2px gray;
+}
+.header h1 {
+  margin: 0px;
+}
+.header .branch-name {
+  color: white;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+}
+.avatar img {
+  height: 35px;
+  width: 35px;
+  margin-right: 10px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* button*/
+.btn {
+  display: inline-block;
+  outline: none;
+  border-width: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: 500;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+  background: #314197;
+  cursor: pointer;
+  height: 32px;
+  line-height: 32px;
+  padding: 0px 12px;
+  vertical-align: middle;
+  width: auto;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+.btn:hover {
+  background: #262E66;
+  text-decoration: inherit;
+  transition-duration: 0s, 0.15s;
+  color: rgb(255, 255, 255);
+}
+
+/* form-control-search */
+.form-control-search {
+  display: flex;
+  justify-content: right;
+}
+
+/* form-control */
+.form-control {
+  position: relative;
+}
+.form-control input {
+  width: 280px;
+  border: 1px solid #314197;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 16px;
+  height: 32px !important;
+  line-height: 32px !important;
+  margin-right: 20px;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+input,
+.label .text {
+  font-family: "Segoe UI";
+  font-size: 16px;
+}
+
+.label .text {
+  transition: all 0.15s ease-out;
+  color: grey;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #262E66;
+}
+
+input:focus + .label .text,
+:not(input[value=""]) + .label .text {
+  font-size: 12px;
+  transform: translate(0, -100%);
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+input:focus + .label .text {
+  color: #262E66;
+}
+
+/*# sourceMappingURL=style.css.map */
