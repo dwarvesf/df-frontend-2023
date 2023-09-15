@@ -1,14 +1,156 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Bookstore</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Bookstore</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<script type="module" src="./script.js"></script>
+		<script type="module" src="./bookManagement.js"></script>
+		<script type="module" src="./addBook.js"></script>
+		<script type="module" src="./deleteBook.js"></script>
+		<script type="module" src="./searchBook.js"></script>
+		<script type="module" src="./toggleModal.js"></script>
+	</head>
 
-  <body>
-    Hello world
-    <script src="script.js"></script>
-  </body>
+	<body>
+		<!-- Header start -->
+		<header class="header">
+			<a href="#" class="logo">Bookstore</a>
+			<div class="user-info">
+				<img
+					class="user-avatar"
+					src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+					alt="Avatar người dùng" />
+				<h1 class="user-name">John Doe</h1>
+			</div>
+		</header>
+		<!-- Header end -->
+
+		<!-- Search form start -->
+		<div class="search-form">
+			<input type="text" class="search-input" placeholder="Search books" />
+			<button class="add-button">Add book</button>
+		</div>
+		<!-- Search form end -->
+
+		<!-- Table start -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="collumn-1">Name</th>
+					<th class="column-2">Author</th>
+					<th class="collumn-3">Topic</th>
+					<th class="collumn-4">Action</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+		<!-- Table end -->
+
+		<!-- Notification Delete Book start -->
+		<div class="container-modal delete-modal">
+			<div class="modal delete-book-modal">
+				<button
+					type="button"
+					class="close-btn"
+					id="close-btn-delete"
+					data-dismiss="modal"
+					aria-label="Close">
+					<ion-icon class="close-icon" name="close-outline"></ion-icon>
+				</button>
+				<div class="modal-header">
+					<h1>Delete book</h1>
+				</div>
+				<div class="modal-body">
+					<p>
+						Do you want delete <br />
+						<span class="book-name">Refactoring</span> book?
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button
+						type="button"
+						class="btn btn-secondary"
+						id="delete-book-button"
+						data-dismiss="modal">
+						Delete
+					</button>
+					<button type="button" class="btn btn-danger" id="cancel-book-button">
+						Cancel
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Notification Delete Book end -->
+
+		<!-- Form Add Book Start -->
+		<div class="container-modal add-modal">
+			<div class="modal add-book-modal">
+				<button
+					type="button"
+					class="close-btn"
+					id="close-modal-add"
+					data-dismiss="modal"
+					aria-label="Close">
+					<ion-icon class="close-icon" name="close-outline"></ion-icon>
+				</button>
+				<div class="modal-header">
+					<h1>Add book</h1>
+				</div>
+				<div class="modal-body">
+					<form class="form-add-book">
+						<div class="form-group">
+							<label for="name">Name</label>
+							<input
+								required
+								autocomplete="off"
+								type="text"
+								class="form-control"
+								id="name"
+								name="name"
+								placeholder="Tên sách" />
+						</div>
+						<div class="form-group">
+							<label for="author">Author</label>
+							<input
+								required
+								autocomplete="off"
+								type="text"
+								class="form-control"
+								id="author"
+								name="author"
+								placeholder="Tác giả" />
+						</div>
+						<div class="form-group">
+							<label for="topic">Topic</label>
+							<select
+								class="form-control select"
+								id="topic"
+								name="topic"
+								data-icon="ion-chevron-expand-outline">
+								<option value="Programming">Programming</option>
+								<option value="Database">Database</option>
+								<option value="Devops">Devops</option>
+								<option value="Frontend">Frontend</option>
+								<option value="Backend">Backend</option>
+							</select>
+						</div>
+						<div class="footer-form">
+							<button type="submit" class="btn btn-danger">Create</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Form add book end -->
+		<script
+			type="module"
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+		<script
+			nomodule
+			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+	</body>
 </html>
