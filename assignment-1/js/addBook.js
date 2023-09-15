@@ -5,12 +5,12 @@ import {
 	addModalContainer, // Modal container for adding a book
 	formAddBook, // Form element for adding a book
 	handleRenderBookList, // Function to render the book list
-} from './js/script.js';
+} from './script.js';
 
 import {
 	handleSaveBooks, // Function to save books to storage
 	handleGetBookList, // Function to retrieve the book list from storage
-} from './js/bookManagement.js';
+} from './bookManagement.js';
 
 // Handle the form submission event for adding a book
 const handleSubmitFormAddBook = (e) => {

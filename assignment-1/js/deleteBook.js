@@ -4,8 +4,8 @@ import {
 	deleteBookButton,
 	cancelBookButton,
 	handleRenderBookList,
-} from './js/script.js';
-import {handleSaveBooks, handleGetBookList} from './js/bookManagement.js';
+} from './script.js';
+import {handleSaveBooks, handleGetBookList} from './bookManagement.js';
 
 let idBookToDelete;
 

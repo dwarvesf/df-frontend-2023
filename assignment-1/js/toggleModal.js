@@ -4,11 +4,12 @@ import {
 	addButton, // Add button
 	closeDeleteModalButton, // Close button for the delete modal
 	closeAddModalButton, // Close button for the add modal
-} from './js/script.js';
+} from './script.js';
 
 // Show the add book modal
 const showModalAdd = (e) => {
 	e.preventDefault();
+
 	addModalContainer.classList.add('active-modal');
 };
 

@@ -1,4 +1,4 @@
-import {bookListArr} from './js/script.js';
+import {bookListArr} from './script.js';
 
 // Saves the book list to the local storage.
 export const handleSaveBooks = (bookList) => {
