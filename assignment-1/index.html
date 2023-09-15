@@ -1,14 +1,85 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Bookstore</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
 
-  <body>
-    Hello world
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Bookstore</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <h1>Bookstore</h1>
+    <div class="header-profile">
+      <span>Hoshi Suisei</span>
+      <img src="user.png" />
+    </div>
+  </header>
+  <main>
+    <div class="action-bar">
+      <button onclick="togglePopup('addBookPopup', true)" active>
+        Add book
+      </button>
+      <input id="searchBookInput" placeholder="Search books" onchange="renderTableRowsFromBooks()" />
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Topic</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="bookTableBody">
+          <!-- <tr>
+            <td>Ref</td>
+            <td>dafsaf</td>
+            <td>dafadsf</td>
+            <td>
+              <a onclick="togglePopup('deleteBookPopup', true)">Delete</a>
+            </td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <div id="deleteBookPopup" class="popup" show="false">
+    <img src="close.svg" class="close" alt="Close" onclick="togglePopup('deleteBookPopup', false)">
+    <h1>Delete book</h1>
+    <p>Do you want to delete <b id="deleteBookPopupBookName">book name</b> book?</p>
+    <div class="action-bar">
+      <button onclick="togglePopup('deleteBookPopup', false)" active>Cancel</button>
+      <button onclick="deleteBook()">Delete</button>
+    </div>
+  </div>
+  <div id="addBookPopup" class="popup" show="false">
+    <img src="close.svg" class="close" alt="Close" onclick="togglePopup('addBookPopup', false)">
+    <h1>Add book</h1>
+    <form id="addBookForm">
+      <div>
+        <p>Name</p>
+        <input name="name" type="text" required/>
+      </div>
+      <div>
+        <p>Author</p>
+        <input name="author" type="text" required />
+      </div>
+      <div>
+        <p>Topic</p>
+        <select name="topic">
+          <option>Programming</option>
+          <option>Database</option>
+          <option>DevOps</option>
+        </select>
+      </div>
+      <div class="action-bar" style="margin-top: 20px;">
+        <button type="button" onclick="addBook('addBookForm')" active>Create</button>
+      </div>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
 </html>
