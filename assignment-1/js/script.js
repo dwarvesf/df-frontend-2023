@@ -1,4 +1,4 @@
-import {handleGetBookList} from './bookManagement.js';
+import {handleGetBookList} from './js/bookManagement.js';
 
 // DOM elements
 export const formAddBook = document.querySelector('.form-add-book');

@@ -4,7 +4,7 @@ import {
 	addButton, // Add button
 	closeDeleteModalButton, // Close button for the delete modal
 	closeAddModalButton, // Close button for the add modal
-} from './script.js';
+} from './js/script.js';
 
 // Show the add book modal
 const showModalAdd = (e) => {

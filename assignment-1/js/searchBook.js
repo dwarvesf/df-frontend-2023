@@ -1,5 +1,5 @@
-import {handleGetBookList} from './bookManagement.js';
-import {searchInput, handleRenderBookList} from './script.js';
+import {handleGetBookList} from './js/bookManagement.js';
+import {searchInput, handleRenderBookList} from './js/script.js';
 
 // Function to handle book search
 const handleSearchBook = (event) => {

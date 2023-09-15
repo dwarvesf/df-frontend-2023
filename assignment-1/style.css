@@ -11,7 +11,9 @@
 	padding: 0;
 	font-family: var(--font-family);
 }
-
+body {
+	overflow: hidden;
+}
 a,
 button {
 	cursor: pointer;
@@ -363,5 +365,42 @@ th {
 
 	.footer-form {
 		margin-top: 16px;
+	}
+}
+.show {
+	transform: translateX(0);
+}
+.hide {
+	transform: translateX(-100%);
+}
+.loading {
+	transition: all 0.25s linear;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgb(242, 236, 236);
+}
+.spin {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 6px solid transparent;
+	border-bottom: 6px solid white;
+	border-left: 6px solid var(--secondary-color);
+	border-right: 6px solid var(--secondary-color);
+	animation: loading infinite 1s linear;
+}
+@keyframes loading {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
 	}
 }

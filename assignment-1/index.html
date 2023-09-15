@@ -3,14 +3,16 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
+		<link rel="shortcut icon" type="image/png" href="./images/logo.png" />
 		<title>Bookstore</title>
 		<link href="style.css" rel="stylesheet" type="text/css" />
-		<script type="module" src="./script.js"></script>
-		<script type="module" src="./bookManagement.js"></script>
-		<script type="module" src="./addBook.js"></script>
-		<script type="module" src="./deleteBook.js"></script>
-		<script type="module" src="./searchBook.js"></script>
-		<script type="module" src="./toggleModal.js"></script>
+		<script type="module" src="./js/script.js"></script>
+		<script type="module" src="./js/bookManagement.js"></script>
+		<script type="module" src="./js/addBook.js"></script>
+		<script type="module" src="./js/deleteBook.js"></script>
+		<script type="module" src="./js/searchBook.js"></script>
+		<script type="module" src="./js/oggleModal.js"></script>
+		<script type="module" src="./js/loading.js"></script>
 	</head>
 
 	<body>
@@ -20,7 +22,7 @@
 			<div class="user-info">
 				<img
 					class="user-avatar"
-					src="https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+					src="./images/user.png"
 					alt="Avatar người dùng" />
 				<h1 class="user-name">John Doe</h1>
 			</div>
@@ -144,8 +146,13 @@
 				</div>
 			</div>
 		</div>
-
 		<!-- Form add book end -->
+
+		<!-- Loading start -->
+		<div class="loading show">
+			<div class="spin"></div>
+		</div>
+		<!-- Loading end -->
 		<script
 			type="module"
 			src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
