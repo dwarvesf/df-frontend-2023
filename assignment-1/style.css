@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@;;300;400;500;600;700;800;900&display=swap');
 :root {
 	--primary-color: #2a3946;
 	--secondary-color: #d2455b;
@@ -376,17 +376,16 @@ th {
 .loading {
 	transition: all 0.25s linear;
 	position: fixed;
+	width: 100vw;
+	height: 100vh;
 	top: 0;
 	left: 0;
-	right: 0;
-	bottom: 0;
 	background-color: rgb(242, 236, 236);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 .spin {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	width: 60px;
 	height: 60px;
 	border-radius: 50%;
