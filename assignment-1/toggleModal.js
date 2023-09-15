@@ -2,7 +2,8 @@ import {
 	addModalContainer, // Container for the add book modal
 	deleteModalContainer, // Container for the delete book modal
 	addButton, // Add button
-	closeDeleteModalButton, // Close button for the add modal
+	closeDeleteModalButton, // Close button for the delete modal
+	closeAddModalButton, // Close button for the add modal
 } from './script.js';
 
 // Show the add book modal
@@ -22,5 +23,5 @@ const hideDeleteModal = (e) => {
 };
 
 addButton.addEventListener('click', showModalAdd);
-closeDeleteModalButton.addEventListener('click', hideAddModal);
+closeAddModalButton.addEventListener('click', hideAddModal);
 closeDeleteModalButton.addEventListener('click', hideDeleteModal);
