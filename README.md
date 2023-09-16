@@ -32,6 +32,18 @@ We evaluate assignments based on the following criteria:
 
 Our team will thoroughly review your submissions. Once evaluated, we will open a GitHub issue on your fork to announce the result and provide feedback on your work.
 
+## Assignment Submission
+
+To submit your assignments, please ensure you have enabled the **Issues** feature in your forked repository. If it's disabled by default, you can enable it by navigating to `Settings > General` on your fork. Scroll down to the `Features` sub-section and check the `Issues` box.
+
+![how to enable issue feature on fork](./assets/enable-issue-feature.png).
+
+Once enabled, follow these steps for each submission:
+
+1. **Code Submission**: Place your submitted code in the respective `/assignment-[number]` folder on your fork.
+2. **Deployment**: Deploy your project on a cloud service to generate a public preview link.
+3. **Issue Creation**: Open an issue in your forked repository with the title `Submission for assignment [number]`. Ensure you include the public preview link in the issue description. Refer to [this example issue](https://github.com/zlatanpham/df-frontend-2023/issues/1) for guidance.
+
 ## Support
 
 Should you have any questions or run into any issues, don't hesitate to reach out on [our Discord](https://discord.com/invite/Y2vvH9rQE4). We are happy to help!
