@@ -1,4 +1,88 @@
-html {
-  height: 100%;
+/*
++ border-collapse: a property to set whether table borders should collapse into a single border or be separated as in standard HTML
+*/
+
+table {
+  border-collapse: separate;
   width: 100%;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+#addItemBtn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: point;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba((0), 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modal-content {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Close button for the modal */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/**
+Responsive
+*/
+@media screen and (max-width: 768px){
+
+  table {
+    width: 100%;
+  }
+
+  th, td {
+    padding: 5px;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  tr {
+    margin-bottom: 5px;
+  }
+  
 }
