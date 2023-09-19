@@ -1,14 +1,74 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Bookstore</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
 
-  <body>
-    Hello world
-    <script src="script.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Bookstore</title>
+  <link href="./style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <header>
+    <div class="wrapper">
+      <h1 class="header__title">Bookstore</h1>
+      <div class="header__profile">
+        <div class="header__profile_avatar">
+          <img src="./img/anonymous_avatar.png" alt="avatar" />
+        </div>
+        <p class="header__profile_name">John Doe</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="container">
+      <div class="search_wrapper">
+        <input type="text" placeholder="Search books" class="search input" />
+        <button class="btn add" onclick="OpenModalCreateForm()">Add Book</button>
+      </div>
+      <table id="table-data">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Topic</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </section>
+    <section class="modal form">
+      <div class="modal_wrapper">
+        <button class="modal_btn_close" onclick="OpenModalCreateForm()">❌</button>
+        <h3>Create New Item</h3>
+        <form id="create_form">
+          <div class="form_field">
+            <label for="title" class="form_label">Title</label>
+            <input type="text" id="title" class="form_input input" required />
+          </div>
+          <div class="form_field">
+            <label for="author" class="form_label">Author</label>
+            <input type="text" id="author" class="form_input input" required />
+          </div>
+          <div class="form_field">
+            <label for="topic" class="form_label">Topic</label>
+            <select id="topic" class="form_select input"></select>
+          </div>
+          <button type="submit" class="form_field btn create">Create Item</button>
+        </form>
+      </div>
+
+    </section>
+    <!-- <section class="modal alert">
+      <div class="modal_wrapper">
+        <button class="modal_btn_close" onclick="toggleModal('alert')">❌</button>
+        <h3>Delete Item</h3>
+      </div>
+    </section> -->
+  </main>
+  <script src="./script.js"></script>
+</body>
+
 </html>
