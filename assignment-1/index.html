@@ -8,7 +8,120 @@
   </head>
 
   <body>
-    Hello world
-    <script src="script.js"></script>
+    <div class="app">
+      <header>
+        <nav class="navbar">
+          <a href="" id="bookstore">Bookstore</a>
+          <div class="user">
+            <img src="https://i.pinimg.com/736x/cc/80/f3/cc80f38579887963c2d71d7060081ea3.jpg" alt="avt" id="avt">
+            <span>
+              John Doe
+            </span>
+          </div>
+        </nav>
+      </header>
+      <div class="app__container">
+        <div class="control">
+          <input type="text" class="search" placeholder="Search books">
+          <button class="btn btn-add">Add book</button>
+        </div>
+        
+        <div class="table">
+          <table class="table__content">
+            <thead class="table__header">
+              <tr>
+                <td>Name</td>
+                <td>Author</td>
+                <td>Topic</td>
+                <td>Action</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <tr>
+                <td>Refactoring</td>
+                <td>Martin Fowler</td>
+                <td>Programming</td>
+                <td class="delete-click">
+                  Delete
+                </td>
+              </tr>
+              <tr>
+                <td>The Phoenix Project</td>
+                <td>Martin Kleppmann</td>
+                <td>Database</td>
+                <td class="delete-click">
+                  Delete
+                </td>
+              </tr>               -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <footer></footer>
+      
+      <div class="modal modal-delete">
+        <div class="form delete-form">
+          <h2 class="form-header">
+            Delete book
+            <button class="close" type="button">&#x2716;</button>
+          </h2>
+          <div class="form__content delete-item">
+            <!-- Do you want to delete Refactoring book? -->
+          </div>
+          <div class="form__btn">
+            <button class="btn-delete">
+              Delete
+            </button>
+            <button class="btn btn-cancel">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+      
+
+      <div class="modal modal-add">
+        <div class="form add-form">
+          <h2 class="form-header">
+            Add book
+            <button class="close" type="button">&#x2716;</button>
+          </h2>
+          <form class="form__content">
+            <div class="input-wrap">
+              <h3 class="input-header">
+                Name
+              </h3>
+              <input class="input" type="text" placeholder="text" id="input-name" name="name" required>
+            </div>
+            <div class="input-wrap">
+              <h3 class="input-header">
+                Author
+              </h3>
+              <input class="input" type="text" placeholder="text" id="input-author" name="author" required>
+            </div>
+            <div class="input-wrap">
+              <h3 class="input-header">
+                Topic
+              </h3>            
+              <select id="input-topic" name="topic">
+                <option value="Programming">Programming</option>
+                <option value="Databse">Databse</option>
+                <option value="DevOps">DevOps</option>              
+              </select>
+            </div>
+            <div class="form__btn">
+              <button type="submit" class="btn btn-create">
+                Create
+              </button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+
+    </div>
+
+
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
