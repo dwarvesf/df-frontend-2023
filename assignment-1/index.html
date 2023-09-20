@@ -1,14 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Bookstore</title>
+    <meta name="viewport" content="width=device-width", initial-scale=1.0" />
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script
+      src="https://kit.fontawesome.com/ce06623c57.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Bookstore</title>
   </head>
 
-  <body>
-    Hello world
+  <body onload="renderData()">
+    <header id="head">
+      <a id="logo">Bookstore</a>
+      <div id="user">
+        <div id="user-avatar"></div>
+        <div id="user-name">Ngoc Thang</div>
+      </div>
+    </header>
+    <main id="main">
+      <div id="box">
+        <input
+          type="text"
+          placeholder="Search books"
+          id="search-input"
+          onchange="handleSearch(this)"
+        />
+        <button class="btn-add btn-type" onclick="handleAdd(this)">
+          Add book
+        </button>
+      </div>
+
+      <table id="table"></table>
+    </main>
+
+    <div id="box-modal-add">
+      <div id="modal-add">
+        <div id="modal-add-top">
+          <p>Add book</p>
+          <i
+            class="fas fa-close"
+            style="color: #ccc"
+            onclick="handleAdd(this)"
+          ></i>
+        </div>
+        <div id="modal-add-input">
+          <label for="name-input" class="add-label">Name</label>
+          <input
+            type="text"
+            id="name-input"
+            placeholder="Name"
+            class="add-input"
+          />
+          <label for="author-input" class="add-label">Author</label>
+          <input
+            type="text-input"
+            id="author-input"
+            placeholder="Author"
+            class="add-input"
+          />
+          <label for="topic-input" class="add-label">Topic</label>
+          <select name="topic" id="topic-input" class="add-input">
+            <option value="Programing">Programing</option>
+            <option value="Novel">Novel</option>
+            <option value="Economics">Economics</option>
+            <option value="Comic">Comic</option>
+          </select>
+        </div>
+        <button class="modal-add-btn btn-type" onclick="handleAdd(this)">
+          Create
+        </button>
+      </div>
+    </div>
+
+    <div id="box-modal-confirm">
+      <div id="modal-confirm">
+        <div id="modal-confirm-top">
+          <p>Delete book</p>
+          <i
+            id="close-modal"
+            class="fas fa-close"
+            style="color: #ccc"
+            onclick="handleDelete(this)"
+          ></i>
+        </div>
+        <div id="modal-confirm-content">
+          <p>Do you want to delete</p>
+          <div id="confirm-subcontent">
+            <p>Refactoring</p>
+            <p>book?</p>
+          </div>
+        </div>
+        <div id="modal-confirm-btns">
+          <button class="confirm-delete-btn btn-type"">
+            Delete
+          </button>
+          <button
+            class="confirm-cancel-btn btn-type"
+            onclick="handleDelete(this)"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
