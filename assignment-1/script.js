@@ -25,6 +25,8 @@ function displayBooks() {
     }
 }
 
+displayBooks();
+
 
 function searching(searchText) {
     const booksListArr = JSON.parse(localStorage.getItem('bookStorage'));
@@ -49,8 +51,6 @@ function deleteBook(index, name) {
 }
 
 
-displayBooks();
-
 
 function submited(){
 
@@ -69,6 +69,8 @@ function submited(){
     document.getElementById('author').value = '';
     document.getElementById('topic').value = 'PRO';
     displayBooks();
+
+    return false;
 }
 
 
