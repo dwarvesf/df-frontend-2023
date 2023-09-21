@@ -10,16 +10,16 @@ Welcome to the Frontend Training 2023 repository! This is where you'll find exer
 
 ## Assignments Schedule
 
-| Day | Topic                                                  | Deadline   |
-| --- | ------------------------------------------------------ | ---------- |
-| 1   | [HTML, CSS & JavaScript](./assignment-1/)              | 21/09/2023 |
-| 2   | [React & State management](./assignment-2/)            | 26/09/2023 |
-| 3   | Tooling: Webpack, Babel, TypeScript, ESLint & Prettier |            |
-| 4   | NextJS & TailwindCSS                                   |            |
-| 5   | Form handling                                          |            |
-| 6   | Authentication & API Integration                       |            |
-| 7   | Type-safe client server                                |            |
-| 8   | Modern workflow & Deployment                           |            |
+| Day | Topic                                                                     | Deadline   |
+| --- | ------------------------------------------------------------------------- | ---------- |
+| 1   | [HTML, CSS & JavaScript](./assignment-1/)                                 | 21/09/2023 |
+| 2   | [React & State management](./assignment-2/)                               | 26/09/2023 |
+| 3   | [Tooling: Webpack, Babel, TypeScript, ESLint & Prettier](./assignment-3/) | 28/09/2023 |
+| 4   | NextJS & TailwindCSS                                                      |            |
+| 5   | Form handling                                                             |            |
+| 6   | Authentication & API Integration                                          |            |
+| 7   | Type-safe client server                                                   |            |
+| 8   | Modern workflow & Deployment                                              |            |
 
 Stay tuned for updates on future assignments!
 
