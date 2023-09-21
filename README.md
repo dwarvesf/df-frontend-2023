@@ -13,7 +13,7 @@ Welcome to the Frontend Training 2023 repository! This is where you'll find exer
 | Day | Topic                                                  | Deadline   |
 | --- | ------------------------------------------------------ | ---------- |
 | 1   | [HTML, CSS & JavaScript](./assignment-1/)              | 21/09/2023 |
-| 2   | React & State management                               |            |
+| 2   | [React & State management](./assignment-2/)            | 26/09/2023 |
 | 3   | Tooling: Webpack, Babel, TypeScript, ESLint & Prettier |            |
 | 4   | NextJS & TailwindCSS                                   |            |
 | 5   | Form handling                                          |            |
@@ -23,6 +23,18 @@ Welcome to the Frontend Training 2023 repository! This is where you'll find exer
 
 Stay tuned for updates on future assignments!
 
+## Assignment Submission
+
+To submit your assignments, please ensure you have enabled the **Issues** feature in your forked repository. If it's disabled by default, you can enable it by navigating to `Settings > General` on your fork. Scroll down to the `Features` sub-section and check the `Issues` box.
+
+![how to enable issue feature on fork](./assets/enable-issue-feature.png).
+
+Once enabled, follow these steps for each submission:
+
+1. **Code Submission**: Place your submitted code in the respective `/assignment-[number]` folder on your fork.
+2. **Deployment**: Deploy your project on a cloud service to generate a public preview link.
+3. **Issue Creation**: Open an issue in your forked repository with the title `Submission for assignment [number]`. Ensure you include the public preview link in the issue description. Refer to [this example issue](https://github.com/zlatanpham/df-frontend-2023/issues/1) for guidance.
+
 ## Evaluation Criteria
 
 We evaluate assignments based on the following criteria:
@@ -30,7 +42,7 @@ We evaluate assignments based on the following criteria:
 - **Timeliness**: The assignment must be submitted by the deadline (based on the time of the last commit in the assignment folder).
 - **Requirements Fulfillment**: The assignment must fulfill all mandatory requirements.
 
-Our team will thoroughly review your submissions. Once evaluated, we will open a GitHub issue on your fork to announce the result and provide feedback on your work.
+Our team will carefully assess your submissions. After evaluation, we'll share the results and offer feedback on the corresponding open issue.
 
 ## Support
 
