@@ -3,12 +3,66 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Bookstore</title>
+    <title>My Bookstore</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;800;900&display=swap"
+      rel="stylesheet"
+    />
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    Hello world
+    <header class="header">
+      <div class="header-wrapper">
+        <h4 class="logo">Bookstore</h4>
+        <div class="user">
+          <button class="button user-avatar">
+            <img src="user-avatar.svg" alt="User Avatar" />
+          </button>
+          <p class="user-name">John Doe</p>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div id="search-add-container">
+        <input type="text" id="search-input" placeholder="Search by title..." />
+        <button id="add-book-button">Add Book</button>
+      </div>
+      <div id="table-container">
+        <table id="book-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Author</th>
+              <th>Topic</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="add-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add a New Book</h2>
+          <input type="text" id="name-input" placeholder="Name" />
+          <input type="text" id="author-input" placeholder="Author" />
+          <input type="text" id="topic-input" placeholder="Topic" />
+          <button id="add-button">Create</button>
+        </div>
+      </div>
+      <div id="delete-modal" class="modal">
+        <div class="modal-content">
+          <span class="close-delete">&times;</span>
+          <h2>Delete Book</h2>
+          <p>Do you want to delete <b id="book-title"></b> book?</p>
+          <button id="delete-button">Delete</button>
+        </div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
