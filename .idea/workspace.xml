@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c657a85b-1eb6-4d3f-83d6-c4b3f23202de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/assignment-1/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-1/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignment-1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/assignment-1/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +118,7 @@
       <workItem from="1695037053572" duration="15307000" />
       <workItem from="1695092910301" duration="11285000" />
       <workItem from="1695180464796" duration="4000" />
-      <workItem from="1695286290930" duration="362000" />
+      <workItem from="1695286290930" duration="694000" />
     </task>
     <servers />
   </component>
@@ -129,10 +130,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="142" y="166" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1695037211489" />
-    <state x="468" y="266" key="FileChooserDialogImpl" timestamp="1695037193131">
+    <state x="468" y="266" key="FileChooserDialogImpl" timestamp="1695286670859">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="468" y="266" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1695037193131" />
+    <state x="468" y="266" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1695286670859" />
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1695050340557">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
