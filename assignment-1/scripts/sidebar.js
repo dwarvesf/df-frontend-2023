@@ -1,4 +1,9 @@
 "use strict";
+import {
+  deleteLocalStorage,
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from "./storage.js";
 
 const sidebar = document.getElementById("sidebar");
 const btnExpand = document.getElementById("btn-expand");
@@ -11,7 +16,7 @@ let sidebarState = {
   activeItemName: "sidebar-home",
 };
 
-function renderSidebar() {
+export function renderSidebar() {
   //! check sidebar in localStorage to update for sidebarState
   if (getFromLocalStorage("sidebarStorage") === null) {
     saveToLocalStorage("sidebarStorage", sidebarState);
@@ -63,4 +68,3 @@ function handleClickSidebarList(e) {
 //! EventListener
 btnExpand.addEventListener("click", handleClickExpand);
 sidebarList.addEventListener("click", handleClickSidebarList);
-

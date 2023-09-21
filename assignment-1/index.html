@@ -5,21 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookstore</title>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./scripts/storage.js"></script>
-    <script src="./scripts/customElements.js"></script>
-    <script defer src="./scripts/modal.js"></script>
-    <script defer src="./scripts/sidebar.js"></script>
-    <script defer src="./scripts/table.js"></script>
-    <script defer src="./script.js"></script>
-    <script defer src="./scripts/form.js"></script>
+    <script type="module" src="./scripts/storage.js"></script>
+    <script type="module" src="./scripts/models.js"></script>
+    <script type="module" src="./scripts/customElements.js"></script>
+    <script type="module" src="./scripts/seedData.js"></script>
+    <script type="module" defer src="./scripts/modalBook.js"></script>
+    <script type="module" defer src="./scripts/dialog.js"></script>
+    <script type="module" defer src="./scripts/sidebar.js"></script>
+    <script type="module" defer src="./scripts/tableBook.js"></script>
+    <script type="module" defer src="./script.js"></script>
+    <script type="module" defer src="./scripts/form.js"></script>
   </head>
   <body>
+    <span class="overlay"></span>
+    <div class="dialog" id="dialog">
+      <div class="dialog-content">
+        <div class="dialog-header">Delete Book</div>
+        <div id="dialog-body" class="dialog-body">
+          
+        </div>
+        <div class="dialog-control">
+          <button id="dialog__btn-delete" class="btn btn-delete">Delete</button>
+          <button id="dialog__btn-cancel" class="btn btn-cancel">Cancel</button>
+        </div>
+        <div id="modal__modal-footer" class="dialog-footer"></div>
+      </div>
+    </div>
     <div class="container--fluid">
       <div class="header">
         <h1 class="branch-name">Book Store</h1>
         <div class="avatar">
           <img src="./assets/images/avatar.jpg" alt="image-avatar" />
-          <span>username</span>
+          <span class="username">John Doe</span>
         </div>
       </div>
       <div class="container-main">
@@ -27,7 +44,7 @@
         <nav id="sidebar">
           <div class="sidebar-header">
             <span class="btn-expand" id="btn-expand">
-              <img src="./assets//icons/icon__bars.svg" alt="icon__bars.svg" />
+              <img src="./assets/icons/icon__bars.svg" alt="icon__bars.svg" />
             </span>
             <h3>Book Store</h3>
           </div>
@@ -39,29 +56,16 @@
                 <strong>HOME</strong>
               </a>
             </li>
-            <li class="sidebar-item" id="sidebar-create-book">
-              <a href="./pages/createBook.html">
-                <img class="icon" src="./assets/icons/icon__createBook.svg" />
-                <strong>CREATE BOOK</strong>
-              </a>
-            </li>
             <li class="sidebar-item" id="sidebar-create-topic">
-              <a href="./pages/createBook.html">
-                <img class="icon" src="./assets/icons/icon__createBook.svg" />
+              <a href="./pages/createTopic.html">
+                <img class="icon" src="./assets/icons/icon__createTopic.svg" />
                 <strong>CREATE TOPIC</strong>
-              </a>
-            </li>
-            <li class="sidebar-item" id="sidebar-profile">
-              <a>
-                <!-- <a href="./pages/book.html"> -->
-                <img class="icon" src="./assets/icons/icon__createBook.svg" />
-                <strong>PROFILE</strong>
               </a>
             </li>
             <li class="sidebar-item" id="sidebar-setting">
               <a>
                 <!-- <a href="./pages/book.html"> -->
-                <img class="icon" src="./assets//icons/icon__createBook.svg" />
+                <img class="icon" src="./assets/icons/icon__setting.svg" />
                 <strong>SETTING</strong>
               </a>
             </li>
@@ -114,7 +118,7 @@
       </div>
       <div class="footer"></div>
       <!-- The Modal -->
-      <div id="modal-add-book" class="modal">
+      <div id="dialog-add" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
           <div id="modal__modal-header" class="modal-header">
@@ -154,13 +158,11 @@
             <div class="form-control-group">
               <div class="label-form-control">Topic</div>
               <select id="modal__slt-topic" class="orginal-select-hide">
-                <option value="0">Choose Topic:</option>
-                <option value="1fdsf">Audi</option>
-                <option value="12sdfdsf">Volvo</option>
+                <option value="">Choose Topic:</option>
               </select>
               <span class="focus-form-control"></span>
             </div>
-            <!-- ADD butotn -->
+            <!-- ADD button -->
             <div class="display--flex justify-content--fe">
               <button
                 id="modal__btn-add-book"

@@ -1,11 +1,17 @@
-const modalAddBook = document.getElementById("modal-add-book");
+import {
+  deleteLocalStorage,
+  getFromLocalStorage,
+  saveToLocalStorage,
+} from "./storage.js";
+
+const dialogAdd = document.getElementById("dialog-add");
 const btnAddBookElement = document.getElementById("btn-add-book");
-const btnAddBookModal = document.getElementById("modal__btn-add-book");
+const btnAddTopicModal = document.getElementById("modal__btn-add-topic");
 const btnCloseModal = document.getElementById("modal__btn-close");
 
-const iptNameModal = document.getElementById("modal__ipt-name");
-const iptAuthorModal = document.getElementById("modal__ipt-author");
-const sltTopicModal = document.getElementById("modal__slt-topic");
+export const iptNameModal = document.getElementById("modal__ipt-name");
+export const iptAuthorModal = document.getElementById("modal__ipt-author");
+export const sltTopicModal = document.getElementById("modal__slt-topic");
 
 //! initialize modal
 let modalState = {
@@ -29,7 +35,7 @@ function renderModal() {
       textContent: modalState.topics[i].name,
     };
     const optionElement = generateOptionElement(optionData);
-        sltTopicModal.appendChild(optionElement);
+    sltTopicModal.appendChild(optionElement);
   }
 }
 
@@ -41,16 +47,28 @@ function generateOptionElement(optionData) {
   return optionElement;
 }
 
+export function resetForm() {
+  iptNameModal.value = "";
+  iptAuthorModal.value = "";
+  sltTopicModal.value = "";
+}
+
+//! event hanlder for create book button
 btnAddBookElement.addEventListener("click", function () {
-  modalAddBook.style.display = "block";
+  dialogAdd.style.display = "block";
 });
 
 btnCloseModal.addEventListener("click", function () {
-  modalAddBook.style.display = "none";
+  dialogAdd.style.display = "none";
+  resetForm();
 });
 
 window.addEventListener("click", function (event) {
-  if (event.target == modalAddBook) {
-    modalAddBook.style.display = "none";
+  if (event.target == dialogAdd) {
+    dialogAdd.style.display = "none";
+    resetForm();
   }
 });
+
+//! render Modal
+renderModal();

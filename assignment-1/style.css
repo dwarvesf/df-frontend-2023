@@ -245,6 +245,9 @@ a.article:hover {
 .header .branch-name {
   color: white;
 }
+.header .username {
+  color: white;
+}
 
 .avatar {
   display: flex;
@@ -360,12 +363,179 @@ a.article:hover {
   cursor: pointer;
 }
 
+/* The Modal (background) */
+.dialog {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  /* MODAL CONTENT */
+}
+.dialog .dialog-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  max-width: 300px;
+  padding: 0;
+  border: 1px solid #888;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+@media (min-width: 768px) {
+  .dialog .dialog-content {
+    max-width: 450px;
+  }
+}
+.dialog .dialog-content .dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 16px;
+  background-color: #303E7F;
+  color: white;
+}
+.dialog .dialog-content .dialog-header h2 {
+  font-size: 0.95em;
+}
+.dialog .dialog-content .dialog-control {
+  display: flex;
+  justify-content: space-around;
+}
+.dialog .dialog-content .dialog-control button {
+  margin: 10px;
+}
+.dialog .dialog-content .dialog-control .btn-delete {
+  background-color: #4C6AE5;
+}
+.dialog .dialog-content .dialog-control .btn-cancel {
+  background-color: #1D284C;
+}
+.dialog .dialog-content .dialog-footer {
+  height: 3px;
+  background-color: #1D284C;
+}
+.dialog .dialog-body {
+  padding: 10px 15px;
+}
+@media (min-width: 768px) {
+  .dialog .dialog-body {
+    padding: 20px 30px;
+  }
+}
+.dialog .dialog-footer {
+  height: 3px;
+  background-color: #1D284C;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* button*/
+.btn {
+  display: inline-block;
+  outline: none;
+  border-width: 0px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: inherit;
+  font-weight: 500;
+  max-width: 100%;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
+  background: #4C6AE5;
+  cursor: pointer;
+  height: 32px;
+  line-height: 32px;
+  padding: 0px 12px;
+  vertical-align: middle;
+  width: auto;
+  font-size: 14px;
+  color: rgb(255, 255, 255);
+}
+.btn:hover {
+  background: #303E7F;
+  text-decoration: inherit;
+  transition-duration: 0s, 0.15s;
+  color: rgb(255, 255, 255);
+}
+.btn.btn-search {
+  background-color: #385BB2;
+}
+.btn.btn-search:hover {
+  background-color: #303E7F;
+}
+.btn.btn-edit {
+  background-color: #303E7F;
+}
+.btn.btn-edit:hover {
+  background-color: #1D284C;
+}
+.btn img {
+  width: 15px;
+  height: 15px;
+}
+
+.btn-expand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20%;
+  cursor: pointer;
+}
+.btn-expand:hover {
+  background-color: #fff;
+}
+.btn-expand img {
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+}
+
 .styled-table {
   width: 100%;
   border-collapse: collapse;
   margin: 25px 0;
   font-size: 0.65em;
-  font-family: sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 @media (min-width: 768px) {
@@ -391,6 +561,9 @@ a.article:hover {
 }
 .styled-table tbody tr:last-of-type {
   border-bottom: 3px solid #303E7F;
+}
+.styled-table tbody tr:hover {
+  background-color: #c0cfff;
 }
 
 /* FORM CONTROL GROUP */
@@ -433,7 +606,14 @@ a.article:hover {
   color: #666666;
 }
 
-input:focus + .label .text,
+input:focus + .label .text {
+  font-size: 12px;
+  transform: translate(0, -100%);
+  background-color: white;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 :not(input[value=""]) + .label .text {
   font-size: 12px;
   transform: translate(0, -100%);
@@ -530,12 +710,12 @@ input {
   margin: 0;
   padding: 0;
   max-height: 200px;
-  overflow-y: auto;
+  overflow-y: auto !important;
+  overflow: hidden;
   z-index: 1251;
   width: calc(100% + 2px);
   border: 0 solid transparent;
   border-radius: 10px;
-  overflow: hidden;
   background-color: #fff;
   left: -2px;
   box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
@@ -1117,6 +1297,18 @@ input {
   justify-content: flex-start;
 }
 
+.text-align--center {
+  text-align: center !important;
+}
+
+.text-align--right {
+  text-align: right !important;
+}
+
+.text-align--left {
+  text-align: left !important;
+}
+
 .container-main {
   display: flex;
   padding: 20px 0px;
@@ -1136,52 +1328,6 @@ input {
   .container-main {
     padding: 20px 0px;
   }
-}
-
-/* button*/
-.btn {
-  display: inline-block;
-  outline: none;
-  border-width: 0px;
-  border-radius: 3px;
-  box-sizing: border-box;
-  font-size: inherit;
-  font-weight: 500;
-  max-width: 100%;
-  text-align: center;
-  text-decoration: none;
-  transition: background 0.1s ease-out 0s, box-shadow 0.15s cubic-bezier(0.47, 0.03, 0.49, 1.38) 0s;
-  background: #4C6AE5;
-  cursor: pointer;
-  height: 32px;
-  line-height: 32px;
-  padding: 0px 12px;
-  vertical-align: middle;
-  width: auto;
-  font-size: 14px;
-  color: rgb(255, 255, 255);
-}
-.btn:hover {
-  background: #303E7F;
-  text-decoration: inherit;
-  transition-duration: 0s, 0.15s;
-  color: rgb(255, 255, 255);
-}
-
-.btn-expand {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 20%;
-  cursor: pointer;
-}
-.btn-expand:hover {
-  background-color: #fff;
-}
-.btn-expand img {
-  width: 25px;
-  height: 25px;
-  margin: 2px;
 }
 
 /*# sourceMappingURL=style.css.map */
