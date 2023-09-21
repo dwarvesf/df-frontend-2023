@@ -42,7 +42,7 @@ function rendertopicTable(topicDocs) {
   });
 }
 
-function validatetopicData() {
+function validateTopicData() {
   if (!iptNameModal.value) return false;
   return true;
 }
@@ -50,7 +50,7 @@ function validatetopicData() {
 //! event function to Add new topic
 function handleClickAddtopic(event) {
   //! validate
-  const validate = validatetopicData();
+  const validate = validateTopicData();
   if (!validate) return;
 
   const topicData = {
@@ -68,7 +68,7 @@ function handleClickAddtopic(event) {
 
 let selectedTopicId;
 
-function handletopicList(event) {
+function handleTopicList(event) {
   const this_pointer = event.target.closest("tr");
   if (!this_pointer) return;
 
@@ -115,7 +115,7 @@ function handleChangeSearch(event) {
 btnAddtopicModal.addEventListener("click", handleClickAddtopic);
 
 //! Event Handler for topic Table Body
-tbodyElement.addEventListener("click", handletopicList);
+tbodyElement.addEventListener("click", handleTopicList);
 
 btnDeleteDialog.addEventListener("click", handleClickDeletetopic);
 

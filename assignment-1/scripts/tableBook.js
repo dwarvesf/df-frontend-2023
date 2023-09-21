@@ -1,6 +1,6 @@
 "use strict";
 import { Book } from "./models.js";
-import { iptNameModal, sltTopicModal, resetForm } from "./modalBook.js";
+import { iptNameModal, iptAuthorModal, sltTopicModal, resetForm } from "./modalBook.js";
 import { dialog, generateMessageDialog, btnDeleteDialog } from "./dialog.js";
 
 const tbodyElement = document.getElementById("tbody");
