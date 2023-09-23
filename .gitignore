@@ -141,6 +141,6 @@ dist
 # ignore rootDir
 package-lock.json
 package.json
-assignment-1/style.css.map
-assignment-1/style.scss
-assignment-1/styles/
+style.css.map
+style.scss
+styles/
