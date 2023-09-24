@@ -1,39 +1,33 @@
-import './App.css'
-import { useState, useEffect } from 'react'
+import './App.css';
+import { useState, useEffect } from 'react';
 import {
   ConfigProvider,
   theme,
   Button,
   Table,
-  Typography,
   Space,
-  Switch,
-  Avatar,
-  Input,
-  Modal,
   Select,
   Form,
   message,
   Popconfirm,
-} from 'antd'
-
-import type { ColumnsType } from 'antd/es/table'
-import { Book, TableDataType } from './App.types'
-
-const { Title, Text } = Typography
+} from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import Header from './components/Header/Header';
+import { Book, TableDataType } from './App.types';
+import AddBookModal from './components/AddBookModal/AddBookModal';
 
 function App() {
-  const { defaultAlgorithm, darkAlgorithm } = theme
-  const [form] = Form.useForm()
-  const [messageApi, contextHolder] = message.useMessage()
+  const { defaultAlgorithm, darkAlgorithm } = theme;
+  const [form] = Form.useForm();
+  const [messageApi, contextHolder] = message.useMessage();
 
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const [searchValue, setSearchValue] = useState('')
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const [booksFiltered, setBooksFiltered] = useState<
     { label: string; value: string }[]
-  >([])
-  const [openModal, setOpenModal] = useState(false)
-  const [books, setBooks] = useState<Book[]>([])
+  >([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
     setBooks([
@@ -72,12 +66,12 @@ function App() {
         author: 'Luo Guanzhong',
         topic: 'History',
       },
-    ])
-  }, [])
+    ]);
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(books))
-  }, [books])
+    localStorage.setItem('books', JSON.stringify(books));
+  }, [books]);
 
   const topics: string[] = [
     'Programming',
@@ -86,7 +80,7 @@ function App() {
     'Fantasy',
     'Detective',
     'History',
-  ]
+  ];
 
   const tableColumns: ColumnsType<TableDataType> = [
     {
@@ -122,7 +116,7 @@ function App() {
         </Popconfirm>
       ),
     },
-  ]
+  ];
 
   const tableData: TableDataType[] = books.map((book, i) => {
     return {
@@ -131,42 +125,46 @@ function App() {
       author: book.author,
       topic: book.topic,
       action: 'Delete',
-    }
-  })
+    };
+  });
 
   const handleSwitchTheme = (): void => {
-    setIsDarkMode((previousValue) => !previousValue)
-  }
+    setIsDarkMode((previousValue) => !previousValue);
+  };
 
   const handleCloseModal = (): void => {
-    setOpenModal(false)
-  }
+    setOpenModal(false);
+  };
 
   const handleAddBook = (newBook: Book): void => {
-    setBooks((oldBooks) => [...oldBooks, newBook])
-  }
+    if (newBook.name && newBook.author) {
+      setBooks((oldBooks) => [...oldBooks, newBook]);
+      handleSuccessMessage('Create');
+      handleCloseModal();
+    }
+  };
 
   const handleDeleteBook = (name: string): void => {
-    setBooks((oldBooks) => oldBooks.filter((book) => book.name !== name))
-  }
+    setBooks((oldBooks) => oldBooks.filter((book) => book.name !== name));
+  };
 
   const handleSuccessMessage = (action: 'Create' | 'Delete'): void => {
     messageApi.open({
       type: 'success',
       content: `${action} success`,
-    })
-  }
+    });
+  };
 
   const handleSearch = (): void => {
-    const reg = new RegExp(searchValue, 'gi')
+    const reg = new RegExp(searchValue, 'gi');
 
-    const search = books.filter((book) => book.name.search(reg) > -1)
+    const search = books.filter((book) => book.name.search(reg) > -1);
     setBooksFiltered(
       search.map((item) => {
-        return { label: item.name, value: item.name }
+        return { label: item.name, value: item.name };
       }),
-    )
-  }
+    );
+  };
 
   return (
     <ConfigProvider
@@ -175,48 +173,7 @@ function App() {
       }}
     >
       {contextHolder}
-      <Space
-        style={{
-          width: '100%',
-          padding: '6px 12px',
-          justifyContent: 'space-between',
-          borderBottom: `1px solid ${
-            isDarkMode ? 'rgba(255,255,255,0.15)' : 'rgba(0,0,0,0.15)'
-          }`,
-          backgroundColor: isDarkMode ? 'rgb(36,37,38)' : 'white',
-        }}
-      >
-        <Space>
-          <Title
-            style={{
-              fontSize: '18px',
-              fontWeight: 700,
-              margin: 0,
-            }}
-          >
-            Bookstore
-          </Title>
-        </Space>
-        <Space>
-          <Switch checked={isDarkMode} onChange={handleSwitchTheme} />
-          <Text
-            style={{ fontSize: '14px', fontWeight: 500, marginRight: '7px' }}
-          >
-            {isDarkMode ? 'Dark' : 'Light'} mode
-          </Text>
-          <Avatar
-            icon={
-              <i
-                style={{ width: '18px', height: '18px' }}
-                className="fa-solid fa-user"
-              />
-            }
-          />
-          <Text style={{ fontSize: '14px', fontWeight: 500 }}>
-            Tien Anh Luu
-          </Text>
-        </Space>
-      </Space>
+      <Header isDarkMode={isDarkMode} handleSwitchTheme={handleSwitchTheme} />
       <Space.Compact
         direction="vertical"
         style={{
@@ -247,7 +204,7 @@ function App() {
             type="primary"
             danger
             onClick={() => {
-              setOpenModal(true)
+              setOpenModal(true);
             }}
           >
             Add book
@@ -255,61 +212,15 @@ function App() {
         </Space>
         <Table dataSource={tableData} columns={tableColumns} bordered />
       </Space.Compact>
-      <Modal
-        title="Add book"
-        open={openModal}
-        okText="Create"
-        cancelText="Cancel"
-        onOk={() => {
-          form
-            .validateFields()
-            .then((values) => {
-              form.resetFields()
-              handleAddBook(values)
-            })
-            .catch((info) => {
-              console.log('Validate Failed:', info)
-            })
-          handleSuccessMessage('Create')
-          handleCloseModal()
-        }}
-        onCancel={handleCloseModal}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          name="add-book-form"
-          initialValues={{ topic: 'Programming' }}
-        >
-          <Form.Item
-            name="name"
-            label="Name"
-            rules={[
-              { required: true, message: 'Please input the name of book!' },
-            ]}
-          >
-            <Input placeholder="Book name" />
-          </Form.Item>
-          <Form.Item
-            name="author"
-            label="Author"
-            rules={[
-              { required: true, message: 'Please input the author of book!' },
-            ]}
-          >
-            <Input placeholder="Book author" />
-          </Form.Item>
-          <Form.Item name="topic" label="Topic">
-            <Select
-              options={topics.map((topic) => {
-                return { value: topic, label: topic }
-              })}
-            />
-          </Form.Item>
-        </Form>
-      </Modal>
+      <AddBookModal
+        form={form}
+        handleAddBook={handleAddBook}
+        handleCloseModal={handleCloseModal}
+        openModal={openModal}
+        topics={topics}
+      />
     </ConfigProvider>
-  )
+  );
 }
 
-export default App
+export default App;

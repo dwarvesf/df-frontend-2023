@@ -1,5 +1,8 @@
 {
-  "extends": ["./node_modules/@dwarvesf/react-eslint-config"],
+  "extends": [
+    "./node_modules/@dwarvesf/react-eslint-config",
+    "prettier/@typescript-eslint"
+  ],
   "env": {
     "es6": true,
     "browser": true,
