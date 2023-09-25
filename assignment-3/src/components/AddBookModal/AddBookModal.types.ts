@@ -1,5 +1,5 @@
 import { FormInstance } from 'antd';
-import { Book } from '../../App.types';
+import { Book } from '../../pages/Homepage/Homepage.types';
 
 export interface AddBookModalProps {
   form: FormInstance<any>;
