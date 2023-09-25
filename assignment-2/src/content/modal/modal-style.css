@@ -33,7 +33,8 @@ label{
   width: 30%;
 }
 .modal-input {
-  width: 90%;
+  width: 80%;
+  margin: 5px;
   border-radius: 5px;
   padding: 0.5rem 1rem;
 }
