@@ -4,11 +4,74 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Bookstore</title>
+    <link rel="icon" href="book-img.png" />
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
-    Hello world
+    <header>
+      <nav class="head">
+        <div class="head-title"><h1>Bookstore</h1></div>
+        <div class="head-profile">
+          <div class="head-img"></div>
+          <div class="head-profile name">
+            <a href="https://github.com/iTeddy1"><h2>iTeddy1</h2></a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="search">
+      <input type="text" placeholder="Search books..." />
+      <button type="button" id="btn">Add book</button>
+    </div>
+
+    <div class="modal">
+      <div id="create-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Add book</h2>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <label for="">Name</label>
+              <input type="text" class="modal-input" /><br />
+              <label for="">Author</label>
+              <input type="text" class="modal-input" /><br />
+              <label for="">Topic</label>
+              <input type="text" class="modal-input" /><br />
+              <button type="submit" class="addBookBtn">Create</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="delete-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>Delete book</h2>
+          </div>
+          <div class="modal-body">
+            <p></p>
+            <button type="submit" class="deleteBookBtn">Delete</button>
+            <button type="button" class="cancelDeletion">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table">
+      <table>
+        <tr>
+          <th class="table-title name">Name</th>
+          <th class="table-title author">Author</th>
+          <th class="table-title topic">Topic</th>
+          <th class="table-title action">Action</th>
+        </tr>
+      </table>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
