@@ -2,7 +2,6 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import CreateModal from "./content/modal/create";
 import DeleteModal from "./content/modal/delete";
-import booksData from "./data";
 
 let action, selectedItem;
 const dataKey = "books";
@@ -10,7 +9,7 @@ const maxRecord = 5;
 
 function App() {
   // set State
-  const [data, setData] = useState([...booksData]);
+  const [data, setData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [searchItem, setSearchItem] = useState("");
   const [page, setPage] = useState(0);
