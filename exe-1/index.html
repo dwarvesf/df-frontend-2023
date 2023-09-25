@@ -17,35 +17,35 @@
       <!-- Search bar -->
       <div class="searchbar">
         <input type="text" />
-        <button class="btn btn--primary" id="openAddedForm">Add book</button>
+        <button type="button" class="btn btn--primary" id="openAddedForm">Add book</button>
       </div>
       <!-- Form -->
       <form action="" id="addedForm">
         <div class="form__title">
           <h2>Add book</h2>
-          <button>X</button>
+          <button type="button" class="closedBox">X</button>
         </div>
         <label for="name">Name</label>
-        <input type="text" name="name" id="bookName"/>
+        <input type="text" name="name" id="bookName" />
         <label for="author">Author</label>
-        <input type="text" name="author" id="bookAuthor"/>
+        <input type="text" name="author" id="bookAuthor" />
         <label for="topic">Topic</label>
         <select name="topic" id="bookTopic">
           <option value="Programming">Programming</option>
           <option value="Database">Database</option>
           <option value="DevOps">DevOps</option>
         </select>
-        <button id="createdBTN">Create</button>
+        <button type="button" id="createdBTN">Create</button>
       </form>
 
       <form action="" id="deletedform">
         <div class="form__title">
           <h2>Delete book</h2>
-          <button>X</button>
+          <button type="button" class="closedBox">X</button>
         </div>
         <p>Do you want to delete <strong>this</strong> book?</p>
-        <button>Delete</button>
-        <button>Cancel</button>
+        <button type="button">Delete</button>
+        <button type="button">Cancel</button>
       </form>
       <!-- Table     -->
       <table>
@@ -57,14 +57,7 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>A</td>
-            <td>A</td>
-            <td>A</td>
-            <td>A</td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
   </body>

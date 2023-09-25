@@ -52,4 +52,29 @@ td {
   border: 1px solid #000;
   text-align: left;
   padding: 8px;
+}
+
+.deletedBookBTN {
+  display: block;
+  margin: auto;
+  line-height: 1rem;
+  width: 50%;
+  height: 1.5rem;
+  padding: 0;
+  font-size: 1rem;
+  border: none;
+  color: #f5f5f5;
+  background-color: #ef4444;
+  border-radius: 7.5px;
+}
+.deletedBookBTN :hover {
+  cursor: pointer;
+}
+
+#addedForm {
+  display: none;
+}
+
+#deletedform {
+  display: none;
 }/*# sourceMappingURL=style.css.map */
