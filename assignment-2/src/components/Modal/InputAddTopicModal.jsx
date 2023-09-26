@@ -1,15 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import ReactPortal from "../ReactPortal";
 
-function ConfirmationModal({
-  submitLabelContent = "OK",
+function InputAddTopicModal({
+  submitLabelContent = "Add",
   cancelLabelContent = "Cancel",
-  children,
   isOpen,
   handleClose,
-  handleSubmit,
+  handleAddTopicSubmit,
 }) {
+  const [values, setValues] = useState({
+    name: "",
+  });
+
   const nodeRef = useRef(null);
   useEffect(() => {
     const closeOnEscapeKey = (e) => (e.key === "Escape" ? handleClose() : null);
@@ -18,6 +21,19 @@ function ConfirmationModal({
       document.body.removeEventListener("keydown", closeOnEscapeKey);
     };
   }, [handleClose]);
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const topicData = { name: values.name };
+    handleAddTopicSubmit(e, topicData);
+  }
 
   return (
     <ReactPortal wrapperId="modal-root">
@@ -29,32 +45,39 @@ function ConfirmationModal({
         nodeRef={nodeRef}
       >
         <div className="modal" ref={nodeRef}>
-          <div className="modal-wrapped">
+          <form className="modal-wrapped" onSubmit={handleSubmit}>
             <div className="modal-header">Delete Book</div>
             <div className="modal-body">
-              <div className="modal-content">{children}</div>
+              <div className="modal-content">
+                <div className="form-control-group">
+                  <label className="label-form-control" htmlFor="name">
+                    name
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="name"
+                    placeholder="Enter book's name..."
+                    value={values.name}
+                    onChange={handleChange}
+                  />
+                  <span className="focus-form-control"></span>
+                </div>
+              </div>
             </div>
             <div className="modal-footer">
-              <button
-                id="modal__btn-delete"
-                className="btn btn-delete"
-                onClick={handleSubmit}
-              >
+              <button className="btn" type="submit">
                 {submitLabelContent}
               </button>
-              <button
-                id="modal__btn-cancel"
-                onClick={handleClose}
-                className="btn btn-cancel"
-              >
+              <button onClick={handleClose} className="btn btn-cancel">
                 {cancelLabelContent}
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </CSSTransition>
     </ReactPortal>
   );
 }
 
-export default ConfirmationModal;
+export default InputAddTopicModal;

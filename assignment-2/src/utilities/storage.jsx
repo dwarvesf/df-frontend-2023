@@ -7,8 +7,12 @@ export function saveToLocalStorage(key, value) {
 //! saveToStorage
 //! function is used to get (fetch) the Books from LocalStorage
 export function getFromLocalStorage(key) {
-  const value = JSON.parse(localStorage.getItem(key));
-  return value;
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value;
+  } catch (error) {
+    console.log("Error: ", error);
+  }
 }
 
 //! deleteLocalStorage

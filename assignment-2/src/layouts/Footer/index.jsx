@@ -1,12 +1,18 @@
 import React from "react";
+import { useStore } from "../../store";
 
 const Footer = () => {
+  const { state } = useStore();
+
   return (
-    <div className="container--footer">
+    <div
+      className={`container--footer ${
+        state.isLight ? "color-light" : "color-dark"
+      }`}
+    >
       <ul>
-        <li>CA: 8 Leavey Court, Toronto</li>
-        <li>US: 2035 Sunset Lake, Delaware</li>
-        <li>VN: 200 Ba Thang Hai, Ho Chi Minh</li>
+        <li>Thủ Đức, Thành phố Hồ Chí Minh</li>
+        <li>Bình Dương, Thành phố Bình Dương</li>
       </ul>
     </div>
   );

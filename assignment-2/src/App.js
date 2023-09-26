@@ -1,6 +1,8 @@
 // import logo from './logo.svg';
 import "./App.css";
+import './bootstrap.css';
 import "./style.css";
+
 //! Provider
 import { RouterProvider } from "react-router-dom";
 import { StoreProvider } from "./store";

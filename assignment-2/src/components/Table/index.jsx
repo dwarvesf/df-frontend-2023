@@ -1,7 +1,7 @@
 import React from "react";
 
 function Table({ tableHeaders = [], tableDetails = [] }) {
-  const renderTableHeader = tableHeaders.map((th, index) => {
+  const renderTableHeader = tableHeaders?.map((th, index) => {
     return (
       <th key={index} scope="col">
         {th}
@@ -9,12 +9,12 @@ function Table({ tableHeaders = [], tableDetails = [] }) {
     );
   });
 
-  const renderTableDetails = tableDetails.map((td, index) => {
+  const renderTableDetails = tableDetails?.map((td, index) => {
     let tbDetails = [];
-    for (const property in td) {
-      tbDetails.push(<td key={td[property]}>{td[property]}</td>);
-    }
-    return <tr key={index}>{tbDetails}</tr>;
+    Object.keys(td).forEach(function (key, index) {
+      tbDetails.push(<td key={`td-${td.idx}-${index + 1}`}>{td[key]}</td>);
+    });
+    return <tr key={td.idx}>{tbDetails}</tr>;
   });
 
   return (

@@ -1,16 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import ReactPortal from "../ReactPortal";
-//! Components
-import InputFormControl from "../../components/Form/InputFormControl";
 
 function InputAddBookModal({
+  topics,
   submitLabelContent = "Add",
   cancelLabelContent = "Cancel",
   isOpen,
   handleClose,
-  handleSubmit,
+  handleAddBookSubmit,
 }) {
+  const [values, setValues] = useState({
+    name: "",
+    author: "",
+    topic: "",
+  });
   const nodeRef = useRef(null);
   useEffect(() => {
     const closeOnEscapeKey = (e) => (e.key === "Escape" ? handleClose() : null);
@@ -19,6 +23,27 @@ function InputAddBookModal({
       document.body.removeEventListener("keydown", closeOnEscapeKey);
     };
   }, [handleClose]);
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const bookData = {
+      name: values.name,
+      author: values.author,
+      topic: values.topic,
+    };
+    handleAddBookSubmit(e, bookData);
+  }
+
+  const renderOptions = topics.map((opt) => {
+    return <option key={opt.id}>{opt.name}</option>;
+  });
 
   return (
     <ReactPortal wrapperId="modal-root">
@@ -30,44 +55,55 @@ function InputAddBookModal({
         nodeRef={nodeRef}
       >
         <div className="modal" ref={nodeRef}>
-          <div className="modal-wrapped">
+          <form className="modal-wrapped" onSubmit={handleSubmit}>
             <div className="modal-header">Delete Book</div>
             <div className="modal-body">
               <div className="modal-content">
-                <div className="modal-body">
-                  <div className="form-control-group">
-                    <label
-                      className="label-form-control"
-                      htmlFor="modal__ipt-name"
-                    >
-                      name
-                    </label>
-                    <input
-                      id="modal__ipt-name"
-                      className="form-control"
-                      type="text"
-                      name="modal__ipt-name"
-                      placeholder="Enter book's name..."
-                    />
-                    <span className="focus-form-control"></span>
-                  </div>
-                  <div className="form-control-group">
-                    <label
-                      className="label-form-control"
-                      htmlFor="modal__ipt-author"
-                    >
-                      author
-                    </label>
-                    <input
-                      id="modal__ipt-author"
-                      className="form-control"
-                      type="text"
-                      name="modal__ipt-author"
-                      placeholder="Enter book's author..."
-                    />
-                    <span className="focus-form-control"></span>
-                  </div>
-                  <InputFormControl labelName="Topic" />
+                <div className="form-control-group">
+                  <label className="label-form-control" htmlFor="name">
+                    name
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="name"
+                    placeholder="Enter book's name..."
+                    value={values.name}
+                    onChange={handleChange}
+                  />
+                  <span className="focus-form-control"></span>
+                </div>
+                <div className="form-control-group">
+                  <label className="label-form-control" htmlFor="author">
+                    author
+                  </label>
+                  <input
+                    className="form-control"
+                    type="text"
+                    name="author"
+                    placeholder="Enter book's author..."
+                    value={values.author}
+                    onChange={handleChange}
+                  />
+                  <span className="focus-form-control"></span>
+                </div>
+                <div className="form-control-group">
+                  <label className="label-form-control" htmlFor="topic">
+                    author
+                  </label>
+                  <select
+                    className="form-control"
+                    type=""
+                    name="topic"
+                    placeholder="Enter book's author..."
+                    value={values.topic}
+                    onChange={handleChange}
+                  >
+                    <option value="">{`Choose topic...`}</option>
+                    {renderOptions}
+                  </select>
+
+                  <span className="focus-form-control"></span>
                 </div>
               </div>
             </div>
@@ -87,7 +123,7 @@ function InputAddBookModal({
                 {cancelLabelContent}
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </CSSTransition>
     </ReactPortal>

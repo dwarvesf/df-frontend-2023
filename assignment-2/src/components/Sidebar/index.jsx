@@ -20,7 +20,7 @@ const Sidebar = ({ navItems }) => {
     }
   }
 
-  const renderNavItems = navItems.map((navItem) => {
+  const renderNavItems = navItems?.map((navItem) => {
     return (
       <li key={navItem.key} className="sidebar-item" id="sidebar-create-topic">
         <Link to={`${navItem.key}`}>
@@ -32,8 +32,17 @@ const Sidebar = ({ navItems }) => {
   });
 
   return (
-    <nav id="sidebar" className={`${isNavDashboardActive ? "active" : ""}`}>
-      <div className="sidebar-header">
+    <nav
+      id="sidebar"
+      className={`sidebar ${state.isLight ? "color-light" : "color-dark"} ${
+        isNavDashboardActive ? "active" : ""
+      }`}
+    >
+      <div
+        className={`sidebar-header ${
+          state.isLight ? "color-light" : "color-dark"
+        }`}
+      >
         <span
           className="btn-expand"
           id="btn-expand"
