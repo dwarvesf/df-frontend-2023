@@ -6,6 +6,10 @@ import { RouterProvider } from "react-router-dom";
 import { StoreProvider } from "./store";
 import { AppRouter } from "./routes";
 
+//! imp Datas Seed
+import { dataSeed } from "./database";
+dataSeed.generateData();
+
 function App() {
   return (
     <div className="App">

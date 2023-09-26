@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 
-//! components
+//! root
 import Root from "../layouts";
-import Home from "../pages/Home";
+//! pages
 import Dashboard from "../components/Dashboard";
+import Home from "../pages/Home";
+import Topic from "../pages/Topic";
+import Setting from "../pages/Setting";
 
 const AppRouter = createBrowserRouter([
   {
@@ -20,8 +23,12 @@ const AppRouter = createBrowserRouter([
             element: <Home />,
           },
           {
-            path: "/createtopic",
-            element: <Home />,
+            path: "/create-topic",
+            element: <Topic />,
+          },
+          {
+            path: "/setting",
+            element: <Setting />,
           },
         ],
       },

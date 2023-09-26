@@ -12,7 +12,7 @@ const Root = () => {
   return (
     <Fragment>
       <Header />
-      <main>{outlet}</main>
+      <main className="container--body">{outlet}</main>
       <Footer />
     </Fragment>
   );

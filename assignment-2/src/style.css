@@ -1,3 +1,14 @@
+.container--content {
+  min-height: 75vh;
+}
+
+.container--footer {
+  position: relative;
+  display: flex;
+  background-color: #385BB2;
+  padding: 20px 5px;
+}
+
 /* SIDEBAR */
 .wrapper {
   display: flex;
@@ -5,6 +16,7 @@
 }
 
 #sidebar {
+  position: sticky;
   width: 50px;
   background: #303E7F;
   color: #fff;
@@ -162,7 +174,6 @@
 
 #sidebar ul.sidebar-list-item {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul li a i {
@@ -272,65 +283,62 @@ a.article:hover {
 
 /* The Modal (background) */
 .modal {
-  display: none;
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+  align-items: center;
+  inset: 0;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
   z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+.modal.modal-enter-done {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.modal .modal-wrapped {
   /* MODAL CONTENT */
-}
-.modal .modal-content {
-  position: relative;
   background-color: #fefefe;
-  margin: auto;
-  max-width: 300px;
-  padding: 0;
-  border: 1px solid #888;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
 }
-@media (min-width: 768px) {
-  .modal .modal-content {
-    max-width: 450px;
-  }
-}
-.modal .modal-content .modal-header {
+.modal .modal-wrapped .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 16px;
+  padding: 10px 15px;
   background-color: #303E7F;
   color: white;
 }
-.modal .modal-content .modal-header h2 {
+.modal .modal-wrapped .modal-header h2 {
   font-size: 0.95em;
 }
-.modal .modal-body {
+.modal .modal-wrapped .modal-body {
   padding: 20px 15px;
 }
 @media (min-width: 768px) {
-  .modal .modal-body {
-    padding: 50px 30px;
+  .modal .modal-wrapped .modal-body {
+    padding: 20px 30px;
   }
 }
-.modal .modal-footer {
-  height: 3px;
-  background-color: #1D284C;
+.modal .modal-wrapped .modal-footer {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-around;
+}
+@media (min-width: 768px) {
+  .modal .modal-wrapped .modal-footer {
+    padding: 10px 30px;
+  }
 }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
-    top: -300px;
+    top: -1000px;
     opacity: 0;
   }
   to {
@@ -340,7 +348,7 @@ a.article:hover {
 }
 @keyframes animatetop {
   from {
-    top: -300px;
+    top: -1000px;
     opacity: 0;
   }
   to {
@@ -348,21 +356,6 @@ a.article:hover {
     opacity: 1;
   }
 }
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 /* The Modal (background) */
 .dialog {
   display: none;
@@ -525,10 +518,11 @@ a.article:hover {
 .btn-expand:hover {
   background-color: #fff;
 }
-.btn-expand img {
-  width: 25px;
-  height: 25px;
-  margin: 2px;
+
+.btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .styled-table {
@@ -1309,23 +1303,23 @@ input {
   text-align: left !important;
 }
 
-.container-main {
+.container--content {
   display: flex;
   padding: 20px 0px;
   position: relative;
 }
 @media (min-width: 768px) {
-  .container-main {
+  .container--content {
     padding: 20px 0px;
   }
 }
 @media (min-width: 992px) {
-  .container-main {
+  .container--content {
     padding: 20px 0px;
   }
 }
 @media (min-width: 1200px) {
-  .container-main {
+  .container--content {
     padding: 20px 0px;
   }
 }

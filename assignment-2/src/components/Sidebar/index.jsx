@@ -22,7 +22,7 @@ const Sidebar = ({ navItems }) => {
 
   const renderNavItems = navItems.map((navItem) => {
     return (
-      <li className="sidebar-item" id="sidebar-create-topic">
+      <li key={navItem.key} className="sidebar-item" id="sidebar-create-topic">
         <Link to={`${navItem.key}`}>
           {navItem.icon}
           <strong>{navItem.title}</strong>

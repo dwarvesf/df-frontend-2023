@@ -17,7 +17,7 @@ const DashboardScreen = () => {
   ];
 
   return (
-    <div className="container-main">
+    <div className="container--content">
       <Sidebar navItems={navItems} />
       <div className="container--fluid container-app">{outlet}</div>
     </div>

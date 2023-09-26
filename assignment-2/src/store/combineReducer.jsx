@@ -1,7 +1,14 @@
 import * as actionTypes from "./actionTypes";
 
 export const initialState = {
+  //! NavDashboard
   isNavDashboardActive: false,
+  //! BookState
+  books: [],
+  //! TopicState
+  topic: [],
+  //! loading
+  loading: false,
 };
 
 export function combineReducer(state, action) {
