@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'
 import {
   ConfigProvider,
   theme,
@@ -9,68 +9,77 @@ import {
   Form,
   message,
   Popconfirm,
-} from 'antd';
-import type { ColumnsType } from 'antd/es/table';
-import Header from '../../components/Header/Header';
-import { Book, TableDataType } from './Homepage.types';
-import AddBookModal from '../../components/AddBookModal/AddBookModal';
+} from 'antd'
+import type { ColumnsType } from 'antd/es/table'
+import Header from '../../components/Header/Header'
+import { Book, TableDataType } from './Homepage.types'
+import AddBookModal from '../../components/AddBookModal/AddBookModal'
 
 const Homepage = () => {
-  const { defaultAlgorithm, darkAlgorithm } = theme;
-  const [form] = Form.useForm();
-  const [messageApi, contextHolder] = message.useMessage();
+  const { defaultAlgorithm, darkAlgorithm } = theme
+  const [form] = Form.useForm()
+  const [messageApi, contextHolder] = message.useMessage()
 
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
+  const [isDarkMode, setIsDarkMode] = useState(false)
+  const [searchValue, setSearchValue] = useState('')
   const [booksFiltered, setBooksFiltered] = useState<
     { label: string; value: string }[]
-  >([]);
-  const [openModal, setOpenModal] = useState(false);
-  const [books, setBooks] = useState<Book[]>([]);
+  >([])
+  const [openModal, setOpenModal] = useState(false)
+  const [books, setBooks] = useState<Book[]>([])
 
   useEffect(() => {
-    setBooks([
-      {
-        name: 'Refactoring',
-        author: 'Martin Fowler',
-        topic: 'Programming',
-      },
-      {
-        name: 'Designing Data-Intensive Applications',
-        author: 'Martin Kleppmann',
-        topic: 'Database',
-      },
-      {
-        name: 'The Phoenix Project',
-        author: 'Gene Kim',
-        topic: 'DevOps',
-      },
-      {
-        name: 'A song of ice and fire',
-        author: 'George R. R. Martin',
-        topic: 'Fantasy',
-      },
-      {
-        name: 'Lord of the Rings',
-        author: 'J. R. R. Tolkien',
-        topic: 'Fantasy',
-      },
-      {
-        name: 'Sherlock Holmes',
-        author: 'Arthur Conan Doyle',
-        topic: 'Detective',
-      },
-      {
-        name: 'Romance of the Three Kingdoms',
-        author: 'Luo Guanzhong',
-        topic: 'History',
-      },
-    ]);
-  }, []);
+    let dat: Book[] = []
+    try {
+      dat = JSON.parse(localStorage.getItem('books') || '')
+    } catch (error) {
+      console.log(error)
+    }
+
+    if (dat.length === 0) {
+      setBooks([
+        {
+          name: 'Refactoring',
+          author: 'Martin Fowler',
+          topic: 'Programming',
+        },
+        {
+          name: 'Designing Data-Intensive Applications',
+          author: 'Martin Kleppmann',
+          topic: 'Database',
+        },
+        {
+          name: 'The Phoenix Project',
+          author: 'Gene Kim',
+          topic: 'DevOps',
+        },
+        {
+          name: 'A song of ice and fire',
+          author: 'George R. R. Martin',
+          topic: 'Fantasy',
+        },
+        {
+          name: 'Lord of the Rings',
+          author: 'J. R. R. Tolkien',
+          topic: 'Fantasy',
+        },
+        {
+          name: 'Sherlock Holmes',
+          author: 'Arthur Conan Doyle',
+          topic: 'Detective',
+        },
+        {
+          name: 'Romance of the Three Kingdoms',
+          author: 'Luo Guanzhong',
+          topic: 'History',
+        },
+      ])
+    }
+  }, [])
 
   useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(books));
-  }, [books]);
+    localStorage.setItem('books', JSON.stringify(books))
+  }, [books])
 
   const topics: string[] = [
     'Programming',
@@ -79,7 +88,7 @@ const Homepage = () => {
     'Fantasy',
     'Detective',
     'History',
-  ];
+  ]
 
   const tableColumns: ColumnsType<TableDataType> = [
     {
@@ -115,7 +124,7 @@ const Homepage = () => {
         </Popconfirm>
       ),
     },
-  ];
+  ]
 
   const tableData: TableDataType[] = books.map((book, i) => {
     return {
@@ -124,46 +133,46 @@ const Homepage = () => {
       author: book.author,
       topic: book.topic,
       action: 'Delete',
-    };
-  });
+    }
+  })
 
   const handleSwitchTheme = (): void => {
-    setIsDarkMode((previousValue) => !previousValue);
-  };
+    setIsDarkMode((previousValue) => !previousValue)
+  }
 
   const handleCloseModal = (): void => {
-    setOpenModal(false);
-  };
+    setOpenModal(false)
+  }
 
   const handleAddBook = (newBook: Book): void => {
     if (newBook.name && newBook.author) {
-      setBooks((oldBooks) => [...oldBooks, newBook]);
-      handleSuccessMessage('Create');
-      handleCloseModal();
+      setBooks((oldBooks) => [...oldBooks, newBook])
+      handleSuccessMessage('Create')
+      handleCloseModal()
     }
-  };
+  }
 
   const handleDeleteBook = (name: string): void => {
-    setBooks((oldBooks) => oldBooks.filter((book) => book.name !== name));
-  };
+    setBooks((oldBooks) => oldBooks.filter((book) => book.name !== name))
+  }
 
   const handleSuccessMessage = (action: 'Create' | 'Delete'): void => {
     messageApi.open({
       type: 'success',
       content: `${action} success`,
-    });
-  };
+    })
+  }
 
   const handleSearch = (): void => {
-    const reg = new RegExp(searchValue, 'gi');
+    const reg = new RegExp(searchValue, 'gi')
 
-    const search = books.filter((book) => book.name.search(reg) > -1);
+    const search = books.filter((book) => book.name.search(reg) > -1)
     setBooksFiltered(
       search.map((item) => {
-        return { label: item.name, value: item.name };
+        return { label: item.name, value: item.name }
       }),
-    );
-  };
+    )
+  }
 
   return (
     <ConfigProvider
@@ -203,7 +212,7 @@ const Homepage = () => {
             type="primary"
             danger
             onClick={() => {
-              setOpenModal(true);
+              setOpenModal(true)
             }}
           >
             Add book
@@ -219,7 +228,7 @@ const Homepage = () => {
         topics={topics}
       />
     </ConfigProvider>
-  );
-};
+  )
+}
 
-export default Homepage;
+export default Homepage
