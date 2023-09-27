@@ -54,7 +54,7 @@ const CreateModal = ({
       )
     })
 
-    return <div>{options}</div>
+    return options;
   }
 
   return (
