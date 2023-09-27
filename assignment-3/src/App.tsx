@@ -2,6 +2,7 @@ import './App.css'
 import React, { useState, useEffect, useMemo } from 'react'
 import CreateModal from './content/modal/create'
 import DeleteModal from './content/modal/delete'
+import allBooks from './data'
 
 let action: string | null
 let selectedItem: Book
@@ -15,7 +16,7 @@ interface Book {
 }
 function App() {
   // set State
-  const [data, setData] = useState([...bookList])
+  const [data, setData] = useState([...allBooks])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [searchItem, setSearchItem] = useState<string>('')
   const [page, setPage] = useState<number>(0)
