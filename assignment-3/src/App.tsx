@@ -2,7 +2,7 @@ import './App.css'
 import React, { useState, useEffect, useMemo } from 'react'
 import CreateModal from './content/modal/create'
 import DeleteModal from './content/modal/delete'
-import allBooks from './data'
+// import allBooks from './data'
 
 let action: string | null
 let selectedItem: Book
