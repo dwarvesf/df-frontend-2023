@@ -2,7 +2,7 @@ import './App.css'
 import React, { useState, useEffect, useMemo } from 'react'
 import CreateModal from './content/modal/create'
 import DeleteModal from './content/modal/delete'
-// import allBooks from './data'
+//todo get import allBooks from './data'
 
 let action: string | null
 let selectedItem: Book
@@ -14,9 +14,10 @@ interface Book {
   author: string
   topic: string
 }
+
 function App() {
   // set State
-  const [data, setData] = useState([...allBooks])
+  const [data, setData] = useState([])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [searchItem, setSearchItem] = useState<string>('')
   const [page, setPage] = useState<number>(0)
@@ -98,8 +99,10 @@ function App() {
 
   function DisplayItem() {
     const pattern = new RegExp(searchItem.toLowerCase(), 'g')
-    const FilterTitle: Array<Book> = data.filter((i: Book) =>
-      pattern.test(i.name.toLowerCase()),
+    const FilterTitle: Array<Book> = data.filter(
+      (i: Book) =>
+        pattern.test(i.name.toLowerCase()) ||
+        pattern.test(i.author.toLowerCase()),
     )
 
     const dataPage: Array<Book> = FilterTitle.slice(
@@ -141,6 +144,7 @@ function App() {
       </button>
     ),
   )
+
   return (
     <div>
       <nav className="head">
