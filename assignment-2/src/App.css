@@ -81,6 +81,8 @@ td {
 }
 .table-button {
   background-color: white;
+  font-weight: bold;
+  text-decoration: underline;
   border-style: none;
   color: #d80032;
 }
