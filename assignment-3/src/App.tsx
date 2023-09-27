@@ -15,7 +15,7 @@ interface Book {
 }
 function App() {
   // set State
-  const [data, setData] = useState([])
+  const [data, setData] = useState([...bookList])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [searchItem, setSearchItem] = useState<string>('')
   const [page, setPage] = useState<number>(0)
