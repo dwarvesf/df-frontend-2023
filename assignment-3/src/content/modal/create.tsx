@@ -46,7 +46,7 @@ const CreateModal = ({
     'Computer Networking',
   ]
   const displayTopic = (): JSX.Element => {
-    const options = topics.map((topic) => {
+    const options: any = topics.map((topic) => {
       return (
         <option key={topic} value={topic}>
           {topic}
@@ -54,7 +54,7 @@ const CreateModal = ({
       )
     })
 
-    return options;
+    return options
   }
 
   return (
@@ -89,7 +89,9 @@ const CreateModal = ({
             <label htmlFor="topic">
               Topic
               <select id="topic" name="topic" className="modal-input" required>
-                <option>Select a topic</option>
+                <option selected value="">
+                  Select a topic
+                </option>
                 {displayTopic()}
               </select>
             </label>

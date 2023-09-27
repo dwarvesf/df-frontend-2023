@@ -1,8 +1,8 @@
-#create-modal button{
+#create-modal button {
   border-style: none;
   border-radius: 5px;
 }
-label{
+label {
   font-weight: 500;
 }
 #create-modal,
@@ -33,16 +33,16 @@ label{
   width: 30%;
 }
 .modal-input {
-  width: 90%;
+  width: 100%;
   border-radius: 5px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 3rem 0.5rem 0.5rem;
 }
+
 .deleteBookBtn {
   background-color: white;
   border-style: none;
   background-color: #d80032;
 }
-
 .deleteBookBtn,
 .cancelDeletionBtn {
   margin: 0.8rem;

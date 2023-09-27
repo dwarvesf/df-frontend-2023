@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import CreateModal from './content/modal/create'
 import DeleteModal from './content/modal/delete'
 
@@ -27,13 +27,13 @@ function App() {
   }, [])
 
   useEffect(() => {
-    numberOfPages()
+    NumberOfPages()
   })
 
-  function updateList(data) {
+  function updateList(data): void {
     localStorage.setItem(dataKey, JSON.stringify(data))
     setData(data)
-    setPage(0)
+    setPage(Math.floor((data.length - 1) / maxRecord))
   }
 
   // Handle Modal
@@ -41,35 +41,28 @@ function App() {
   function openModal(
     selectedAction: string = 'Create' || 'Delete',
     item?: Book,
-  ) {
-    if(item)
-    selectedItem = item
+  ): void {
+    if (item) selectedItem = item
     action = selectedAction
     setModalOpen(true)
   }
 
-  function closeModal() {
+  function closeModal(): void {
     action = null
     setModalOpen(false)
   }
 
-  function displayModal(close: any)  {
-
+  function displayModal(close: any) {
     // Add Modal
     if (action === 'Create') {
-      return <><CreateModal close={close} addBook={addItem} /> </>
+      return <CreateModal close={close} addBook={addItem} />
     }
     // Delete Modal
     if (action === 'Delete') {
       return (
-        <DeleteModal
-          close={close}
-          item={selectedItem}
-          delBook={deleteItem}
-        />
+        <DeleteModal close={close} item={selectedItem} delBook={deleteItem} />
       )
     }
-    return null
   }
 
   // Handle Add, Delete Item
@@ -91,22 +84,27 @@ function App() {
     setModalOpen(false)
   }
 
-  function numberOfPages() {
+  // Search book
+  const FilterTitle: Array<Book> = useMemo(() => {
     const pattern = new RegExp(searchItem.toLowerCase(), 'g')
-    const filterTitle = data.filter((i: Book) =>
-      pattern.test(i.name.toLowerCase()),
-    )
-    const totalPageCount = Math.ceil(filterTitle.length / maxRecord)
+    return data.filter((i: Book) => pattern.test(i.name.toLowerCase()))
+  }, [data, searchItem])
+
+  function NumberOfPages(): void {
+    const totalPageCount = Math.ceil(FilterTitle.length / maxRecord)
     setTotal(totalPageCount)
   }
 
-  function displayItem() {
+  function DisplayItem() {
     const pattern = new RegExp(searchItem.toLowerCase(), 'g')
-    const filterTitle = data.filter((i: Book) =>
+    const FilterTitle: Array<Book> = data.filter((i: Book) =>
       pattern.test(i.name.toLowerCase()),
     )
 
-    const dataPage = filterTitle.slice(page * maxRecord, (page + 1) * maxRecord)
+    const dataPage: Array<Book> = FilterTitle.slice(
+      page * maxRecord,
+      (page + 1) * maxRecord,
+    )
 
     return dataPage.map((i: Book) => {
       return (
@@ -128,18 +126,20 @@ function App() {
     })
   }
 
-  const paginationBtn = Array.from({ length: total }, (_, i) => (
-    // Return a button element.
-    <button
-      type="button"
-      className={`table-page ${(i === page ? 'active' : '')}`}
-      onClick={() => setPage(i)}
-      key={i}
-    >
-      {i + 1}
-    </button>
-  ))
-
+  const paginationBtn: Array<JSX.Element> = Array.from(
+    { length: total },
+    (_, i) => (
+      // Return a button element.
+      <button
+        type="button"
+        className={`table-page ${i === page ? 'active' : ''}`}
+        onClick={() => setPage(i)}
+        key={i}
+      >
+        {i + 1}
+      </button>
+    ),
+  )
   return (
     <div>
       <nav className="head">
@@ -181,7 +181,7 @@ function App() {
                 <th className="table-title action">Action</th>
               </tr>
             </thead>
-            <tbody>{displayItem()}</tbody>
+            <tbody>{DisplayItem()}</tbody>
           </table>
           <div className="pagination">{paginationBtn}</div>
         </div>

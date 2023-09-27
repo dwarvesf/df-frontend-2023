@@ -57,9 +57,6 @@ table {
   margin: auto;
   font-size: medium;
 }
-th{
-  background-color: #eadbc8;
-}
 table,
 th,
 td {
@@ -79,14 +76,19 @@ td {
 .index {
   width: 2%;
 }
-
+th{
+  background-color: #eadbc8;
+}
 .table-title {
   padding: 20px;
+
   text-align: left;
 }
 .table-button {
   background-color: white;
   border-style: none;
+  font-weight: bold;
+  text-decoration: underline;
   color: #d80032;
 }
 
