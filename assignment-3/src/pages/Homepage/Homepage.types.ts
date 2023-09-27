@@ -1,13 +1,15 @@
 export interface Book {
-  name: string;
-  author: string;
-  topic: string;
+  id: number
+  name: string
+  author: string
+  topic: string
 }
 
 export interface TableDataType {
-  key: React.Key;
-  name: string;
-  author: string;
-  topic: string;
-  action: 'Delete';
+  key: React.Key
+  '#': number
+  name: string
+  author: string
+  topic: string
+  action: 'Delete'
 }

@@ -5,7 +5,8 @@ import {
   Button,
   Table,
   Space,
-  Select,
+  // Select,
+  Input,
   Form,
   message,
   Popconfirm,
@@ -21,64 +22,84 @@ const Homepage = () => {
   const [messageApi, contextHolder] = message.useMessage()
 
   const [isDarkMode, setIsDarkMode] = useState(false)
+
+  // value of the search input field
   const [searchValue, setSearchValue] = useState('')
-  const [booksFiltered, setBooksFiltered] = useState<
-    { label: string; value: string }[]
-  >([])
+
+  // for search purpose
+  const [booksFiltered, setBooksFiltered] = useState<Book[]>([])
   const [openModal, setOpenModal] = useState(false)
   const [books, setBooks] = useState<Book[]>([])
 
   useEffect(() => {
     let dat: Book[] = []
     try {
-      dat = JSON.parse(localStorage.getItem('books') || '')
+      const items = localStorage.getItem('books')
+      if (items) {
+        dat = JSON.parse(items)
+      }
     } catch (error) {
       console.log(error)
     }
 
+    const defaultData = [
+      {
+        id: 1,
+        name: 'Refactoring',
+        author: 'Martin Fowler',
+        topic: 'Programming',
+      },
+      {
+        id: 2,
+        name: 'Designing Data-Intensive Applications',
+        author: 'Martin Kleppmann',
+        topic: 'Database',
+      },
+      {
+        id: 3,
+        name: 'The Phoenix Project',
+        author: 'Gene Kim',
+        topic: 'DevOps',
+      },
+      {
+        id: 4,
+        name: 'A song of ice and fire',
+        author: 'George R. R. Martin',
+        topic: 'Fantasy',
+      },
+      {
+        id: 5,
+        name: 'Lord of the Rings',
+        author: 'J. R. R. Tolkien',
+        topic: 'Fantasy',
+      },
+      {
+        id: 6,
+        name: 'Sherlock Holmes',
+        author: 'Arthur Conan Doyle',
+        topic: 'Detective',
+      },
+      {
+        id: 7,
+        name: 'Romance of the Three Kingdoms',
+        author: 'Luo Guanzhong',
+        topic: 'History',
+      },
+    ]
+
     if (dat.length === 0) {
-      setBooks([
-        {
-          name: 'Refactoring',
-          author: 'Martin Fowler',
-          topic: 'Programming',
-        },
-        {
-          name: 'Designing Data-Intensive Applications',
-          author: 'Martin Kleppmann',
-          topic: 'Database',
-        },
-        {
-          name: 'The Phoenix Project',
-          author: 'Gene Kim',
-          topic: 'DevOps',
-        },
-        {
-          name: 'A song of ice and fire',
-          author: 'George R. R. Martin',
-          topic: 'Fantasy',
-        },
-        {
-          name: 'Lord of the Rings',
-          author: 'J. R. R. Tolkien',
-          topic: 'Fantasy',
-        },
-        {
-          name: 'Sherlock Holmes',
-          author: 'Arthur Conan Doyle',
-          topic: 'Detective',
-        },
-        {
-          name: 'Romance of the Three Kingdoms',
-          author: 'Luo Guanzhong',
-          topic: 'History',
-        },
-      ])
+      setBooks(defaultData)
+      setBooksFiltered(defaultData)
+    } else {
+      setBooks(dat)
+      setBooksFiltered(dat)
+      console.log(dat)
     }
   }, [])
 
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books))
+    setBooksFiltered(books)
   }, [books])
 
   const topics: string[] = [
@@ -91,6 +112,11 @@ const Homepage = () => {
   ]
 
   const tableColumns: ColumnsType<TableDataType> = [
+    {
+      title: '#',
+      dataIndex: '#',
+      key: '#',
+    },
     {
       title: 'Name',
       dataIndex: 'name',
@@ -114,7 +140,7 @@ const Homepage = () => {
         <Popconfirm
           title="Delete book"
           description="Are you sure to delete this book?"
-          onConfirm={() => handleDeleteBook(record.name)}
+          onConfirm={() => handleDeleteBook(record['#'])}
           okText="Yes"
           cancelText="No"
         >
@@ -126,9 +152,10 @@ const Homepage = () => {
     },
   ]
 
-  const tableData: TableDataType[] = books.map((book, i) => {
+  const tableData: TableDataType[] = booksFiltered.map((book) => {
     return {
-      key: i,
+      key: book.id,
+      '#': book.id,
       name: book.name,
       author: book.author,
       topic: book.topic,
@@ -146,14 +173,15 @@ const Homepage = () => {
 
   const handleAddBook = (newBook: Book): void => {
     if (newBook.name && newBook.author) {
+      setSearchValue('')
       setBooks((oldBooks) => [...oldBooks, newBook])
       handleSuccessMessage('Create')
       handleCloseModal()
     }
   }
 
-  const handleDeleteBook = (name: string): void => {
-    setBooks((oldBooks) => oldBooks.filter((book) => book.name !== name))
+  const handleDeleteBook = (id: number): void => {
+    setBooks((oldBooks) => oldBooks.filter((book) => book.id !== id))
   }
 
   const handleSuccessMessage = (action: 'Create' | 'Delete'): void => {
@@ -163,15 +191,17 @@ const Homepage = () => {
     })
   }
 
-  const handleSearch = (): void => {
-    const reg = new RegExp(searchValue, 'gi')
+  const handleSearch = (value: string): void => {
+    setSearchValue(value)
+    let reg = /\[]/gi
+    try {
+      reg = new RegExp(value, 'gi')
+    } catch (error) {
+      console.log(error)
+    }
 
     const search = books.filter((book) => book.name.search(reg) > -1)
-    setBooksFiltered(
-      search.map((item) => {
-        return { label: item.name, value: item.name }
-      }),
-    )
+    setBooksFiltered(search)
   }
 
   return (
@@ -198,15 +228,24 @@ const Homepage = () => {
             marginBottom: '20px',
           }}
         >
-          <Select
+          {/* <Select
             showSearch
             onChange={(value) => setSearchValue(value)}
+            value={searchValue}
             labelInValue
-            options={booksFiltered}
+            options={booksFiltered.map((book) => {
+              return { label: book.name, value: book.id }
+            })}
             notFoundContent="No book match the search value"
-            onSearch={handleSearch}
+            onSearch={(value) => handleSearch(value)}
             placeholder="Search books"
             style={{ minWidth: '200px' }}
+          /> */}
+          <Input
+            placeholder="Search books"
+            value={searchValue}
+            onChange={(e) => handleSearch(e.target.value)}
+            addonAfter={<i className="fa-solid fa-magnifying-glass" />}
           />
           <Button
             type="primary"
@@ -218,7 +257,12 @@ const Homepage = () => {
             Add book
           </Button>
         </Space>
-        <Table dataSource={tableData} columns={tableColumns} bordered />
+        <Table
+          dataSource={tableData}
+          columns={tableColumns}
+          bordered
+          pagination={{ defaultPageSize: 4 }}
+        />
       </Space.Compact>
       <AddBookModal
         form={form}

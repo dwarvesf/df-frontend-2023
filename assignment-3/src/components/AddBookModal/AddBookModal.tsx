@@ -1,6 +1,6 @@
-import { Modal, Form, Input, Select } from 'antd';
+import { Modal, Form, Input, Select } from 'antd'
 
-import { AddBookModalProps } from './AddBookModal.types';
+import { AddBookModalProps } from './AddBookModal.types'
 
 const AddBookModal = ({
   form,
@@ -19,12 +19,12 @@ const AddBookModal = ({
         form
           .validateFields()
           .then((values) => {
-            form.resetFields();
-            handleAddBook(values);
+            form.resetFields()
+            handleAddBook({ ...values, id: Date.now() })
           })
           .catch((info) => {
-            console.log('Validate Failed:', info);
-          });
+            console.log('Validate Failed:', info)
+          })
       }}
       onCancel={handleCloseModal}
     >
@@ -55,13 +55,13 @@ const AddBookModal = ({
         <Form.Item name="topic" label="Topic">
           <Select
             options={topics.map((topic) => {
-              return { value: topic, label: topic };
+              return { value: topic, label: topic }
             })}
           />
         </Form.Item>
       </Form>
     </Modal>
-  );
-};
+  )
+}
 
-export default AddBookModal;
+export default AddBookModal
