@@ -5,7 +5,6 @@ import {
   Button,
   Table,
   Space,
-  // Select,
   Input,
   Form,
   message,
@@ -93,7 +92,6 @@ const Homepage = () => {
     } else {
       setBooks(dat)
       setBooksFiltered(dat)
-      console.log(dat)
     }
   }, [])
 
@@ -182,6 +180,7 @@ const Homepage = () => {
 
   const handleDeleteBook = (id: number): void => {
     setBooks((oldBooks) => oldBooks.filter((book) => book.id !== id))
+    setSearchValue('')
   }
 
   const handleSuccessMessage = (action: 'Create' | 'Delete'): void => {

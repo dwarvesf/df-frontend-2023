@@ -18,7 +18,7 @@ const AddBookModal = ({
           .validateFields()
           .then((values) => {
             form.resetFields();
-            handleAddBook(values);
+            handleAddBook({ ...values, id: Date.now() });
           })
           .catch((info) => {
             console.log("Validate Failed:", info);
