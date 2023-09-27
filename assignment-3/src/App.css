@@ -57,6 +57,9 @@ table {
   margin: auto;
   font-size: medium;
 }
+th{
+  background-color: #eadbc8;
+}
 table,
 th,
 td {
