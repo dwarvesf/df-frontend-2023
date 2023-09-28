@@ -35,7 +35,7 @@ Improve our [Assignment 04's Next.js application](../assignment-4/) application 
 - Ensure that form UI reflect an error state and display an appropriate message when an error occurs.
 - Ensure your code is fully formatted and adheres to comprehensive coding conventions.
 - Ensure the project is deployable and provide a demo link for review.
-- **Bonus**: Implement a [Password Strength Meter]([url](https://www.passwordmonster.com/)). For password fields, display a dynamic strength meter that updates based on password complexity.
+- **Bonus**: Implement a [Password Strength Meter](https://www.passwordmonster.com/). For password fields, display a dynamic strength meter that updates based on password complexity.
 
  
 ### What Are We Looking For?
