@@ -21,7 +21,7 @@ Improve our [Assignment 04's Next.js application](../assignment-4/) application 
 **Book Creation/Editing:**
 
 - Book name: Minimum of 5 characters, required.
-- Author name: Only letters and spaces, requireed.
+- Author name: Only letters and spaces, required.
 - Book topic: Must select from available options, required.
 
 **Login Form:**
