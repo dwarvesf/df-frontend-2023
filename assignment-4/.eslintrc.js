@@ -10,9 +10,7 @@ module.exports = {
     'next',
     'next/core-web-vitals',
   ],
-  ignorePatterns: [
-    'node_modules/',
-  ],
+  ignorePatterns: ['node_modules/'],
   env: {
     es6: true,
     browser: true,
@@ -35,7 +33,14 @@ module.exports = {
       presets: [require.resolve('next/babel')],
     },
   },
-  rules: {},
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
+  },
   overrides: [
     {
       files: ['**/*.ts?(x)', '**/*.js?(x)'],

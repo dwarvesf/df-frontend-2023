@@ -8,5 +8,6 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "all",
-  "htmlWhitespaceSensitivity": "ignore"
+  "htmlWhitespaceSensitivity": "ignore",
+  "endOfLine": "auto"
 }
