@@ -1,6 +1,6 @@
-# Form handling
+# Form Handling
 
-Elevate our [Assignment 04's Next.js application](../assignment-4/) by introducing an "Edit" feature for book details, implementing a user-friendly and secure login page, and ensuring robust form validation across the application. This collective effort aims to enhance both user experience and the overall security of the system.
+Improve our [Assignment 04's Next.js application](../assignment-4/) application by adding an "Edit" feature for book details. Also, integrate a user-friendly and secure login page while ensuring a rigorous form validation system throughout the application. This enhancement aims to bolster the user experience and the overall security of the platform.
 
 <p align="center">
   <img src="../assets/bookstore-form.png">
@@ -9,29 +9,35 @@ Elevate our [Assignment 04's Next.js application](../assignment-4/) by introduci
 ## Requirements
 
 1. Use the functionalities from [Assignment 04](../assignment-4/) as a foundation.
-2. Enhance the book details page by incorporating an "Edit" button.
-3. When the user clicks the ‘Edit’ button, it should initiate the opening of a modal window with an editable form. The form is pre-populated with the book's existing data. This enables users to make edits to the information and save the updated details.
-4. Create a user login page featuring a login form designed to gather the following login credentials:
+2. Augment the book details page with an "Edit" button.
+3. The 'Edit' button should trigger a modal window containing a pre-filled form with the current book details. This allows users to update the information and save changes.
+4. Introduce a login page with a form that captures:
     - Email
     - Password
-5. Ensure that all forms within the application include a validation mechanism (email, …); each field within these forms provides clear and user-friendly error indications when validation issues occur.
-6. Validation rules:
+5. All forms should have validation and user-friendly error indicators.
 
-- Book creation and editing:
-    - The book name is mandatory and must consist of at least 5 characters.
-    - The author's name is mandatory and can only contain letters and spaces.
-    - The book's topic is mandatory and must be chosen from a list of available options.
+### Validation rules
 
-- Login form:
-    - The email address is mandatory and must be followed the correct email pattern.
-    - The password is mandatory and must contain at least 8 characters, including at least 1 uppercase letter and 1 symbol.
+**Book Creation/Editing:**
+
+- Book name: Minimum of 5 characters, required.
+- Author name: Only letters and spaces, requireed.
+- Book topic: Must select from available options, required.
+
+**Login Form:**
+
+- Email: Valid email pattern, required.
+- Password: Minimum of 8 characters with at least 1 uppercase and 1 symbol, required.
 
 ### Deliverables
 
 - Well-crafted Typescript NextJS Project with fully formatted, all the necessary components, functionalities, and error-free.
+- Ensure that form UI reflect an error state and display an appropriate message when an error occurs.
 - Ensure your code is fully formatted and adheres to comprehensive coding conventions.
 - Ensure the project is deployable and provide a demo link for review.
+- **Bonus**: Implement a [Password Strength Meter]([url](https://www.passwordmonster.com/)). For password fields, display a dynamic strength meter that updates based on password complexity.
 
+ 
 ### What Are We Looking For?
 
 - Effective use of form hooks and robust validation techniques.
@@ -40,6 +46,6 @@ Elevate our [Assignment 04's Next.js application](../assignment-4/) by introduci
 
 ## Submission
 
-- Ensure all assignment code is placed within the **`/assignment-5`** directory.
+- Ensure all assignment code is placed within the **`/assignment-5`** directory. You should transfer all of the application code from your Assignment 04 and relocate it to this folder.
 - The final submission deadline is **05/10/2023**.
 - After finalizing and ensuring a deployable demo, open a Github issue in your forked repository titled "**Submission for Assignment 5.**" Include the demo link in the description.
