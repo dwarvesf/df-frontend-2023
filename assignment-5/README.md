@@ -12,8 +12,8 @@ Improve our [Assignment 04's Next.js application](../assignment-4/) application 
 2. Augment the book details page with an "Edit" button.
 3. The 'Edit' button should trigger a modal window containing a pre-filled form with the current book details. This allows users to update the information and save changes.
 4. Introduce a login page with a form that captures:
-    - Email
-    - Password
+   - Email
+   - Password
 5. All forms should have validation and user-friendly error indicators.
 
 ### Validation rules
@@ -37,7 +37,6 @@ Improve our [Assignment 04's Next.js application](../assignment-4/) application 
 - Ensure the project is deployable and provide a demo link for review.
 - **Bonus**: Implement a [Password Strength Meter](https://www.passwordmonster.com/). For password fields, display a dynamic strength meter that updates based on password complexity.
 
- 
 ### What Are We Looking For?
 
 - Effective use of form hooks and robust validation techniques.
@@ -47,5 +46,5 @@ Improve our [Assignment 04's Next.js application](../assignment-4/) application 
 ## Submission
 
 - Ensure all assignment code is placed within the **`/assignment-5`** directory. You should transfer all of the application code from your Assignment 04 and relocate it to this folder.
-- The final submission deadline is **05/10/2023**.
+- The final submission deadline is **08/10/2023**.
 - After finalizing and ensuring a deployable demo, open a Github issue in your forked repository titled "**Submission for Assignment 5.**" Include the demo link in the description.

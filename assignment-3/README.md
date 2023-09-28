@@ -29,6 +29,6 @@ In the previous assignment, we took a leap from a traditional web interface to a
   pnpm run build
   ```
 - Ensure all the assignment code resides in the `/assignment-3` directory.
-- The final submission deadline is **28/09/2023**.
+- The final submission deadline is **01/10/2023**.
 - After completing and setting up the deployable demo, open a Github issue in your forked repository titled **Submission for assignment 3**. Include the demo link in the description.
 
