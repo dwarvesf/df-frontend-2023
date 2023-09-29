@@ -1,11 +1,11 @@
 import './App.css'
 // import { useState } from 'react'
-import { useLocalStorage } from 'usehooks-ts'
+// import { useLocalStorage } from 'usehooks-ts'
 import { Header, Button, LineBook } from './components'
 import ShowText from './components/ShowText'
 
 // Import types
-import { Book, BookList } from './types'
+import { BookList } from './types'
 
 const defaultBooks: BookList = [
   {
@@ -59,7 +59,8 @@ const defaultBooks: BookList = [
 ]
 
 function Content() {
-  const [books, setBooks] = useLocalStorage('books', defaultBooks)
+  // const [books, setBooks] = useLocalStorage('books', defaultBooks)
+  const books = defaultBooks
 
   return (
     <div className="app__container">
@@ -101,7 +102,6 @@ function Content() {
                     />
                   ))} */}
             {books.map((bookItem) => (
-              
               <LineBook
                 book={bookItem}    
               />
