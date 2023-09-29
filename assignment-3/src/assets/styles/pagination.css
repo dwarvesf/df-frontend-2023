@@ -1,3 +1,8 @@
+:root{
+  --color-primary: #d04d4dfd;
+}
+
+
 .pagination__wrapper {
     padding-top: 16px;
     display: flex;
@@ -32,11 +37,11 @@
   .pagination__link--active a {
     background-color: var(--color-primary);
     font-weight: bold;
-    color: var(--color-background);
+    color: white;
   }
   
-  .pagination__link--disabled a {
-    cursor: not-allowed;
+  .pagination__link--disabled a, .pagination__link--disabled:hover a{
+    cursor: default;
     background-color: var(--color-background);
-    color: var(--color-text);
+    color: #9999;
   }

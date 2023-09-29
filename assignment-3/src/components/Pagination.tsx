@@ -9,12 +9,6 @@ export interface PaginationProps {
   onPageChange?: (page: number) => void
 }
 
-// const Pagination = ({
-//   totalItems,
-//   itemsPerPage,
-//   currentPage: externalCurrentPage,
-//   onPageChange,
-// }) =>
 export default function Pagination({
   totalItems,
   itemsPerPage,

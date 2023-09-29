@@ -1,7 +1,7 @@
 import './App.css'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
-import { Header, Button, LineBook, ModalAdd } from './components'
+import { Header, Button, LineBook, ModalAdd, Pagination } from './components'
 import ShowText from './components/ShowText'
 
 // Import types
@@ -60,15 +60,29 @@ const defaultBooks: BookList = [
 ]
 
 function Content() {
+  const PageSize = 5
+
   const [books, setBooks] = useLocalStorage('books', defaultBooks)
+
+  // For addd
   const [openModalAdd, SetModalAdd] = useState<boolean>(false)
 
+  // For delete
   const [openModalDelete, setModalDelete] = useState<boolean>(false)
   const [deleteBook, setDeleteBook] = useState<Book>(books[1])
 
+  // For search book
   const [isSearch, setIsSearch] = useState<boolean>(false)
   const [searchValue, setSeachValue] = useState<string>('')
   const [resultSearchBooks, setResultBooks] = useState<BookList>(books)
+
+  const [page, setPage] = useState<number>(1)
+
+  const displayBook = useMemo<BookList>(() => {
+    const firstPageIndex = (page - 1) * PageSize
+    const lastPageIndex = firstPageIndex + PageSize
+    return books.slice(firstPageIndex, lastPageIndex)
+  }, [page, books])
 
   function handleSearch(e) {
     setSeachValue(e.target.value)
@@ -81,6 +95,10 @@ function Content() {
     setResultBooks(
       books.filter((book) => book.name.toLowerCase().includes(searchValue)),
     )
+  }
+
+  const handlePageChange = (page: number) => {
+    setPage(page)
   }
 
   return (
@@ -113,7 +131,7 @@ function Content() {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>              
+            <tbody>
               {isSearch
                 ? resultSearchBooks.map((book) => (
                     <LineBook
@@ -122,7 +140,7 @@ function Content() {
                       setDeleteBook={setDeleteBook}
                     />
                   ))
-                : books.map((bookItem) => (
+                : displayBook.map((bookItem) => (
                     <LineBook
                       book={bookItem}
                       setModalDelete={setModalDelete}
@@ -132,6 +150,16 @@ function Content() {
             </tbody>
           </table>
         </div>
+        {!isSearch ? (
+          <div className="pagination__wrapper">
+            <Pagination
+              totalItems={books.length}
+              itemsPerPage={PageSize}
+              currentPage={page}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        ) : null}
       </div>
 
       {openModalAdd ? (
@@ -142,9 +170,13 @@ function Content() {
         openModalDelete={openModalDelete}
         setModalDelete={setModalDelete}
         book={deleteBook}
-        handleDelete={(item: Book) =>
+        handleDelete={(item: Book) => 
+        {
           setBooks(books.filter((book) => book.id !== item.id))
-        }
+          if (resultSearchBooks.includes(deleteBook)) {
+            setResultBooks(resultSearchBooks.filter((book) => book.id !== item.id))
+          }
+        }}
       />
     </>
   )
