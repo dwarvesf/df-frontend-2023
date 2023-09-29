@@ -66,8 +66,22 @@ function Content() {
   const [openModalDelete, setModalDelete] = useState<boolean>(false)
   const [deleteBook, setDeleteBook] = useState<Book>(books[1])
 
+  const [isSearch, setIsSearch] = useState<boolean>(false)
+  const [searchValue, setSeachValue] = useState<string>('')
+  const [resultSearchBooks, setResultBooks] = useState<BookList>(books)
 
-  
+  function handleSearch(e) {
+    setSeachValue(e.target.value)
+    if (e.target.value === '') {
+      setIsSearch(false)
+      return
+    }
+
+    setIsSearch(true)
+    setResultBooks(
+      books.filter((book) => book.name.toLowerCase().includes(searchValue)),
+    )
+  }
 
   return (
     <>
@@ -75,10 +89,10 @@ function Content() {
         <div className="control">
           <input
             type="text"
-            // value={searchValue}
+            value={searchValue}
             className="search"
             placeholder="Search books"
-            // onChange={(e) => handleSearch(e)}
+            onChange={(e) => handleSearch(e)}
           />
           <Button
             onClick={() => {
@@ -99,38 +113,39 @@ function Content() {
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>
-              {/* {isSearch
-                ? resultSearchBooks.map((book) => <LineBook book={book} />)
-                : currentTableData.map((book) => (
+            <tbody>              
+              {isSearch
+                ? resultSearchBooks.map((book) => (
                     <LineBook
                       book={book}
                       setModalDelete={setModalDelete}
                       setDeleteBook={setDeleteBook}
                     />
-                  ))} */}
-              {books.map((bookItem) => (
-                <LineBook book={bookItem} 
-                setModalDelete={setModalDelete}
-                setDeleteBook={setDeleteBook}
-                />
-              ))}
+                  ))
+                : books.map((bookItem) => (
+                    <LineBook
+                      book={bookItem}
+                      setModalDelete={setModalDelete}
+                      setDeleteBook={setDeleteBook}
+                    />
+                  ))}
             </tbody>
           </table>
         </div>
       </div>
-      
+
       {openModalAdd ? (
         <ModalAdd SetModalAdd={SetModalAdd} books={books} setBooks={setBooks} />
       ) : null}
-      
+
       <ModalDelete
         openModalDelete={openModalDelete}
         setModalDelete={setModalDelete}
         book={deleteBook}
-        handleDelete={(item:Book) => setBooks(books.filter((book) => book.id !== item.id))}
+        handleDelete={(item: Book) =>
+          setBooks(books.filter((book) => book.id !== item.id))
+        }
       />
-
     </>
   )
 }
