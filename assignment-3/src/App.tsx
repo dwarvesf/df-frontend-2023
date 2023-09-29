@@ -1,11 +1,12 @@
 import './App.css'
 import { useState } from 'react'
-import { useLocalStorage} from 'usehooks-ts'
+import { useLocalStorage } from 'usehooks-ts'
 import { Header, Button, LineBook, ModalAdd } from './components'
 import ShowText from './components/ShowText'
 
 // Import types
-import { BookList } from './types'
+import { Book, BookList } from './types'
+import ModalDelete from './components/ModalDelete'
 
 const defaultBooks: BookList = [
   {
@@ -62,40 +63,44 @@ function Content() {
   const [books, setBooks] = useLocalStorage('books', defaultBooks)
   const [openModalAdd, SetModalAdd] = useState<boolean>(false)
 
+  const [openModalDelete, setModalDelete] = useState<boolean>(false)
+  // const [deleteBook, setDeleteBook] = useState<Book>(null)
+
+
+  
+
   return (
-
-
     <>
-    <div className="app__container">
-      <div className="control">
-        <input
-          type="text"
-          // value={searchValue}
-          className="search"
-          placeholder="Search books"
-          // onChange={(e) => handleSearch(e)}
-        />
-        <Button
-        onClick={() => {
-          SetModalAdd(true)
-        }}
-        >
-          Add book
-        </Button>
-      </div>
+      <div className="app__container">
+        <div className="control">
+          <input
+            type="text"
+            // value={searchValue}
+            className="search"
+            placeholder="Search books"
+            // onChange={(e) => handleSearch(e)}
+          />
+          <Button
+            onClick={() => {
+              SetModalAdd(true)
+            }}
+          >
+            Add book
+          </Button>
+        </div>
 
-      <div className="table">
-        <table className="table__content">
-          <thead className="table__header">
-            <tr>
-              <th>Name</th>
-              <th>Author</th>
-              <th>Topic</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {/* {isSearch
+        <div className="table">
+          <table className="table__content">
+            <thead className="table__header">
+              <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Topic</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {/* {isSearch
                 ? resultSearchBooks.map((book) => <LineBook book={book} />)
                 : currentTableData.map((book) => (
                     <LineBook
@@ -104,18 +109,25 @@ function Content() {
                       setDeleteBook={setDeleteBook}
                     />
                   ))} */}
-            {books.map((bookItem) => (
-              <LineBook
-                book={bookItem}    
-              />
-            ))}
-          </tbody>
-        </table>
+              {books.map((bookItem) => (
+                <LineBook book={bookItem} />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
-    </div>
+      
       {openModalAdd ? (
-        <ModalAdd SetModalAdd={SetModalAdd} books={books} setBooks={setBooks}/>
-      ):null}
+        <ModalAdd SetModalAdd={SetModalAdd} books={books} setBooks={setBooks} />
+      ) : null}
+      
+      <ModalDelete
+        openModalDelete={openModalDelete}
+        setModalDelete={setModalDelete}
+        book={books[1]}
+        handleDelete={(item:Book) => setBooks(books.filter((book) => book.id !== item.id))}
+      />
+
     </>
   )
 }
