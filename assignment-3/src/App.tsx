@@ -64,7 +64,7 @@ function Content() {
   const [openModalAdd, SetModalAdd] = useState<boolean>(false)
 
   const [openModalDelete, setModalDelete] = useState<boolean>(false)
-  // const [deleteBook, setDeleteBook] = useState<Book>(null)
+  const [deleteBook, setDeleteBook] = useState<Book>(books[1])
 
 
   
@@ -110,7 +110,10 @@ function Content() {
                     />
                   ))} */}
               {books.map((bookItem) => (
-                <LineBook book={bookItem} />
+                <LineBook book={bookItem} 
+                setModalDelete={setModalDelete}
+                setDeleteBook={setDeleteBook}
+                />
               ))}
             </tbody>
           </table>
@@ -124,7 +127,7 @@ function Content() {
       <ModalDelete
         openModalDelete={openModalDelete}
         setModalDelete={setModalDelete}
-        book={books[1]}
+        book={deleteBook}
         handleDelete={(item:Book) => setBooks(books.filter((book) => book.id !== item.id))}
       />
 

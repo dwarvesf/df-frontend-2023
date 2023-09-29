@@ -54,6 +54,7 @@ export default function ModalAdd({ books,SetModalAdd, setBooks }:ModalAddProps) 
               placeholder="text"
               id="input-name"
               name="name"
+              required
             />
           </div>
           <div className="input-wrap">
@@ -84,6 +85,7 @@ export default function ModalAdd({ books,SetModalAdd, setBooks }:ModalAddProps) 
           <div className="form__btn">
             <button
               className="btn btn-create"
+              type='submit'
               onClick={(e) => {
                 e.preventDefault()
                 handleAddBook(name, author, topic)
