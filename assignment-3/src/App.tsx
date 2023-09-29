@@ -1,7 +1,7 @@
 import './App.css'
-// import { useState } from 'react'
-// import { useLocalStorage } from 'usehooks-ts'
-import { Header, Button, LineBook } from './components'
+import { useState } from 'react'
+import { useLocalStorage} from 'usehooks-ts'
+import { Header, Button, LineBook, ModalAdd } from './components'
 import ShowText from './components/ShowText'
 
 // Import types
@@ -59,10 +59,13 @@ const defaultBooks: BookList = [
 ]
 
 function Content() {
-  // const [books, setBooks] = useLocalStorage('books', defaultBooks)
-  const books = defaultBooks
+  const [books, setBooks] = useLocalStorage('books', defaultBooks)
+  const [openModalAdd, SetModalAdd] = useState<boolean>(false)
 
   return (
+
+
+    <>
     <div className="app__container">
       <div className="control">
         <input
@@ -73,9 +76,9 @@ function Content() {
           // onChange={(e) => handleSearch(e)}
         />
         <Button
-        // onClick={() => {
-        //   SetModalAdd(true)
-        // }}
+        onClick={() => {
+          SetModalAdd(true)
+        }}
         >
           Add book
         </Button>
@@ -110,6 +113,10 @@ function Content() {
         </table>
       </div>
     </div>
+      {openModalAdd ? (
+        <ModalAdd SetModalAdd={SetModalAdd} books={books} setBooks={setBooks}/>
+      ):null}
+    </>
   )
 }
 

@@ -1,6 +1,3 @@
-
-
-
 interface ShowTextProps {
     text: string
 }
