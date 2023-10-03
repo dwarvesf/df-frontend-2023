@@ -13,12 +13,19 @@ const BookDetail = () => {
   const [book, setBook] = useState<Book>(emptyBook)
   const [openDeleteModal, setOpenDeleteModal] = useState(false)
   const [displayMessage, setDisplayMessage] = useState(false)
+  const [displayErrorPage, setDisplayErrorPage] = useState(false)
   const params = useParams()
   const router = useRouter()
 
   useEffect(() => {
     const dat = getData()
+    setBooks(dat)
+
     const id = Number(params.bookId) || -1
+
+    if (id === -1) {
+      setDisplayErrorPage(true)
+    }
 
     const bookItem = dat.find((item) => item.id === Number(id)) || emptyBook
     setBook(bookItem)
@@ -28,7 +35,7 @@ const BookDetail = () => {
     if (displayMessage) {
       const timer = setTimeout(() => {
         setDisplayMessage(false)
-      }, 3000)
+      }, 2000)
       return () => clearTimeout(timer)
     }
   }, [displayMessage])
@@ -44,7 +51,7 @@ const BookDetail = () => {
     }, 1000)
   }
 
-  if (book.id === -1) {
+  if (displayErrorPage) {
     return (
       <div className="w-full h-full flex flex-col items-center justify-center mt-10">
         <p className="text-9xl mb-3 font-bold text-cyan-800 dark:text-cyan-200">

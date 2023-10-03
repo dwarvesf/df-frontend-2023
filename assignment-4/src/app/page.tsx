@@ -36,6 +36,7 @@ export default function Home() {
       setBooks(defaultBooks)
       setBooksFiltered(defaultBooks)
       localStorage.setItem('books', JSON.stringify(defaultBooks))
+      console.log('Hello')
     } else {
       setBooks(dat)
       setBooksFiltered(dat)
