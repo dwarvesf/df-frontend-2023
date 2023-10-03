@@ -12,8 +12,10 @@ import {
 } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import Header from '../../components/Header/Header'
-import { Book, TableDataType } from './Homepage.types'
 import AddBookModal from '../../components/AddBookModal/AddBookModal'
+import { defaultBooks } from '../../utils/constant'
+import { getData } from '../../utils/data'
+import { Book, TableDataType } from './Homepage.types'
 
 const Homepage = () => {
   const { defaultAlgorithm, darkAlgorithm } = theme
@@ -31,83 +33,21 @@ const Homepage = () => {
   const [books, setBooks] = useState<Book[]>([])
 
   useEffect(() => {
-    let dat: Book[] = []
-    try {
-      const items = localStorage.getItem('books')
-      if (items) {
-        dat = JSON.parse(items)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-
-    const defaultData = [
-      {
-        id: 1,
-        name: 'Refactoring',
-        author: 'Martin Fowler',
-        topic: 'Programming',
-      },
-      {
-        id: 2,
-        name: 'Designing Data-Intensive Applications',
-        author: 'Martin Kleppmann',
-        topic: 'Database',
-      },
-      {
-        id: 3,
-        name: 'The Phoenix Project',
-        author: 'Gene Kim',
-        topic: 'DevOps',
-      },
-      {
-        id: 4,
-        name: 'A song of ice and fire',
-        author: 'George R. R. Martin',
-        topic: 'Fantasy',
-      },
-      {
-        id: 5,
-        name: 'Lord of the Rings',
-        author: 'J. R. R. Tolkien',
-        topic: 'Fantasy',
-      },
-      {
-        id: 6,
-        name: 'Sherlock Holmes',
-        author: 'Arthur Conan Doyle',
-        topic: 'Detective',
-      },
-      {
-        id: 7,
-        name: 'Romance of the Three Kingdoms',
-        author: 'Luo Guanzhong',
-        topic: 'History',
-      },
-    ]
+    const dat = getData()
 
     if (dat.length === 0) {
-      setBooks(defaultData)
-      setBooksFiltered(defaultData)
+      setBooks(defaultBooks)
+      setBooksFiltered(defaultBooks)
     } else {
       setBooks(dat)
       setBooksFiltered(dat)
     }
   }, [])
 
-  useEffect(() => {
-    localStorage.setItem('books', JSON.stringify(books))
-    setBooksFiltered(books)
-  }, [books])
-
-  const topics: string[] = [
-    'Programming',
-    'Database',
-    'DevOps',
-    'Fantasy',
-    'Detective',
-    'History',
-  ]
+  // useEffect(() => {
+  //   localStorage.setItem('books', JSON.stringify(books))
+  //   setBooksFiltered(books)
+  // }, [books])
 
   const tableColumns: ColumnsType<TableDataType> = [
     {
@@ -170,16 +110,22 @@ const Homepage = () => {
   }
 
   const handleAddBook = (newBook: Book): void => {
-    if (newBook.name && newBook.author) {
+    if (newBook.name && newBook.author && newBook.topic) {
+      const newBooks = [...books, newBook]
       setSearchValue('')
-      setBooks((oldBooks) => [...oldBooks, newBook])
+      setBooks(newBooks)
+      localStorage.setItem('books', JSON.stringify(newBooks))
+      setBooksFiltered(newBooks)
       handleSuccessMessage('Create')
       handleCloseModal()
     }
   }
 
   const handleDeleteBook = (id: number): void => {
-    setBooks((oldBooks) => oldBooks.filter((book) => book.id !== id))
+    const newBooks = books.filter((book) => book.id !== id)
+    setBooks(newBooks)
+    localStorage.setItem('books', JSON.stringify(newBooks))
+    setBooksFiltered(newBooks)
     setSearchValue('')
   }
 
@@ -268,7 +214,6 @@ const Homepage = () => {
         handleAddBook={handleAddBook}
         handleCloseModal={handleCloseModal}
         openModal={openModal}
-        topics={topics}
       />
     </ConfigProvider>
   )

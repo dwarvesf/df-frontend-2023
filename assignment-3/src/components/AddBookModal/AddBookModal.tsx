@@ -1,5 +1,5 @@
 import { Modal, Form, Input, Select } from 'antd'
-
+import { topics } from '../../utils/constant'
 import { AddBookModalProps } from './AddBookModal.types'
 
 const AddBookModal = ({
@@ -7,7 +7,6 @@ const AddBookModal = ({
   openModal,
   handleAddBook,
   handleCloseModal,
-  topics,
 }: AddBookModalProps) => {
   return (
     <Modal
