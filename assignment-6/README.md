@@ -27,6 +27,7 @@ Refer to the API documentation at: [**Bookstore API Docs**](https://develop-api.
 - Ensure that the form, authentication mechanisms, data caching, and protected routes correctly represent their intended states.
 - Assure that the code is thoroughly formatted and aligns with comprehensive coding conventions.
 - Confirm the project's deployability and, as proof, provide a working demo link for review and assessment.
+- **Bonus:** Revoke access if an API responds 401 error code.
 - **Bonus:** Elevate your application's security and performance by storing user credentials securely using cookies and implementing Server Side Rendering (SSR) for all the pages.
 
 ### **What Are We Looking For?**
