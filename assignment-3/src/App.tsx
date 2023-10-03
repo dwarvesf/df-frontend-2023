@@ -88,7 +88,7 @@ function App() {
 
   // Search book
   const FilterTitle: Array<Book> = useMemo(() => {
-    const pattern = new RegExp(searchItem.toLowerCase(), 'g')
+    const pattern = new RegExp(searchItem.toLowerCase())
     return data.filter((i: Book) => pattern.test(i.name.toLowerCase()))
   }, [data, searchItem])
 
@@ -98,7 +98,7 @@ function App() {
   }
 
   function DisplayItem() {
-    const pattern = new RegExp(searchItem.toLowerCase(), 'g')
+    const pattern = new RegExp(searchItem.toLowerCase())
     const FilterTitle: Array<Book> = data.filter(
       (i: Book) =>
         pattern.test(i.name.toLowerCase()) ||
