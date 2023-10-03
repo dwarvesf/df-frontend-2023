@@ -31,7 +31,7 @@ Adapt the CMS Bookstore interface from [Assignment 02's React Project](../assign
 ## Submission
 
 - Begin with the template found in the assignment folder. This project should be initialized using NextJS and TailwindCSS. To guide you, you can use the following commands:
-    
+
     ```bash
     # Install packages
     pnpm install
@@ -40,6 +40,6 @@ Adapt the CMS Bookstore interface from [Assignment 02's React Project](../assign
     # Build the app for production
     pnpm build
     ```
-    
-- Ensure all assignment code is placed within the **`/assignment-4`** directory. The final submission deadline is **03/10/2023**.
+
+- Ensure all assignment code is placed within the **`/assignment-4`** directory. The final submission deadline is **06/10/2023**.
 - After finalizing and ensuring a deployable demo, open a Github issue in your forked repository titled "**Submission for Assignment 4.**" Include the demo link in the description.
