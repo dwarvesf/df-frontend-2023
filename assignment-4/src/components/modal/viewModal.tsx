@@ -7,7 +7,7 @@ interface Book {
 }
 
 function viewModal(item: Book, deleteItem: void) {
-  ;<div className="text-center px-p50 mt-m30 leading-[1.5]">
+  ; <div className="text-center px-p50 mt-m30 leading-[1.5]">
     <a className=" text-primary font-bold flex  items-center mb-m30" href="/">
       <svg
         stroke="currentColor"
