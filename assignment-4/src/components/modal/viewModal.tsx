@@ -18,7 +18,7 @@ export default function viewModal(item: Book, deleteItem: void) {
           height="1em"
           width="1em"
           xmlns="http://www.w3.org/2000/svg"
-        ></svg>{' '}
+        />{' '}
         <span className="">Back</span>
       </a>
       <h1 className="text-[18px] mb-m20">
