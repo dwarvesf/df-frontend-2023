@@ -43,6 +43,12 @@ module.exports = {
         'react/jsx-sort-props': 'off',
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
+        'prettier/prettier': [
+          'error',
+          {
+            endOfLine: 'auto',
+          },
+        ],
       },
     },
   ],
