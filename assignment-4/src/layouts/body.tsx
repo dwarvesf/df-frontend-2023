@@ -12,7 +12,6 @@ const dataKey: string = 'books'
 const maxRecord = 5
 
 interface Book {
-  id: number
   name: string
   author: string
   topic: string
@@ -114,20 +113,26 @@ function MainBody() {
     return dataPage.map((i: Book) => {
       return (
         <tr className="h-12" key={i.name}>
-          <td className="text-black border-2 border-red-500">{i.name}</td>
-          <td className="text-black border-2 border-red-500">{i.author}</td>
-          <td className="text-black border-2 border-red-500">{i.topic}</td>
-          <td className="text-red-500 border-2 border-red-500">
+          <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
+            {i.name}
+          </td>
+          <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
+            {i.author}
+          </td>
+          <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
+            {i.topic}
+          </td>
+          <td className="text-red-500 border-2 dark:border-sky-500 border-red-500">
             <button
-              className="m-2 underline decoration-double"
+              className="m-2 underline decoration-double dark:text-sky-500"
               type="button"
               onClick={() => openModal('Delete', i)}
             >
               <span>Delete</span>
             </button>
             <button
-              onClick={() => router.push(`/book/${i.id}`)}
-              className="m-2 underline decoration-double"
+              onClick={() => router.push(`/book/${i.name}`)}
+              className="m-2 underline decoration-double dark:text-sky-500"
             >
               View
             </button>

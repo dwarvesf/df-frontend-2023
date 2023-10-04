@@ -1,11 +1,11 @@
 import React, { FormEvent } from 'react'
 
 interface Book {
-  id: number
   name: string
   author: string
   topic: string
 }
+
 export default function CreateModal({
   close,
   addBook,
@@ -15,12 +15,10 @@ export default function CreateModal({
 }) {
   const getBookForm = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    let i = 1
     const form = event.currentTarget
     const formData = new FormData(form)
 
     const book: Book = {
-      id: i++,
       name: formData.get('name') as string,
       author: formData.get('author') as string,
       topic: formData.get('topic') as string,
@@ -70,7 +68,7 @@ export default function CreateModal({
   return (
     <div
       id="create-modal"
-      className="bg-black-rgba fixed left-0 top-0 overflow-auto pt-60 w-full h-full z-10"
+      className="text-black bg-black-rgba fixed left-0 top-0 overflow-auto pt-60 w-full h-full z-10"
     >
       <div className="modal-content p-16 bg-gray-100 w-2/5 m-auto">
         <div className="modal-header">
@@ -85,7 +83,7 @@ export default function CreateModal({
         <br />
         <div className="modal-body">
           <form onSubmit={getBookForm}>
-            <div className="relative z-0 w-full h-full mb-6 group">
+            <div className="relative z-0 w-full h-full mb-6 group ">
               <input
                 id="name"
                 name="name"

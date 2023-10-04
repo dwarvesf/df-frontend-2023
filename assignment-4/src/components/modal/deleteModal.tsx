@@ -1,5 +1,4 @@
 interface Book {
-  id: number
   name: string
   author: string
   topic: string
@@ -19,7 +18,7 @@ export default function DeleteModal({
   return (
     <div
       id="delete-modal"
-      className="text-center bg-black-rgba fixed left-0 top-0 overflow-auto pt-60 w-full h-full z-10 "
+      className="text-center dark:text-black bg-black-rgba fixed left-0 top-0 overflow-auto pt-60 w-full h-full z-10 "
     >
       <div className="p-16 bg-gray-100 w-2/5 m-auto">
         <div className="modal-header">
