@@ -164,8 +164,8 @@ function MainBody() {
   )
 
   return (
-    <div>
-      <main>
+    <section>
+      <div>
         <div className="font-extrabold text-right p-12">
           <input
             type="text"
@@ -188,9 +188,9 @@ function MainBody() {
         <div className="pagination flex justify-end -space-x-px text-sm m-6">
           {paginationBtn}
         </div>
-      </main>
+      </div>
       {modalOpen ? displayModal(closeModal) : null}
-    </div>
+    </section>
   )
 }
 

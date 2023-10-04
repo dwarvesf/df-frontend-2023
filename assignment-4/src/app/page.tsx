@@ -6,9 +6,7 @@ import MainLayout from '../layouts/MainLayouts'
 export default function Home() {
   return (
     <div>
-      <main>
-        <MainLayout />
-      </main>
+      <MainLayout />
     </div>
   )
 }

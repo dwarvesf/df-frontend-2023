@@ -1,6 +1,6 @@
 export default function MainFooter() {
   return (
-    <footer className="text-center text-2xl ">
+    <section className="text-center text-2xl ">
       Made by{' '}
       <span>
         <a href="https://github.com/iTeddy1">@Teddy</a>
@@ -9,6 +9,6 @@ export default function MainFooter() {
       <span>
         <a href="https://github.com/dwarvesf">@Dwarves</a>
       </span>
-    </footer>
+    </section>
   )
 }
