@@ -177,7 +177,7 @@ function MainBody() {
           <button
             id="btnAddBook"
             type="button"
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="dark:bg-sky-500 dark:hover:bg-sky-700 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             onClick={() => openModal('Create')}
           >
             Add Book
