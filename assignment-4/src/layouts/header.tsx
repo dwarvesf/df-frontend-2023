@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeSwitcher } from '../components/theme/theme-toggle'
+import { ThemeSwitcher } from '../components/Theme/theme-toggle'
 
 export default function Header() {
   return (
