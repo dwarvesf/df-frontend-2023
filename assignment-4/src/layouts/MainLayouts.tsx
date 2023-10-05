@@ -5,7 +5,7 @@ import MainFooter from './footer'
 
 function MainLayout() {
   return (
-    <main className="bg-slate-50 dark:bg-slate-900">
+    <main>
       <MainHeader />
       <MainBody />
       <MainFooter />

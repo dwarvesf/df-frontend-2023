@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import CreateModal from '../components/Modal/CreateBookModal'
-import DeleteModal from '../components/Modal/DeleteBookModal'
-import Table from '../components/Table/table'
+import CreateModal from '../components/modal/createModal'
+import DeleteModal from '../components/modal/deleteModal'
+import Table from '../components/table/table'
 
 let action: string | null
 let selectedItem: Book
@@ -109,13 +109,13 @@ function MainBody() {
     return dataPage.map((i: Book) => {
       return (
         <tr className="h-12" key={i.name}>
-          <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
+          <td className="text-black p-4 border-2 border-red-500 dark:border-sky-500 dark:text-white">
             {i.name}
           </td>
-          <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
+          <td className="text-black p-4 border-2 border-red-500 dark:border-sky-500 dark:text-white">
             {i.author}
           </td>
-          <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
+          <td className="text-black p-4 border-2 border-red-500 dark:border-sky-500 dark:text-white">
             {i.topic}
           </td>
           <td className="text-red-500 border-2 border-red-500 dark:border-sky-500">
