@@ -2,8 +2,8 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import CreateModal from '../components/modal/createModal'
-import DeleteModal from '../components/modal/deleteModal'
+import CreateModal from '../components/modal/CreateBookModal'
+import DeleteModal from '../components/modal/DeleteBookModal'
 import Table from '../components/table/table'
 
 let action: string | null
