@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import CreateModal from '../components/Modal/CreateBookModal'
-import DeleteModal from '../components/Modal/DeleteBookModal'
-import Table from '../components/Table/table'
+import CreateModal from '../components/modal/createModal'
+import DeleteModal from '../components/modal/deleteModal'
+import Table from '../components/table/table'
 
 let action: string | null
 let selectedItem: Book
@@ -19,21 +19,27 @@ interface Book {
 
 function MainBody() {
   const router = useRouter()
+
   // set State
   const [data, setData] = useState([])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [searchItem, setSearchItem] = useState<string>('')
   const [page, setPage] = useState<number>(0)
-  const [total, setTotal] = useState<number>(0)
+
+  // Search book
+  const FilterTitle: Array<Book> = useMemo(() => {
+    const pattern = new RegExp(searchItem.toLowerCase())
+    return data.filter((i: Book) => pattern.test(i.name.toLowerCase()))
+  }, [data, searchItem])
+
+  const total = useMemo(() => {
+    return Math.ceil(FilterTitle.length / maxRecord)
+  }, [data, searchItem])
 
   useEffect(() => {
     const bookList = JSON.parse(localStorage.getItem(dataKey) || '[]')
     setData(bookList)
   }, [])
-
-  useEffect(() => {
-    NumberOfPages()
-  })
 
   function updateList(data): void {
     localStorage.setItem(dataKey, JSON.stringify(data))
@@ -73,8 +79,9 @@ function MainBody() {
   // Handle Add, Delete Item
 
   function addItem(newItem: Book) {
-    const newList = [...data, newItem]
+    const newList = [newItem, ...data]
     updateList(newList)
+    setPage(0)
     setModalOpen(false)
   }
 
@@ -87,17 +94,6 @@ function MainBody() {
     newList.splice(index, 1)
     updateList(newList)
     setModalOpen(false)
-  }
-
-  // Search book
-  const FilterTitle: Array<Book> = useMemo(() => {
-    const pattern = new RegExp(searchItem.toLowerCase())
-    return data.filter((i: Book) => pattern.test(i.name.toLowerCase()))
-  }, [data, searchItem])
-
-  function NumberOfPages(): void {
-    const totalPageCount = Math.ceil(FilterTitle.length / maxRecord)
-    setTotal(totalPageCount)
   }
 
   function DisplayItem() {
@@ -122,7 +118,7 @@ function MainBody() {
           <td className="text-black border-2 border-red-500 dark:border-sky-500 dark:text-white">
             {i.topic}
           </td>
-          <td className="text-red-500 border-2 dark:border-sky-500 border-red-500">
+          <td className="text-red-500 border-2 border-red-500 dark:border-sky-500">
             <button
               className="m-2 underline decoration-double dark:text-sky-500"
               type="button"
@@ -169,7 +165,7 @@ function MainBody() {
         <div className="font-extrabold text-right p-12">
           <input
             type="text"
-            className="border text-black font-bold m-4 py-2 px-4 rounded focus:shadow-outline"
+            className="border dark:text-white text-black font-bold m-4 py-2 px-4 rounded focus:shadow-outline"
             placeholder="Search books..."
             value={searchItem}
             onChange={(e) => setSearchItem(e.target.value)}
