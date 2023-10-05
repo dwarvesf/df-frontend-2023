@@ -34,7 +34,7 @@ function MainBody() {
 
   const total = useMemo(() => {
     return Math.ceil(FilterTitle.length / maxRecord)
-  }, [data, searchItem])
+  }, [FilterTitle])
 
   useEffect(() => {
     const bookList = JSON.parse(localStorage.getItem(dataKey) || '[]')
