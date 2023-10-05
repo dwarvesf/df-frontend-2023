@@ -1,3 +1,4 @@
+import { useRouter } from 'next/navigation'
 import { Space, Typography, Switch, Avatar, Button } from 'antd'
 import { FaUserAlt } from 'react-icons/fa'
 import { HeaderProps } from '../_types/Header.types'
@@ -5,6 +6,8 @@ import { HeaderProps } from '../_types/Header.types'
 const { Text } = Typography
 
 const Header = ({ isDarkMode, handleSwitchTheme }: HeaderProps) => {
+  const router = useRouter()
+
   return (
     <Space
       style={{
@@ -46,7 +49,11 @@ const Header = ({ isDarkMode, handleSwitchTheme }: HeaderProps) => {
           {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
           {isDarkMode ? 'Dark' : 'Light'} mode
         </Text>
-        <Avatar icon={<FaUserAlt />} />
+        <Avatar
+          onClick={() => router.replace('/login')}
+          icon={<FaUserAlt />}
+          style={{ cursor: 'pointer' }}
+        />
         <Text style={{ fontSize: '14px', fontWeight: 500 }}>Tien Anh Luu</Text>
       </Space>
     </Space>

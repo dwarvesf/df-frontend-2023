@@ -1,14 +1,20 @@
+import { useEffect } from 'react'
 import { Modal, Form, Input, Select } from 'antd'
 import { topics } from '../_utils/constants'
 import { BookModalProps } from '../_types/BookModal.types'
 
 const BookModal = ({
-  form,
   openModal,
   defaultValues,
   handleOK,
   handleCloseModal,
 }: BookModalProps) => {
+  const [form] = Form.useForm()
+
+  useEffect(() => {
+    form.setFieldsValue(defaultValues)
+  }, [form, defaultValues])
+
   const initialValues =
     defaultValues.id !== -1 ? defaultValues : { topic: 'Programming' }
 
@@ -16,7 +22,7 @@ const BookModal = ({
 
   return (
     <Modal
-      title="Add book"
+      title={`${okText} book`}
       open={openModal}
       okText={okText}
       cancelText="Cancel"
@@ -38,6 +44,7 @@ const BookModal = ({
       onCancel={handleCloseModal}
     >
       <Form
+        key={defaultValues.id}
         form={form}
         layout="vertical"
         name="book-form"
@@ -47,7 +54,7 @@ const BookModal = ({
           name="name"
           label="Name"
           rules={[
-            { required: true, message: 'Please input the name of book!' },
+            { required: true, message: 'Please fill the book name!' },
             {
               min: 5,
               message: 'Book name should contain at least 5 characters',

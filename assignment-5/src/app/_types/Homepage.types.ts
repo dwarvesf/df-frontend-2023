@@ -11,7 +11,7 @@ export interface TableDataType {
   name: string
   author: string
   topic: string
-  action: 'Delete'
+  action: string
 }
 
 export interface AddBookInputs {

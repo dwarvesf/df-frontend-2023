@@ -8,7 +8,6 @@ import {
   Table,
   Space,
   Input,
-  Form,
   message,
   Popconfirm,
 } from 'antd'
@@ -21,8 +20,6 @@ import { Book, TableDataType } from '../_types/Homepage.types'
 
 const Homepage = () => {
   // const { defaultAlgorithm, darkAlgorithm } = theme
-  const [addBookForm] = Form.useForm()
-  const [editBookForm] = Form.useForm()
   const [messageApi, contextHolder] = message.useMessage()
 
   //   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -48,11 +45,6 @@ const Homepage = () => {
       setBooksFiltered(dat)
     }
   }, [])
-
-  // useEffect(() => {
-  //   localStorage.setItem('books', JSON.stringify(books))
-  //   setBooksFiltered(books)
-  // }, [books])
 
   const tableColumns: ColumnsType<TableDataType> = [
     {
@@ -96,8 +88,17 @@ const Homepage = () => {
           <Button type="link" href={`/${record['#']}`}>
             View
           </Button>
-          |
-          <Button type="text" onClick={() => setOpenEditBookModal(true)}>
+          |{' '}
+          <Button
+            type="text"
+            onClick={() => {
+              const bookToEdit =
+                books.find((book) => book.id === Number(record['#'])) ||
+                emptyBook
+              setBookEdit(bookToEdit)
+              setOpenEditBookModal(true)
+            }}
+          >
             Edit
           </Button>
         </Space>
@@ -112,7 +113,7 @@ const Homepage = () => {
       name: book.name,
       author: book.author,
       topic: book.topic,
-      action: 'Delete',
+      action: '',
     }
   })
 
@@ -235,14 +236,12 @@ const Homepage = () => {
         />
       </Space.Compact>
       <BookModal
-        form={addBookForm}
         defaultValues={emptyBook}
         handleOK={handleAddBook}
         handleCloseModal={handleCloseAddBookModal}
         openModal={openAddBookModal}
       />
       <BookModal
-        form={editBookForm}
         defaultValues={bookEdit}
         handleOK={handleEditBook}
         handleCloseModal={handleCloseEditBookModal}
