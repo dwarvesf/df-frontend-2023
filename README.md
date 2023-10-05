@@ -18,7 +18,7 @@ Welcome to the Frontend Training 2023 repository! This is where you'll find exer
 | 4   | [NextJS & TailwindCSS](./assignment-4/)                                   | 06/10/2023 |
 | 5   | [Form handling](./assignment-5/)                                          | 08/10/2023 |
 | 6   | [Authentication & API Integration](./assignment-6/)                       | 13/10/2023 |
-| 7   | Type-safe client server                                                   |            |
+| 7   | [Type-safe client server](./assignment-7/)                                | 15/10/2023 |
 | 8   | Modern workflow & Deployment                                              |            |
 
 Stay tuned for updates on future assignments!
