@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import MyLayout from './_components/Layout'
+import { ThemeProvider } from './_context/ThemeContext'
 
 export const metadata: Metadata = {
   title: 'Bookstore',
@@ -24,7 +25,9 @@ export default function RootLayout({
       />
     </head> */}
       <body className={inter.className} style={{ minHeight: '100vh' }}>
-        <MyLayout>{children}</MyLayout>
+        <ThemeProvider>
+          <MyLayout>{children}</MyLayout>
+        </ThemeProvider>
       </body>
     </html>
   )

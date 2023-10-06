@@ -1,32 +1,37 @@
 'use client'
 
-import { useState, createContext } from 'react'
-// import Script from 'next/script'
-import { useParams } from 'next/navigation'
-// import { Layout } from 'antd'
+import { usePathname } from 'next/navigation'
+import { ConfigProvider, theme } from 'antd'
 import MyHeader from './Header'
 import { LayoutProps } from '../_types/Layout.types'
-
-const ThemeContext = createContext(false)
-// const { Header, Content } = Layout
+import { useTheme } from '../_context/ThemeContext'
 
 const MyLayout = ({ children }: LayoutProps) => {
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const params = useParams()
+  const pathname = usePathname()
+  const { isDarkMode } = useTheme()
+  const { defaultAlgorithm, darkAlgorithm } = theme
 
-  const handleSwitchTheme = () => {
-    setIsDarkMode((oldValue) => !oldValue)
-  }
-
-  if (params.login) {
-    console.log('Helloooooo')
+  if (pathname === '/login') {
+    return (
+      <ConfigProvider
+        theme={{
+          algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+        }}
+      >
+        {children}
+      </ConfigProvider>
+    )
   }
 
   return (
-    <ThemeContext.Provider value={isDarkMode}>
-      <MyHeader isDarkMode={isDarkMode} handleSwitchTheme={handleSwitchTheme} />
+    <ConfigProvider
+      theme={{
+        algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+      }}
+    >
+      <MyHeader />
       {children}
-    </ThemeContext.Provider>
+    </ConfigProvider>
   )
 }
 

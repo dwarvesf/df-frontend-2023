@@ -1,12 +1,13 @@
 import { useRouter } from 'next/navigation'
 import { Space, Typography, Switch, Avatar, Button } from 'antd'
 import { FaUserAlt } from 'react-icons/fa'
-import { HeaderProps } from '../_types/Header.types'
+import { useTheme } from '../_context/ThemeContext'
 
 const { Text } = Typography
 
-const Header = ({ isDarkMode, handleSwitchTheme }: HeaderProps) => {
+const Header = () => {
   const router = useRouter()
+  const { isDarkMode, handleSwitchTheme } = useTheme()
 
   return (
     <Space
@@ -30,7 +31,6 @@ const Header = ({ isDarkMode, handleSwitchTheme }: HeaderProps) => {
             margin: 0,
             padding: 0,
             height: '100%',
-            // color: isDarkMode ? 'white' : 'black',
           }}
         >
           Bookstore

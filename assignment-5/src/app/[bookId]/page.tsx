@@ -7,10 +7,12 @@ import { BsFillTrashFill } from 'react-icons/bs'
 import { getData } from '../_utils/data'
 import { Book } from '../_types/Homepage.types'
 import { emptyBook } from '../_utils/constants'
+import { useTheme } from '../_context/ThemeContext'
 
 const { Text, Title } = Typography
 
 const BookDetail = ({ params: { bookId } }: { params: { bookId: string } }) => {
+  const { isDarkMode } = useTheme()
   const books = getData()
   const book: Book =
     books.find((item) => item.id === Number(bookId)) ?? emptyBook
@@ -32,7 +34,15 @@ const BookDetail = ({ params: { bookId } }: { params: { bookId: string } }) => {
   }
 
   return (
-    <Space.Compact direction="vertical" style={{ margin: '1rem' }}>
+    <Space.Compact
+      direction="vertical"
+      style={{
+        padding: '1rem',
+        width: '100%',
+        minHeight: 'calc(100vh - 45.09px)',
+        backgroundColor: isDarkMode ? 'rgb(36,37,38)' : 'white',
+      }}
+    >
       {contextHolder}
       <a
         href="/"
@@ -60,6 +70,7 @@ const BookDetail = ({ params: { bookId } }: { params: { bookId: string } }) => {
         onConfirm={() => handleDeleteBook(book.id)}
         okText="Yes"
         cancelText="No"
+        style={{ boxShadow: '1px 1px 1px rgba(255,255,255,0.25)' }}
       >
         <Button
           type="text"

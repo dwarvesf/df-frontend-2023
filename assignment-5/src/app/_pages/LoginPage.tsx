@@ -3,20 +3,24 @@
 import { useRouter } from 'next/navigation'
 import { Space, Card, Form, Input, Button, Typography } from 'antd'
 import { LoginFieldType } from '../_types/LoginPage.types'
+import { useTheme } from '../_context/ThemeContext'
 
 const { Title } = Typography
 
 const LoginPage = () => {
   const [form] = Form.useForm()
+  const { isDarkMode } = useTheme()
   const router = useRouter()
 
   return (
     <Space
       style={{
         width: '100%',
+        minHeight: '100vh',
         display: 'flex',
         justifyContent: 'center',
-        marginTop: '6rem',
+        alignItems: 'center',
+        backgroundColor: isDarkMode ? 'rgb(36,37,38)' : 'white',
       }}
     >
       <Card
@@ -32,8 +36,6 @@ const LoginPage = () => {
           name="login-form"
           layout="vertical"
           labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
           onFinish={() => {
             alert('Login success')
             router.replace('/')

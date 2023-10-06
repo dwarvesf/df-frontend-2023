@@ -38,6 +38,7 @@ const Homepage = () => {
     if (dat.length === 0) {
       setBooks(defaultBooks)
       setBooksFiltered(defaultBooks)
+      localStorage.setItem('books', JSON.stringify(defaultBooks))
     } else {
       setBooks(dat)
       setBooksFiltered(dat)
