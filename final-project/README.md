@@ -35,7 +35,15 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
 
 - `/auth/login`
 
-  This API is used to authenticate the user. It takes in a username and password and returns an access token. **You will need to acquire an access token from this API to use the chat completions API.**
+  This API is used to authenticate the user. It takes in a username and password and returns an access token.
+
+  There are a few things you need to be aware before using this API:
+
+  1. Your username is your `Discord's name` you've specified in the [Google Sheets](https://docs.google.com/spreadsheets/d/11DjfMCVNNgEGEKZ2jhNWenjMdQnaTQ3cXtA72KxGQgU/edit?usp=sharing).
+  2. Your password will provided for you. Ask our engineers on our `#frontend-23` channel, and we'll PM your your pass.
+  3. **You will need to acquire an access token from this API to use the chat completions API.**
+
+  ![](https://i.imgur.com/eP61LNl.png)
 
   Example curl request:
   ```sh
@@ -100,6 +108,12 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
   }
   ```
 
+  You can also run this on our API to see the response: https://openrouter-api.dwarvesf.com/api/v1/chat/completions.
+
+  ![](https://i.imgur.com/gSv3Zl2.png)
+
+  ![](https://i.imgur.com/eup03Av.png)
+
   To stream with the API, update your curl request to include the header `Accept: text/event-stream` and in your body, add `stream: true`:
 
   ```sh
@@ -115,7 +129,7 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
       {"role": "system", "content": "You are a helpful assistant."},
       {"role": "user", "content": "Explain the Great Gatsby in 200 words."}
     ],
-    stream: true
+    "stream": true
   }'
   ```
 
