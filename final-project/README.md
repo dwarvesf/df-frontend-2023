@@ -4,10 +4,10 @@ Your final project will consist of creating an app that takes advantage of ChatG
 
 ## Dwarves Chat API
 
-We have a simple chat API that allows users to send and receive messages. We've hosted our API to be similar to OpenAI's [chat completions](https://platform.openai.com/docs/api-reference/chat) API.
+We have a simple chat API that allows users to send and receive messages. We've hosted our API to be a clone of OpenAI's [chat completions](https://platform.openai.com/docs/api-reference/chat) API. If you have any issues with our API, please open an issue in our `#frontend-23` channel on Discord.
 
-https://openrouter-api.dwarvesf.com/api/v1/docs
-https://openrouter-api.dwarvesf.com/api/v1/openapi.json
+- https://openrouter-api.dwarvesf.com/api/v1/docs
+- https://openrouter-api.dwarvesf.com/api/v1/openapi.json
 
 ![](https://i.imgur.com/yVyZpd1.png)
 
@@ -82,7 +82,7 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
 
 - `/chat/completions`
 
-  This API mimics OpenAI's [chat completions](https://platform.openai.com/docs/api-reference/chat) API. You can refer to their [docs](https://platform.openai.com/docs/guides/gpt/chat-completions-api) for refernce on how to use this API in depth.
+  This API mimics OpenAI's [chat completions](https://platform.openai.com/docs/api-reference/chat) API. You can refer to their [docs](https://platform.openai.com/docs/guides/gpt/chat-completions-api) for reference on how to use this API in depth.
 
   The `accessToken` you acquire from the `/auth/login` API will be used in the `Authorization` header. Take note that this **this API supports both POST and SSE requests.**
 
@@ -151,3 +151,13 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
 
   ...
   ```
+
+When using our API, you will see that you can select your chat model. We support any models hosted on [OpenRouter](https://openrouter.ai/docs#quick-start). However, we highly recommend you use the following models for your application:
+
+  - `openai/gpt-3.5-turbo`
+  - `openai/gpt-3.5-turbo-16k`
+  - `openai/gpt-4`
+  - `openai/gpt-4-32k`
+  - `openai/gpt-3.5-turbo-instruct`
+
+Also take note that your access token will have a credit limit to how many tokens you can request on our server. If you need more credits, contact our engineers on our `#frontend-23` channel.
