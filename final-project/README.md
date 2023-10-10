@@ -29,6 +29,16 @@ Edit your `orval.config.js` file and update the target OpenAPI document to the `
 ...
 ```
 
+Then run the `generate:api` command we've added in the `package.json` with PNPM:
+
+```sh
+pnpm run generate:api
+```
+
+You will be able to see your types and code generated from our API:
+
+![](https://i.imgur.com/hzZQza1.png)
+
 ### API Usage
 
 Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. In our API, we have essentially 2 routes:
