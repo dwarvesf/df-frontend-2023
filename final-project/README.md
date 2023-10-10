@@ -2,6 +2,26 @@
 
 Your final project will consist of creating an app that takes advantage of ChatGPT and LLMs. We have a list of possible application ideas listed in our [Google Sheets](https://docs.google.com/spreadsheets/d/11DjfMCVNNgEGEKZ2jhNWenjMdQnaTQ3cXtA72KxGQgU/edit#gid=286807029). Please submit any other ideas you may have to the team and we will assign one of our engineers to help and support you with your project.
 
+Some ideas will include, but are not limited to:
+
+1. **Code review**: A process of reviewing a software codebase to identify bugs, increase code quality, and help developers learn the source code. An important step in the software development process to get a second opinion on the solution and implementation before it’s merged into an upstream branch like a feature branch or the main branch.
+
+2. **Chess game**: A board game for two players, either with Chinese or Western chess, each controlling an army of chess pieces, with the objective to checkmate the opponent's king. Have ChatGPT evaluate positions on the board and create an optimal strategy and path to win the game.
+
+3. **Interview training app**: An app that helps candidates and students practice interviews through customized interviews, instant feedback, questions prepared, answer guide, and other features. Use case is to provide powerful insight on how you perform and boosts your confidence by receiving instant feedback on your answers and learn from your mistakes during every interview.
+
+4. **i18n helper app**: An app that helps developers prepare their software for multilingual support (i18n) and align internationalized software with particular cultures' needs (l10n) by translating and generating JSON files.
+
+5. **Social media manager**: A tool that helps businesses manage their social media accounts by scheduling posts, analyzing performance metrics, monitoring mentions of their brand or products, and engaging with their audience. It can help businesses save time and streamline their social media marketing efforts.
+
+6. **Resume builder**: A tool that helps job seekers create professional resumes quickly and easily by providing templates, tips, and suggestions for content based on the job seeker's experience and skills. It can help job seekers stand out from other applicants by presenting their qualifications in a clear and concise manner.
+
+7. **Mermaid chart generator**: A tool that generates diagrams and flowcharts using text-based syntax called Mermaid. It allows users to create diagrams quickly without having to use a graphical user interface (GUI). Mermaid supports various types of diagrams such as flowcharts, sequence diagrams, Gantt charts, class diagrams, state diagrams, pie charts, ER diagrams, etc.
+
+8. **Storybook GPT**: A tool that generates component stories using ChatGPT. It allows developers to create component stories without having to write them by hand. It can help developers save time and effort by automating the process of creating component stories.
+
+9. **Language learning app**: An app that helps users learn a new language by providing lessons on grammar, vocabulary, pronunciation, etc., through interactive exercises such as quizzes, games, flashcards, etc., Users can track their progress over time and receive feedback on their performance to improve their language skills effectively. Some popular language learning apps include Duolingo, Babbel, Rosetta Stone, etc.
+
 ## Dwarves Chat API
 
 We have a simple chat API that allows users to send and receive messages. We've hosted our API to be a clone of OpenAI's [chat completions](https://platform.openai.com/docs/api-reference/chat) API. If you have any issues with our API, please open an issue in our `#frontend-23` channel on Discord.
