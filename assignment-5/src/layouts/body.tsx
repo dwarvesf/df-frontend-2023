@@ -2,9 +2,11 @@
 
 import React, { useState, useMemo, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import EditModal from '../components/Modal/EditBookModal'
 import CreateModal from '../components/Modal/CreateBookModal'
 import DeleteModal from '../components/Modal/DeleteBookModal'
 import Table from '../components/Table/table'
+// import { allBooks } from '../../data'
 
 let action: string | null
 let selectedItem: Book
@@ -21,7 +23,7 @@ function MainBody() {
   const router = useRouter()
 
   // set State
-  const [data, setData] = useState([])
+  const [data, setData] = useState<Book[]>([])
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const [searchItem, setSearchItem] = useState<string>('')
   const [page, setPage] = useState<number>(0)
@@ -74,6 +76,10 @@ function MainBody() {
         <DeleteModal close={close} item={selectedItem} delBook={deleteItem} />
       )
     }
+    // Edit Modal
+    if (action === 'Edit') {
+      return <EditModal close={close} item={selectedItem} editBook={editBook} />
+    }
   }
 
   // Handle Add, Delete Item
@@ -94,6 +100,14 @@ function MainBody() {
     newList.splice(index, 1)
     updateList(newList)
     setModalOpen(false)
+  }
+
+  function editBook(editedBook: Book) {
+    const updatedBooks = data.map((book) =>
+      book === selectedItem ? editedBook : book,
+    )
+    updateList(updatedBooks)
+    setPage(0)
   }
 
   function DisplayItem() {
@@ -120,23 +134,30 @@ function MainBody() {
           </td>
           <td className="text-red-500 border-2 border-red-500 dark:border-sky-500">
             <button
+              onClick={() => router.push(`/book`)}
+              className="m-2 underline decoration-double dark:text-sky-500"
+            >
+              View
+            </button>{' '}
+            <button
+              className="m-2 underline decoration-double dark:text-sky-500"
+              onClick={() => openModal('Edit', i)}
+            >
+              Edit
+            </button>
+            <button
               className="m-2 underline decoration-double dark:text-sky-500"
               type="button"
               onClick={() => openModal('Delete', i)}
             >
               <span>Delete</span>
             </button>
-            <button
-              onClick={() => router.push(`/book/${i.name}`)}
-              className="m-2 underline decoration-double dark:text-sky-500"
-            >
-              View
-            </button>
           </td>
         </tr>
       )
     })
   }
+
   // Pagination
   const paginationBtn: Array<JSX.Element> = Array.from(
     { length: total },

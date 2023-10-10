@@ -1,16 +1,15 @@
+
 import React from 'react'
-import MainHeader from './header'
 import MainBody from './body'
+import MainHeader from './header'
 import MainFooter from './footer'
 
-function MainLayout() {
+export default function MainLayout() {
   return (
-    <main>
+    <div>
       <MainHeader />
       <MainBody />
       <MainFooter />
-    </main>
+    </div>
   )
 }
-
-export default MainLayout
