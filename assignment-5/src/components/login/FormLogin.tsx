@@ -4,7 +4,6 @@ import { z } from 'zod'
 import { useRouter } from 'next/navigation'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-// import { useAuthContext } from './Auth'
 
 const passwordRegex =
   /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+])(?=.{8,})[a-zA-Z0-9!@#$%^&*()_+]*$/

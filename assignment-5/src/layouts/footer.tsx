@@ -1,3 +1,5 @@
+import React from 'react'
+
 export default function MainFooter() {
   return (
     <section className="text-center text-2xl ">
