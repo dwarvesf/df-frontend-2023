@@ -144,7 +144,7 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
   ```
 
   You will get a **stream** of responses as the API processes your message. You can use this message stream to append your messages in real-time.
-  ```json
+  ```
   ...
 
   data: {"id": "gen-xGt1Nyy2WbqG7RgOCqbgMwsnAosJ", "choices": [{"index": 0, "delta": {"role": "assistant", "content": "\n"}}]}
