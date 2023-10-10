@@ -1,4 +1,3 @@
-
 import React from 'react'
 import MainBody from './body'
 import MainHeader from './header'
