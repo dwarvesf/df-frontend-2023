@@ -1,12 +1,10 @@
 'use client'
 
 import React from 'react'
-import MainLayout from '../../layouts/MainLayouts'
+import LoginPage from '../components/login/FormLogin'
 
-export default function Home() {
-  return (
-    <main className="flex flex-col justify-between min-h-screen dark:bg-slate-800">
-      <MainLayout />
-    </main>
-  )
+const Home = () => {
+  return <LoginPage />
 }
+
+export default Home
