@@ -41,7 +41,14 @@ function MainBody() {
     setData(bookList)
   }, [])
 
-  function updateList(data): void {
+  useEffect(() => {
+    if (page >= 1 && page >= Math.ceil(FilterTitle.length / maxRecord)) {
+      setPage(page - 1)
+    }
+    // if(FilterTitle.length <= 5 ) setPage(0)
+  }, [FilterTitle.length, page])
+
+  function updateList(data: Book[]): void {
     localStorage.setItem(dataKey, JSON.stringify(data))
     setData(data)
     setPage(Math.floor((data.length - 1) / maxRecord))
@@ -63,7 +70,7 @@ function MainBody() {
     setModalOpen(false)
   }
 
-  function displayModal(close) {
+  function displayModal(close: { (): void }) {
     // Add Modal
     if (action === 'Create') {
       return <CreateModal close={close} addBook={addItem} />
@@ -96,7 +103,7 @@ function MainBody() {
     setModalOpen(false)
   }
 
-  function DisplayItem() {
+  function DisplayItem(): React.JSX.Element[]  {
     const pattern = new RegExp(searchItem.toLowerCase())
     const FilterTitle: Array<Book> = data.filter((i: Book) =>
       pattern.test(i.name.toLowerCase()),
