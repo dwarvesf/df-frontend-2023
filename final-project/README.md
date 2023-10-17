@@ -78,7 +78,7 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
   Example curl request:
   ```sh
   curl -X 'POST' \
-    'https://dwarvesf--openrouter-proxy-fastapi-app-monotykamary-dev.modal.run/api/v1/auth/login' \
+    'https://https://openrouter-api.dwarvesf.com/api/v1/auth/login' \
     -H 'accept: application/json' \
     -H 'Content-Type: application/json' \
     -d '{
@@ -171,6 +171,27 @@ Our base URL for our API lives at `https://openrouter-api.dwarvesf.com/api/v1`. 
 
   ...
   ```
+
+#### CORS
+
+When using CORS, we advise you add the `Origin` and the `Access-Control-Request-Headers` headers to your request.
+
+```sh
+curl -X 'POST' \
+  'https://openrouter-api.dwarvesf.com/api/v1/chat/completions' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtb25vdHlrYW1' \
+  -H 'accept: application/json' \
+  -H 'Origin: http://localhost'\
+  -H 'Access-Control-Request-Method: POST' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "model": "openai/gpt-3.5-turbo",
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Explain the Great Gatsby in 200 words."}
+  ]
+}'
+```
 
 When using our API, you will see that you can select your chat model. We support any models hosted on [OpenRouter](https://openrouter.ai/docs#quick-start). However, we highly recommend you use the following models for your application:
 
