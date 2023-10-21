@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import Header from '../layouts/header'
+import Header from '../book page layout/header'
 
 export default function NotFound() {
   const router = useRouter()
