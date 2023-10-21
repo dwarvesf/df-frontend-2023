@@ -12,6 +12,7 @@ import {
   LoginSchema,
 } from '../../components/schema/LoginSchema'
 import useAuth from '../../api/auth/auth'
+import { ThemeSwitcher } from '../../components/Theme/theme-toggle'
 
 export default function LoginPage() {
   const {
@@ -51,35 +52,26 @@ export default function LoginPage() {
   }
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gray-50 dark:bg-gray-900 ">
+      <div className="flex items-center justify-center">
+        {' '}
+        <ThemeSwitcher />
+      </div>
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <Link
-          href="/"
-          className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-        >
-          <Image
-            className="w-8 h-8 mr-2 rounded-lg"
-            width={8}
-            height={8}
-            src="/df-logo.png"
-            alt="logo"
-          />
-          Book Store
-        </Link>
-        <div className="flex flex-col bg-white dark:bg-gray-800 dark:border-gray-700 shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
+        <div className="fixed bg-white dark:bg-gray-800 dark:border-gray-700 shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
           <div className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
             Login To Your Account
           </div>
 
           <div className="mt-10">
             <form
-              className="space-y-4 md:space-y-6"
+              className="space-y-4 md:space-y-6 text-gray-900 md:text-2xl dark:text-white"
               onSubmit={handleSubmit(onSubmit)}
             >
               <div className="flex flex-col mb-6">
                 <label
                   htmlFor="email"
-                  className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                  className="mb-1 text-xs sm:text-sm tracking-wide "
                 >
                   E-Mail Address:
                 </label>
@@ -117,7 +109,7 @@ export default function LoginPage() {
               <div className="flex flex-col mb-6">
                 <label
                   htmlFor="password"
-                  className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600"
+                  className="mb-1 text-xs sm:text-sm tracking-wide"
                 >
                   Password:
                 </label>
@@ -137,7 +129,6 @@ export default function LoginPage() {
                       </svg>
                     </span>
                   </div>
-
                   <input
                     id="password"
                     disabled={isSubmitting}
@@ -204,7 +195,7 @@ export default function LoginPage() {
                   </span>
                 </button>
               </div>
-              <p className="text-sm font-light text-gray-500 dark:text-gray-400">
+              <p className="text-sm font-light">
                 Don’t have an account yet?{' '}
                 <Link
                   href="/signup"
