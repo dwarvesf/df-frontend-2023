@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 
@@ -12,7 +14,7 @@ export const ThemeSwitcher = () => {
   if (!mounted) {
     return null
   }
-  const displayBtn = (theme) => {
+  const displayBtn = (theme: string | undefined) => {
     if (theme === 'dark') {
       return (
         <svg

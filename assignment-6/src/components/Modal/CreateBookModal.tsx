@@ -1,62 +1,51 @@
-import React, { FormEvent } from 'react'
+import React from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Book } from '../interface/book'
+import { options } from '../constant/topic'
+import { BookSchema, BookSchemaType } from '../schema/BookSchema'
 
-interface Book {
-  name: string
-  author: string
-  topic: string
+interface CreateModalProps {
+  close: () => void
+  addBook: (book: Book) => void
 }
 
 export default function CreateModal({
   close,
   addBook,
-}: {
-  close: () => void
-  addBook: (book: Book) => void
-}) {
-  const getBookForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const form = event.currentTarget
-    const formData = new FormData(form)
+}: CreateModalProps): React.JSX.Element {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<BookSchemaType>({
+    resolver: zodResolver(BookSchema),
+    defaultValues: {
+      name: '',
+      author: '',
+      topic: 'Select a topic',
+    },
+  })
+
+  const getBookForm: SubmitHandler<BookSchemaType> = () => {
+    const idBook = Math.floor(Math.random() * 1000)
 
     const book: Book = {
-      name: formData.get('name') as string,
-      author: formData.get('author') as string,
-      topic: formData.get('topic') as string,
+      id: idBook,
+      name: watch('name'),
+      author: watch('author'),
+      topic: watch('topic'),
     }
     addBook(book)
   }
-
-  const topics: Array<string> = [
-    'Machine Learning',
-    'Database',
-    'Frontend',
-    'Backend',
-    'DevOps',
-    'Programming',
-    'Artificial Intelligence',
-    'Big Data',
-    'Cloud Computing',
-    'Blockchain',
-    'Internet of Things',
-    'Cybersecurity',
-    'Software Development',
-    'UX/UI Design',
-    'Computer Networking',
-  ]
-  const options = topics.map((topic) => {
-    return (
-      <option key={topic} value={topic}>
-        {topic}
-      </option>
-    )
-  })
 
   const displayTopic = (): JSX.Element => {
     return (
       <select
         required
         id="topic"
-        name="topic"
+        {...register('topic')}
         className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
       >
         <option value="">Select a topic</option>
@@ -82,11 +71,13 @@ export default function CreateModal({
         </div>
         <br />
         <div className="modal-body">
-          <form onSubmit={getBookForm}>
+          <form onSubmit={handleSubmit(getBookForm)}>
             <div className="relative z-0 w-full h-full mb-6 group ">
               <input
                 id="name"
-                name="name"
+                {...register('name')}
+                disabled={isSubmitting}
+                placeholder=""
                 type="text"
                 className="block py-3 px-0 w-full h-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                 required
@@ -98,10 +89,17 @@ export default function CreateModal({
                 Name{' '}
               </label>
             </div>
+            {errors.name && (
+              <span className="text-red-800 block mt-2">
+                {errors.name?.message}
+              </span>
+            )}
             <div className="relative z-0 w-full h-full mb-6 group">
               <input
                 id="author"
-                name="author"
+                {...register('author')}
+                disabled={isSubmitting}
+                placeholder=""
                 type="text"
                 className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-red-600 peer "
                 required
@@ -113,6 +111,11 @@ export default function CreateModal({
                 Author{' '}
               </label>
             </div>
+            {errors.author && (
+              <span className="text-red-800 block mt-2">
+                {errors.author?.message}
+              </span>
+            )}
             <div className="relative z-0 w-full h-full mb-6 group">
               {displayTopic()}
               <label

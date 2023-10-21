@@ -6,18 +6,15 @@ import EditModal from '../components/Modal/EditBookModal'
 import CreateModal from '../components/Modal/CreateBookModal'
 import DeleteModal from '../components/Modal/DeleteBookModal'
 import Table from '../components/Table/table'
-// import { allBooks } from '../../data'
+import { Book } from '../components/interface/book'
+
+// import { allBooks } from '../components/constant/data'
 
 let action: string | null
-let selectedItem: Book
+let selectedItem: Book | null
+// let formData: User
 const dataKey: string = 'books'
 const maxRecord = 5
-
-interface Book {
-  name: string
-  author: string
-  topic: string
-}
 
 function MainBody() {
   const router = useRouter()
@@ -39,11 +36,22 @@ function MainBody() {
   }, [FilterTitle])
 
   useEffect(() => {
-    const bookList = JSON.parse(localStorage.getItem(dataKey) || '[]')
-    setData(bookList)
+    try {
+      const bookList = JSON.parse(localStorage.getItem(dataKey) || '[]')
+      setData(bookList)
+    } catch (e) {
+      console.error('Cannot fetch data', e)
+      throw e
+    }
   }, [])
+  useEffect(() => {
+    if (page >= 1 && page >= Math.ceil(FilterTitle.length / maxRecord)) {
+      setPage(page - 1)
+    }
+    // if(FilterTitle.length <= 5 ) setPage(0)
+  }, [FilterTitle.length, page])
 
-  function updateList(data): void {
+  function updateList(data: Book[]): void {
     localStorage.setItem(dataKey, JSON.stringify(data))
     setData(data)
     setPage(Math.floor((data.length - 1) / maxRecord))
@@ -65,7 +73,7 @@ function MainBody() {
     setModalOpen(false)
   }
 
-  function displayModal(close) {
+  function displayModal(close: { (): void }) {
     // Add Modal
     if (action === 'Create') {
       return <CreateModal close={close} addBook={addItem} />
@@ -73,12 +81,14 @@ function MainBody() {
     // Delete Modal
     if (action === 'Delete') {
       return (
-        <DeleteModal close={close} item={selectedItem} delBook={deleteItem} />
+        <DeleteModal close={close} item={selectedItem!} delBook={deleteItem} />
       )
     }
     // Edit Modal
     if (action === 'Edit') {
-      return <EditModal close={close} item={selectedItem} editBook={editBook} />
+      return (
+        <EditModal close={close} item={selectedItem!} editBook={editBook} />
+      )
     }
   }
 
@@ -110,12 +120,7 @@ function MainBody() {
     setPage(0)
   }
 
-  function DisplayItem() {
-    const pattern = new RegExp(searchItem.toLowerCase())
-    const FilterTitle: Array<Book> = data.filter((i: Book) =>
-      pattern.test(i.name.toLowerCase()),
-    )
-
+  const DisplayItem = (): React.JSX.Element[] => {
     const dataPage: Array<Book> = FilterTitle.slice(
       page * maxRecord,
       (page + 1) * maxRecord,
@@ -134,7 +139,7 @@ function MainBody() {
           </td>
           <td className="text-red-500 border-2 border-red-500 dark:border-sky-500">
             <button
-              onClick={() => router.push(`/book`)}
+              onClick={() => router.push(`/book${i.name}`)}
               className="m-2 underline decoration-double dark:text-sky-500"
             >
               View
@@ -158,7 +163,7 @@ function MainBody() {
     })
   }
 
-  // Pagination
+  //! Pagination
   const paginationBtn: Array<JSX.Element> = Array.from(
     { length: total },
     (_, i) => {
@@ -180,8 +185,10 @@ function MainBody() {
     },
   )
 
+  //}
+
   return (
-    <section>
+    <section className="relative">
       <div>
         <div className="font-extrabold text-right p-12">
           <input
@@ -200,7 +207,7 @@ function MainBody() {
             Add Book
           </button>
         </div>
-        <Table display={DisplayItem()} />
+        <Table display={DisplayItem} />
 
         <div className="pagination flex justify-end -space-x-px text-sm m-6">
           {paginationBtn}

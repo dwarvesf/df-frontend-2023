@@ -1,100 +1,53 @@
-import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
-
-interface Book {
-  name: string
-  author: string
-  topic: string
-}
+import React from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Book } from '../interface/book'
+import { options } from '../constant/topic'
+import { BookSchemaType, BookSchema } from '../schema/BookSchema'
 
 interface EditModalProps {
   close: () => void
-  item: Book
+  item: Book | null
   editBook: (book: Book) => void
 }
 
-export default function EditModal({ close, item, editBook }: EditModalProps) {
-  const [name, setName] = useState<string>('')
-  const [author, setAuthor] = useState<string>('')
-  const [topic, setTopic] = useState<string>('Programming')
-  const [nameError, setNameError] = useState<boolean>(false)
-  const [authorError, setAuthorError] = useState<boolean>(false)
+export default function EditModal({
+  close,
+  item,
+  editBook,
+}: EditModalProps): React.JSX.Element {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<BookSchemaType>({
+    resolver: zodResolver(BookSchema),
+    defaultValues: {
+      name: item?.name || '',
+      author: item?.author || '',
+      topic: item?.topic,
+    },
+  })
 
-  useEffect(() => {
-    if (item) {
-      setName(item.name || '')
-      setAuthor(item.author || '')
-      setTopic(item.topic || '')
-    }
-    // eslint-disable-next-line
-  }, [])
-
-  function validateInput() {
-    if (name.trim() === '') {
-      setNameError(true)
-    }
-    if (author.trim() === '') {
-      setAuthorError(true)
-    }
-  }
-
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    setTopic(e.target.value)
-  }
-
-  const getBookForm = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const form = event.currentTarget
-    const formData = new FormData(form)
-
-    validateInput()
-    if (name.trim() === '' || author.trim() === '') {
-      return
-    }
-
+  const getBookForm: SubmitHandler<BookSchemaType> = () => {
     const book: Book = {
-      name: formData.get('name') as string,
-      author: formData.get('author') as string,
-      topic: formData.get('topic') as string,
+      id: item!.id,
+      name: watch('name'),
+      author: watch('author'),
+      topic: watch('topic'),
     }
     editBook(book)
-    setName('')
-    setAuthor('')
-    setTopic('')
+    reset()
     close()
   }
 
-  const topics: Array<string> = [
-    'Machine Learning',
-    'Database',
-    'Frontend',
-    'Backend',
-    'DevOps',
-    'Programming',
-    'Artificial Intelligence',
-    'Big Data',
-    'Cloud Computing',
-    'Blockchain',
-    'Internet of Things',
-    'Cybersecurity',
-    'Software Development',
-    'UX/UI Design',
-    'Computer Networking',
-  ]
-  const options = topics.map((topic) => {
-    return (
-      <option key={topic} value={topic}>
-        {topic}
-      </option>
-    )
-  })
-
-  const displayTopic = (): JSX.Element => {
+  const displayTopic = (): React.JSX.Element => {
     return (
       <select
         required
-        name="topic"
-        value={topic}
-        onChange={handleChange}
+        {...register('topic')}
         className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
       >
         <option value="">Select a topic</option>
@@ -120,16 +73,12 @@ export default function EditModal({ close, item, editBook }: EditModalProps) {
         </div>
         <br />
         <div className="modal-body">
-          <form onSubmit={getBookForm}>
+          <form onSubmit={handleSubmit(getBookForm)}>
             <div className="relative z-0 w-full h-full mb-6 group ">
               <input
-                name="name"
                 type="text"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value)
-                  setNameError(false)
-                }}
+                {...register('name')}
+                disabled={isSubmitting}
                 className="block py-3 px-0 w-full h-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
                 required
               />
@@ -139,18 +88,16 @@ export default function EditModal({ close, item, editBook }: EditModalProps) {
               >
                 Name{' '}
               </label>
-              {nameError && (
-                <p className="errorMessage">Author field is required.</p>
+              {errors.name && (
+                <span className="text-red-800 block mt-2">
+                  {errors.name?.message}
+                </span>
               )}
             </div>
             <div className="relative z-0 w-full h-full mb-6 group">
               <input
-                name="author"
-                value={author}
-                onChange={(e) => {
-                  setAuthor(e.target.value)
-                  setAuthorError(false)
-                }}
+                {...register('author')}
+                disabled={isSubmitting}
                 type="text"
                 className="block py-3 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-sky-500 focus:outline-none focus:ring-0 focus:border-red-600 peer "
                 required
@@ -161,8 +108,10 @@ export default function EditModal({ close, item, editBook }: EditModalProps) {
               >
                 Author{' '}
               </label>
-              {authorError && (
-                <p className="errorMessage">Author field is required.</p>
+              {errors.author && (
+                <span className="text-red-800 block mt-2">
+                  {errors.author?.message}
+                </span>
               )}
             </div>
             <div className="relative z-0 w-full h-full mb-6 group">

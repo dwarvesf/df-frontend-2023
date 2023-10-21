@@ -1,8 +1,4 @@
-interface Book {
-  name: string
-  author: string
-  topic: string
-}
+import { Book } from '../interface/book'
 
 interface DeleteModalProps {
   close: () => void
@@ -14,7 +10,7 @@ export default function DeleteModal({
   close,
   item,
   delBook,
-}: DeleteModalProps) {
+}: DeleteModalProps): React.JSX.Element {
   return (
     <div
       id="delete-modal"

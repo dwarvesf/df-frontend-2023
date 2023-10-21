@@ -1,10 +1,7 @@
 'use client'
 
-import React from 'react'
-import LoginPage from '../components/login/FormLogin'
+import { redirect } from 'next/navigation'
 
-const Home = () => {
-  return <LoginPage />
+export default function Home() {
+  redirect('/book')
 }
-
-export default Home

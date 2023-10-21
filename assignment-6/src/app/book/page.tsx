@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import MainLayout from '../../layouts/MainLayouts'
+import MainLayout from '../../book page layout/MainLayouts'
 
 export default function Home() {
   return (
