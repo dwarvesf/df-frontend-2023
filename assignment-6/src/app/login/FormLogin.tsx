@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import PasswordStrengthBar from 'react-password-strength-bar'
 import { toast } from 'react-toastify'
