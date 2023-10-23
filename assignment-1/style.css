@@ -1,4 +1,107 @@
 html {
   height: 100%;
   width: 100%;
+  font-family: "Courier New", Courier, monospace;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--border-color);
+}
+.deleteAction {
+  border: 1px solid black;
+  background-color: #d80032;
+}
+#btn {
+  background-color: #d80032;
+  color: white;
+  padding: 15px 3rem;
+}
+.search input {
+  padding: 15px 3rem 15px 1rem;
+}
+.search {
+  text-align: right;
+  padding: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  margin: 5px;
+}
+form button {
+  padding: 0.4rem 2rem;
+  border: 1px solid black;
+  background-color: #d80032;
+  color: white;
+}
+#create-modal input {
+  width: 80%;
+  padding: 0.5rem 1rem;
+}
+table {
+  width: 100%;
+  font-size: medium;
+}
+table,
+th,
+td {
+  border-style: groove;
+  border-collapse: collapse;
+  height: 30px;
+}
+.name {
+  width: 45%;
+}
+.author {
+  width: 20%;
+}
+.topic {
+  width: 20%;
+}
+.index {
+  width: 2%;
+}
+#create-modal,
+#delete-modal {
+  /* display: none; */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+#delete-modal {
+  border: 1px solid black;
+  text-align: center;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+.modal-header h2 {
+  margin: 0;
+}
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.table-title {
+  padding: 20px;
+  text-align: left;
+}
+.deleteBookBtn {
+  background-color: white;
+  border-style: none;
+  background-color: #d80032;
 }

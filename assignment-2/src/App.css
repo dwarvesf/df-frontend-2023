@@ -1,38 +1,112 @@
-.App {
-  text-align: center;
+html {
+  height: 100%;
+  width: auto;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.6rem;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px;
+  border-bottom: 2px solid #c9d4dd;
+}
+.head-profile {
+  height: 50px;
+  display: flex;
+}
+.deleteAction {
+  border: 1px solid black;
+  background-color: #d80032;
+}
+#btnAddBook {
+  background-color: #d80032;
+  color: white;
+  font-weight: bold;
+  padding: 15px 2rem;
+  border: 5px none;
+  border-radius: 5px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search {
+  text-align: right;
+  padding: 20px;
+}
+.search input {
+  padding: 15px 3rem 15px 1rem;
+  margin: 0 1rem;
+  border-radius: 5px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: baseline;
+  margin: 5px;
+}
+form button {
+  padding: 0.4rem 2rem;
+  border: 1px solid black;
+  background-color: #d80032;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+table {
+  width: 80%;
+  margin: auto;
+  font-size: medium;
+}
+table,
+th,
+td {
+  border-style: groove;
+  border-collapse: collapse;
+  height: 20px;
+}
+.name {
+  width: 45%;
+}
+.author {
+  width: 20%;
+}
+.topic {
+  width: 20%;
+}
+.index {
+  width: 2%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table-title {
+  padding: 20px;
+  text-align: left;
+}
+.table-button {
+  background-color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  border-style: none;
+  color: #d80032;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+.pagination .table-page {
+  border-radius: 5px;
+  margin: 0.2rem;
+  padding: 0.4rem;
+  background-color: #ffffff;
+}
+.pagination .active {
+  background-color: #eadbc8;
+}
+.pagination .table-page:hover {
+  background-color: #eadbc8;
+}
+
+footer {
+  text-align: center;
+  position:absolute;
+  left: 40%;
+  bottom: 5%;
 }

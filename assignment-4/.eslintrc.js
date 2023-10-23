@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   extends: [
+    'airbnb-typescript',
     './node_modules/@dwarvesf/react-eslint-config',
     'eslint:recommended',
     'plugin:react/recommended',
@@ -10,9 +11,7 @@ module.exports = {
     'next',
     'next/core-web-vitals',
   ],
-  ignorePatterns: [
-    'node_modules/',
-  ],
+  ignorePatterns: ['node_modules/'],
   env: {
     es6: true,
     browser: true,
@@ -44,6 +43,12 @@ module.exports = {
         'react/jsx-sort-props': 'off',
         'react/function-component-definition': 'off',
         'no-shadow': 'off',
+        'prettier/prettier': [
+          'error',
+          {
+            endOfLine: 'auto',
+          },
+        ],
       },
     },
   ],
