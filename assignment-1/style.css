@@ -1,4 +1,240 @@
+
+.btn {
+    border-radius: 0.25rem;
+    padding: 0 1rem;
+    border: none;
+}
+
+.btn-red {
+    background-color: #d2445a;
+    color: white;
+}
+
+.red {
+    color: #d2445a;
+}
+
+a.red {
+    color: #d2445a;
+}
+
+a.red:hover {
+    color: blue;
+}
+
+thead tr th {
+    padding: 0.5rem;
+}
+
+tbody tr td {
+    padding: 0.5rem;
+}
+
+.py-075 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;;
+}
+
+.py-2 {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;;
+}
+
+.py-4 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;;
+}
+
+.px-4 {
+    padding-right: 1.5rem !important;
+    padding-left: 1.5rem !important;;
+}
+
+.w-15 {
+    width: 15%;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+
+.card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #f6f6f6;
+    border-radius: 0.25rem;
+}
+
+.card-scroll {
+    height: calc(100% - 84px);
+    padding: 16px;
+}
+
+/*BOOTSTRAP */
+.table-bordered {
+    border: 1px solid #eff2f7;
+}
+
 html {
-  height: 100%;
-  width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    background-color: #e7e9eb;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topNav {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fefefe;
+}
+
+.topNav h3 {
+    padding-left: 2rem;
+}
+
+.topNav .avatar {
+    padding: 0.5rem 2rem;
+}
+
+img.avatar {
+    height: 38px;
+    width: 38px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+
+
+.content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.form-control {
+    display: block;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+thead tr th {
+    font-weight: bold;
+}
+
+
+/*Modal*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-content {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .modal-content {
+        width: 70% !important;
+    }
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 20vw; /* Could be more or less, depending on screen size */
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-content-del {
+        width: 80% !important;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .modal-content-del {
+        width: 50% !important;
+    }
+}
+
+.modal-content-del {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 2rem;
+    border: 1px solid #888;
+    width: 15vw; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* @media */
+
+@media (min-width: 1270px) {
+    .search-input {
+        width: 20%;
+    }
+}
+
+@media (max-width: 1270px) {
+    .search-input {
+        width: 50%;
+    }
+}
+
+@media (max-width: 675px) {
+    .search-input {
+        width: 70%;
+    }
 }
