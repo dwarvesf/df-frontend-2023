@@ -4,20 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bookstore</title>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script type="module" src="./scripts/storage.js"></script>
-    <script type="module" src="./scripts/models.js"></script>
-    <script type="module" src="./scripts/customElements.js"></script>
-    <script type="module" src="./scripts/seedData.js"></script>
-    <script type="module" defer src="./scripts/modalBook.js"></script>
-    <script type="module" defer src="./scripts/dialog.js"></script>
-    <script type="module" defer src="./scripts/sidebar.js"></script>
-    <script type="module" defer src="./scripts/tableBook.js"></script>
-    <script type="module" defer src="./script.js"></script>
-    <script type="module" defer src="./scripts/form.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <script type="module" src="../scripts/storage.js"></script>
+    <script type="module" src="../scripts/models.js"></script>
+    <script type="module" src="../scripts/customElements.js"></script>
+    <script type="module" src="../scripts/seedData.js"></script>
+    <script type="module" defer src="../scripts/modalTopic.js"></script>
+    <script type="module" defer src="../scripts/dialog.js"></script>
+    <script type="module" defer src="../scripts/sidebar.js"></script>
+    <script type="module" defer src="../scripts/tableTopic.js"></script>
+    <script type="module" defer src="../script.js"></script>
+    <script type="module" defer src="../scripts/form.js"></script>
   </head>
   <body>
-    <span class="overlay"></span>
+    <!-- DIALOG -->
     <div class="dialog" id="dialog">
       <div class="dialog-content">
         <div class="dialog-header">Delete Book</div>
@@ -29,12 +29,13 @@
         <div id="modal__modal-footer" class="dialog-footer"></div>
       </div>
     </div>
+    <!-- CONTAINER FLUID -->
     <div class="container--fluid">
       <div class="header">
         <h1 class="branch-name">Book Store</h1>
         <div class="avatar">
-          <img src="./assets/images/avatar.jpg" alt="image-avatar" />
-          <span class="username">John Doe</span>
+          <img src="../assets/images/avatar.jpg" alt="image-avatar" />
+          <span>username</span>
         </div>
       </div>
       <div class="container-main">
@@ -42,28 +43,28 @@
         <nav id="sidebar">
           <div class="sidebar-header">
             <span class="btn-expand" id="btn-expand">
-              <img src="./assets/icons/icon__bars.svg" alt="icon__bars.svg" />
+              <img src="../assets/icons/icon__bars.svg" alt="icon__bars.svg" />
             </span>
             <h3>Book Store</h3>
           </div>
 
           <ul class="sidebar-list-item" id="sidebar-list">
             <li class="sidebar-item" id="sidebar-home">
-              <a href="./index.html">
-                <img class="icon" src="./assets/icons/icon__manage.svg" />
+              <a href="../index.html">
+                <img class="icon" src="../assets/icons/icon__manage.svg" />
                 <strong>HOME</strong>
               </a>
             </li>
             <li class="sidebar-item" id="sidebar-create-topic">
-              <a href="./pages/createTopic.html">
-                <img class="icon" src="./assets/icons/icon__createTopic.svg" />
+              <a href="./createTopic.html">
+                <img class="icon" src="../assets/icons/icon__createTopic.svg" />
                 <strong>CREATE TOPIC</strong>
               </a>
             </li>
             <li class="sidebar-item" id="sidebar-setting">
-              <a href="./pages/setting.html">
-                <!-- <a href="./pages/book.html"> -->
-                <img class="icon" src="./assets/icons/icon__setting.svg" />
+              <a href="./setting.html">
+                <!-- <a href="./book.html"> -->
+                <img class="icon" src="../assets/icons/icon__setting.svg" />
                 <strong>SETTING</strong>
               </a>
             </li>
@@ -72,7 +73,7 @@
 
         <!-- CONTAINER APP -->
         <div class="container--fluid container-app">
-          <div class="container__row inspiration-form-control-group">
+          <div class="containe_row inspiration-form-control-group">
             <!-- SEARCH -->
             <div
               class="container__col-12 container__col-sm-8 inspiration-form-control form-control-search"
@@ -95,7 +96,7 @@
               class="container__col-sm-offset-2 container__col-sm-2 btn btn-add"
               type="button"
             >
-              Add Book
+              Add Topic
             </button>
           </div>
 
@@ -105,8 +106,6 @@
               <tr class="">
                 <th scope="col"></th>
                 <th scope="col">Name</th>
-                <th scope="col">Author</th>
-                <th scope="col">Topic</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -120,7 +119,7 @@
         <!-- Modal content -->
         <div class="modal-content">
           <div id="modal__modal-header" class="modal-header">
-            <h2>Thêm Sách</h2>
+            <h2>Thêm Topic</h2>
             <span id="modal__btn-close" class="close">&times;</span>
           </div>
           <div class="modal-body">
@@ -134,36 +133,51 @@
                 class="form-control"
                 type="text"
                 name="modal__ipt-name"
-                placeholder="Enter book's name..."
+                placeholder="Enter topic's name..."
               />
               <span class="focus-form-control"></span>
             </div>
-            <!-- FORM - AUTHOR -->
-            <div class="form-control-group">
-              <label class="label-form-control" for="modal__ipt-author"
-                >author</label
-              >
-              <input
-                id="modal__ipt-author"
-                class="form-control"
-                type="text"
-                name="modal__ipt-author"
-                placeholder="Enter book's author..."
-              />
-              <span class="focus-form-control"></span>
-            </div>
-            <!-- FORM - TOPIC -->
-            <div class="form-control-group">
-              <div class="label-form-control">Topic</div>
-              <select id="modal__slt-topic" class="orginal-select-hide">
-                <option value="">Choose Topic:</option>
-              </select>
-              <span class="focus-form-control"></span>
-            </div>
-            <!-- ADD button -->
+            <!-- ADD BUTTON -->
             <div class="display--flex justify-content--fe">
               <button
-                id="modal__btn-add-book"
+                id="modal__btn-add-topic"
+                class="btn btn-add"
+                type="button"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+          <div id="modal__modal-footer" class="modal-footer"></div>
+        </div>
+      </div>
+      <!-- The Modal Confirmation -->
+      <div id="dialog-add" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div id="modal__modal-header" class="modal-header">
+            <h2>Thêm Topic</h2>
+            <span id="modal__btn-close" class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <!-- FORM - NAME -->
+            <div class="form-control-group">
+              <label class="label-form-control" for="modal__ipt-name"
+                >name</label
+              >
+              <input
+                id="modal__ipt-name"
+                class="form-control"
+                type="text"
+                name="modal__ipt-name"
+                placeholder="Enter topic's name..."
+              />
+              <span class="focus-form-control"></span>
+            </div>
+            <!-- ADD BUTTON -->
+            <div class="display--flex justify-content--fe">
+              <button
+                id="modal__btn-add-topic"
                 class="btn btn-add"
                 type="button"
               >

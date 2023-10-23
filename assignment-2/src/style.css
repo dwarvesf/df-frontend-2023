@@ -1,3 +1,19 @@
+.container--content {
+  min-height: 75vh;
+}
+
+.container--footer {
+  position: relative;
+  display: flex;
+  padding: 20px 5px;
+}
+.container--footer.color-light {
+  background-color: #385BB2 !important;
+}
+.container--footer.color-dark {
+  background-color: #2e2f33 !important;
+}
+
 /* SIDEBAR */
 .wrapper {
   display: flex;
@@ -5,10 +21,19 @@
 }
 
 #sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  top: 0;
   width: 50px;
-  background: #303E7F;
   color: #fff;
   transition: all 0.2s;
+}
+#sidebar.color-light {
+  background: #303E7F;
+}
+#sidebar.color-dark {
+  background-color: #222326;
 }
 @media (min-width: 768px) {
   #sidebar {
@@ -20,8 +45,13 @@
   padding: 10px;
   justify-content: space-between;
   align-items: center;
-  background-color: #3D53B2;
   height: 75px;
+}
+#sidebar .sidebar-header.color-light {
+  background-color: #3D53B2;
+}
+#sidebar .sidebar-header.color-dark {
+  background-color: #393b3f;
 }
 #sidebar .sidebar-header h3 {
   display: none;
@@ -115,11 +145,11 @@
     height: 30px;
   }
 }
-#sidebar.active .sidebar-header span img {
+#sidebar.active .sidebar-header span svg {
   height: 15px;
 }
 @media (min-width: 768px) {
-  #sidebar.active .sidebar-header span img {
+  #sidebar.active .sidebar-header span svg {
     height: 20px;
   }
 }
@@ -162,7 +192,6 @@
 
 #sidebar ul.sidebar-list-item {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul li a i {
@@ -220,9 +249,14 @@ a.article:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #385BB2;
   border-bottom: solid 3px #303E7F;
   padding: 10px 5px;
+}
+.header.color-light {
+  background-color: #385BB2 !important;
+}
+.header.color-dark {
+  background-color: #2e2f33 !important;
 }
 @media (min-width: 768px) {
   .header {
@@ -243,7 +277,13 @@ a.article:hover {
   margin: 0px;
 }
 .header .branch-name {
+  font-size: 1.15rem;
   color: white;
+}
+@media (min-width: 1200px) {
+  .header .branch-name {
+    font-size: 1.5rem;
+  }
 }
 .header .username {
   color: white;
@@ -272,65 +312,62 @@ a.article:hover {
 
 /* The Modal (background) */
 .modal {
-  display: none;
   position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+  align-items: center;
+  inset: 0;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 999999;
+  pointer-events: none;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+}
+.modal.modal-enter-done {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.modal .modal-wrapped {
   /* MODAL CONTENT */
-}
-.modal .modal-content {
-  position: relative;
   background-color: #fefefe;
-  margin: auto;
-  max-width: 300px;
-  padding: 0;
-  border: 1px solid #888;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
 }
-@media (min-width: 768px) {
-  .modal .modal-content {
-    max-width: 450px;
-  }
-}
-.modal .modal-content .modal-header {
+.modal .modal-wrapped .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 16px;
+  padding: 10px 15px;
   background-color: #303E7F;
   color: white;
 }
-.modal .modal-content .modal-header h2 {
+.modal .modal-wrapped .modal-header h2 {
   font-size: 0.95em;
 }
-.modal .modal-body {
+.modal .modal-wrapped .modal-body {
   padding: 20px 15px;
 }
 @media (min-width: 768px) {
-  .modal .modal-body {
-    padding: 50px 30px;
+  .modal .modal-wrapped .modal-body {
+    padding: 20px 30px;
   }
 }
-.modal .modal-footer {
-  height: 3px;
-  background-color: #1D284C;
+.modal .modal-wrapped .modal-footer {
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-around;
+}
+@media (min-width: 768px) {
+  .modal .modal-wrapped .modal-footer {
+    padding: 10px 30px;
+  }
 }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
   from {
-    top: -300px;
+    top: -1000px;
     opacity: 0;
   }
   to {
@@ -340,7 +377,7 @@ a.article:hover {
 }
 @keyframes animatetop {
   from {
-    top: -300px;
+    top: -1000px;
     opacity: 0;
   }
   to {
@@ -348,19 +385,8 @@ a.article:hover {
     opacity: 1;
   }
 }
-/* The Close Button */
-.close {
-  color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+.modal-content {
+  border: 0px;
 }
 
 /* The Modal (background) */
@@ -525,10 +551,59 @@ a.article:hover {
 .btn-expand:hover {
   background-color: #fff;
 }
-.btn-expand img {
-  width: 25px;
+
+.btn-delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.toggle-button label {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+.toggle-button input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-button span {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #2c3e50;
+  transition: 0.3s;
+  border-radius: 30px;
+}
+.toggle-button span:before {
+  position: absolute;
+  content: "";
   height: 25px;
-  margin: 2px;
+  width: 25px;
+  left: 3px;
+  bottom: 2.6px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.toggle-button input:checked + span {
+  background-color: #00c853;
+}
+.toggle-button input:checked + span:before {
+  transform: translateX(29px);
+}
+.toggle-button strong {
+  position: absolute;
+  left: 100%;
+  width: max-content;
+  line-height: 30px;
+  margin-left: 10px;
+  cursor: pointer;
 }
 
 .styled-table {
@@ -654,6 +729,7 @@ input {
   color: #666666;
   line-height: 1.2;
   padding: 0 26px;
+  border: 0;
   height: 48px;
 }
 .form-control-group .focus-form-control {
@@ -678,71 +754,11 @@ input {
   -o-transform: scaleX(1.1) scaleY(1.3);
   transform: scaleX(1.1) scaleY(1.3);
 }
-.form-control-group .orginal-select-hide,
 .form-control-group select {
   border: 0 !important;
-  clip: rect(0 0 0 0) !important;
-  height: 1px !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  padding: 0 !important;
-  position: absolute !important;
-  width: 1px !important;
 }
-.form-control-group .eff-focus-selection-form-control {
-  visibility: visible;
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -moz-transform: scale(1);
-  -ms-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-}
-.form-control-group .select2-results {
-  display: block;
-}
-.form-control-group .select-results__options {
-  position: absolute;
-  font-size: 18px;
-  color: #404b46;
-  line-height: 1.2;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-height: 200px;
-  overflow-y: auto !important;
-  overflow: hidden;
-  z-index: 1251;
-  width: calc(100% + 2px);
-  border: 0 solid transparent;
-  border-radius: 10px;
-  background-color: #fff;
-  left: -2px;
-  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-  -webkit-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-  -o-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-  -ms-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-}
-.form-control-group .select2-results__option {
-  padding: 6px;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.form-control-group .select2-results__option[aria-selected] {
-  cursor: pointer;
-}
-.form-control-group .select-results__option {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 26px;
-}
-.form-control-group .select-results__option__selected {
-  padding-top: 14px;
-  padding-bottom: 14px;
-  padding-left: 26px;
-  background: #6675df;
-  color: #fff;
+.form-control-group select:focus {
+  border: 0 !important;
 }
 
 .form-control:focus + .focus-form-control {
@@ -755,65 +771,9 @@ input {
   transform: scale(1);
 }
 
-/*the container must be positioned relative:*/
-/*style the items (options), including the selected item:*/
-.select-items div,
-.select-selected {
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  user-select: none;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  background-color: transparent;
-  border: none;
-  height: 48px;
-  outline: none;
-  position: relative;
-}
-
-.select-selected__rendered {
-  color: #191919;
-  line-height: 1.2;
-  padding-left: 26px;
-  background-color: transparent;
-}
-
-/*style the arrow inside the select element:*/
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-/*point the arrow upwards when the select box is open (active):*/
-.select-selected.select-arrow-active:after {
-  border-color: transparent transparent #fff transparent;
-  top: 7px;
-}
-
-/*hide the items when the select box is closed:*/
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 @font-face {
   font-family: "SVN-Poppins";
-  src: url("../assets/fonts/SVN-Poppins-Regular.ttf") format("truetype");
+  src: url("../public/assets/fonts/SVN-Poppins-Regular.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -1265,7 +1225,7 @@ input {
 
 .container-app {
   width: 100%;
-  padding: 20px;
+  padding: 5px;
 }
 
 * {
@@ -1309,23 +1269,23 @@ input {
   text-align: left !important;
 }
 
-.container-main {
+.container--content {
   display: flex;
   padding: 20px 0px;
   position: relative;
 }
 @media (min-width: 768px) {
-  .container-main {
+  .container--content {
     padding: 20px 0px;
   }
 }
 @media (min-width: 992px) {
-  .container-main {
+  .container--content {
     padding: 20px 0px;
   }
 }
 @media (min-width: 1200px) {
-  .container-main {
+  .container--content {
     padding: 20px 0px;
   }
 }

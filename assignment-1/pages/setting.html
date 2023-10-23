@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bookstore</title>
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <script type="module" src="../scripts/storage.js"></script>
+    <script type="module" src="../scripts/models.js"></script>
+    <script type="module" src="../scripts/customElements.js"></script>
+    <script type="module" src="../scripts/seedData.js"></script>
+    <script type="module" defer src="../scripts/modalTopic.js"></script>
+    <script type="module" defer src="../scripts/dialog.js"></script>
+    <script type="module" defer src="../scripts/sidebar.js"></script>
+    <script type="module" defer src="../scripts/tableTopic.js"></script>
+    <script type="module" defer src="../script.js"></script>
+    <script type="module" defer src="../scripts/form.js"></script>
+  </head>
+  <body>
+    <!-- DIALOG -->
+    <div class="dialog" id="dialog">
+      <div class="dialog-content">
+        <div class="dialog-header">Delete Book</div>
+        <div id="dialog-body" class="dialog-body"></div>
+        <div class="dialog-control">
+          <button id="dialog__btn-delete" class="btn btn-delete">Delete</button>
+          <button id="dialog__btn-cancel" class="btn btn-cancel">Cancel</button>
+        </div>
+        <div id="modal__modal-footer" class="dialog-footer"></div>
+      </div>
+    </div>
+    <!-- CONTAINER FLUID -->
+    <div class="container--fluid">
+      <div class="header">
+        <h1 class="branch-name">Book Store</h1>
+        <div class="avatar">
+          <img src="../assets/images/avatar.jpg" alt="image-avatar" />
+          <span>username</span>
+        </div>
+      </div>
+      <div class="container-main">
+        <!-- SIDEBAR-NAV -->
+        <nav id="sidebar">
+          <div class="sidebar-header">
+            <span class="btn-expand" id="btn-expand">
+              <img src="../assets/icons/icon__bars.svg" alt="icon__bars.svg" />
+            </span>
+            <h3>Book Store</h3>
+          </div>
+
+          <ul class="sidebar-list-item" id="sidebar-list">
+            <li class="sidebar-item" id="sidebar-home">
+              <a href="../index.html">
+                <img class="icon" src="../assets/icons/icon__manage.svg" />
+                <strong>HOME</strong>
+              </a>
+            </li>
+            <li class="sidebar-item" id="sidebar-create-topic">
+              <a href="./createTopic.html">
+                <img class="icon" src="../assets/icons/icon__createTopic.svg" />
+                <strong>CREATE TOPIC</strong>
+              </a>
+            </li>
+            <li class="sidebar-item" id="sidebar-setting">
+              <a href="./setting.html">
+                <!-- <a href="./book.html"> -->
+                <img class="icon" src="../assets/icons/icon__setting.svg" />
+                <strong>SETTING</strong>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- CONTAINER APP -->
+        <div class="container--fluid container-app">
+          <h3>This function is being updated. Come back later please....</h3>
+        </div>
+      </div>
+      <div class="footer"></div>
+      <!-- The Modal -->
+      <div id="dialog-add" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div id="modal__modal-header" class="modal-header">
+            <h2>Thêm Topic</h2>
+            <span id="modal__btn-close" class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <!-- FORM - NAME -->
+            <div class="form-control-group">
+              <label class="label-form-control" for="modal__ipt-name"
+                >name</label
+              >
+              <input
+                id="modal__ipt-name"
+                class="form-control"
+                type="text"
+                name="modal__ipt-name"
+                placeholder="Enter topic's name..."
+              />
+              <span class="focus-form-control"></span>
+            </div>
+            <!-- ADD BUTTON -->
+            <div class="display--flex justify-content--fe">
+              <button
+                id="modal__btn-add-topic"
+                class="btn btn-add"
+                type="button"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+          <div id="modal__modal-footer" class="modal-footer"></div>
+        </div>
+      </div>
+      <!-- The Modal Confirmation -->
+      <div id="dialog-add" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div id="modal__modal-header" class="modal-header">
+            <h2>Thêm Topic</h2>
+            <span id="modal__btn-close" class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <!-- FORM - NAME -->
+            <div class="form-control-group">
+              <label class="label-form-control" for="modal__ipt-name"
+                >name</label
+              >
+              <input
+                id="modal__ipt-name"
+                class="form-control"
+                type="text"
+                name="modal__ipt-name"
+                placeholder="Enter topic's name..."
+              />
+              <span class="focus-form-control"></span>
+            </div>
+            <!-- ADD BUTTON -->
+            <div class="display--flex justify-content--fe">
+              <button
+                id="modal__btn-add-topic"
+                class="btn btn-add"
+                type="button"
+              >
+                Create
+              </button>
+            </div>
+          </div>
+          <div id="modal__modal-footer" class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer></footer>
+</html>
